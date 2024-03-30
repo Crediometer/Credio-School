@@ -12,19 +12,21 @@ const Sidebar = () => {
             <nav className="sidebar-nav">
                 <ul>
                     
-                    <Link to='/'><li className="active">Dashboard</li></Link>
+                    <Link to='/home'><li className="active">Dashboard</li></Link>
                     <li>Student</li>
                     <li>Payments</li>
-                    <Link to="/invoice">
+                    <Link to="/home/invoice">
                         <li>Invoice</li>
                     </Link>
                     <li>Settings</li>
                 </ul>
             </nav>
-            <div className="logout">
-                <FaPowerOff/>
-                <p>Logout</p>
-            </div>
+            <Link to="/">
+                <div className="logout">
+                    <FaPowerOff/>
+                    <p>Logout</p>
+                </div>
+            </Link>
         </div>
     );
 }
