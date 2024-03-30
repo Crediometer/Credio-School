@@ -4,10 +4,10 @@
   margin: 0;
   box-sizing: border-box;
 }
-.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+/* .css-11xur9t-MuiPaper-root-MuiTableContainer-root{
   background-color: transparent !important;
   box-shadow: none !important;
-}
+} */
 input:focus{
   outline: none;
 }

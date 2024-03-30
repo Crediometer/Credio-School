@@ -1,6 +1,10 @@
 .tableHeader{
     /* background-color: aqua; */
 }
+.table-con{
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
 .tableHeader th{
     font-family: "Inter";
     font-size: 13px;
