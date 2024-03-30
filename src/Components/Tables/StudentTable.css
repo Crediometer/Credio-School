@@ -1,0 +1,58 @@
+.tableHeader{
+    /* background-color: aqua; */
+}
+.tableHeader th{
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+}
+.table-text th, .table-text p{
+    color: #271E4A;
+    font-family: "Inter";
+    font-size: 15px;
+    font-weight: 500;
+}
+.table-text p{
+    color: #3F779B;
+}
+.paid, .due, .pending{
+    background-color: #058B42;
+    padding:5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+.due{
+    background-color: #B11226;
+}
+.pending{
+    background-color: #F4AF47;
+}
+.paid p, .due p , .pending p{
+    color: white;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 500;
+}
+.pending p{
+    color: #263238;
+}
+.actions{
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+.action-icons{
+    width: 34px;
+    height: 34px;
+    background-color: white;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+.action-icons svg{
+    font-size: 18px;
+}

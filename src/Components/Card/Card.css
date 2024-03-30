@@ -1,0 +1,24 @@
+.card{
+    width: 100%;
+    padding: 1.5rem;
+    /* background-color: #E3F5FF; */
+    border-radius: 16px;
+}
+.student-text{
+    color: #1C1C1C;
+    width: 12px;
+    font-weight: 500;
+}
+.student-body{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.student-body h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+.student-body svg{
+    font-size: 24px;
+}

@@ -1,0 +1,125 @@
+.invoice-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #A3A0A0;
+}
+.invoice-top h4{
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+}
+.invoice-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+.invoice-list p{
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 10px;
+}
+.active-p{
+    border-bottom: 3px solid #FCBA2D;
+}
+.invoice-body{
+    padding: 1rem;
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+.invoice-payment{
+    width: 60%;
+}
+.invoice-period{
+    width: 40%;
+}
+.form-head{
+    font-size: 24px;
+    color: #298097;
+    font-weight: 600;
+}
+.payment-form{
+    margin-top: 14px;
+    padding:24px 29px;
+    border: 1px solid #C4C4C4;
+    border-radius: 14px;
+}
+.form-1{
+    width: 100%;
+}
+.form-1 label{
+    font-size: 14px;
+    color: #919499;
+    font-weight: 500;
+}
+.form-1 label span{
+    color: #D70000;
+    margin-left: 4px;
+}
+.input-search-name{
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 15px;
+    padding: 20px 21px;
+    border-radius: 14px;
+    border: 1px solid #C4C4C4;
+    display: flex;
+    justify-content: space-between;
+}
+.input-search-name input{
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    font-family: "Inter";
+    font-weight: 400;
+    color: #474747;
+}
+
+.input-search-name svg{
+    color: #8A8A8A;
+}
+.form-2{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+.form-2 div{
+    width: 100%;
+}
+.select-field{
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 15px;
+}
+.select-field select{
+    width: 100%;
+    padding: 20px 21px;
+    border-radius: 14px;
+    border: 1px solid #C4C4C4;
+    font-size: 14px;
+    font-family: "Inter";
+    font-weight: 400;
+    color: #474747;
+}
+.save-con{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.save-con button{
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    background-color: #298097;
+    padding: 8px 250px;
+    border-radius: 14px;
+    border: none;
+}

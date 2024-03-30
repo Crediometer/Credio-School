@@ -1,0 +1,50 @@
+.home-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-top p{
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+.home-top select{
+    background-color: #058B42;
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+.home-body{
+    margin-top: 18px;
+}
+.home-card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+.card-div{
+    width: 50%;
+}
+.home-tables{
+    padding: 1.5rem;
+    margin-top: 24px;
+    background-color: #E5ECF6;
+    border-radius: 16px;
+}
+.button-con{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.create-button{
+    color: #ffffff;
+    padding: 22px 95px;
+    background-color: #263238;
+    border-radius: 8px;
+    font-family: "Inter";
+    font-size:20px;
+    font-weight: 600;
+}

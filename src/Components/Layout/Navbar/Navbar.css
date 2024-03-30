@@ -1,0 +1,55 @@
+.navbar{
+    width:calc(100% - 220px);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 177px;
+    padding: 1.5rem;
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+    z-index: 4;
+}
+.navbar-left{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 30%;
+}
+.page-title{
+    font-size: 14px;
+    font-weight: 400;
+}
+.page-title span{
+    color: rgba(0, 0, 0, 0.18);
+}
+.search-input{
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    padding: 0.6rem;
+    /* width: 150px; */
+}
+.search-input input{
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.176);
+    gap: 4px;
+}
+.search-input input::placeholder{
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.176);
+    gap: 4px;
+}
+.search-input svg{
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.176);
+}
