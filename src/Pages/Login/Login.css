@@ -36,6 +36,9 @@
     z-index: 4;
     box-shadow: 0px 9.83px 9.83px rgba(0, 0, 0, 0.132);
 }
+.signup-inner{
+    height: 690px;
+}
 .login-left{
     position: relative;
     width: 50%;
@@ -53,6 +56,9 @@
     align-items: center;
     justify-content: center;
 }
+.signup-right{
+    padding: 0px 70px;
+}
 .login-left h4{
     text-align: center;
     position: absolute;
@@ -64,6 +70,13 @@
     font-family: "Poppins";
     font-size: 24px;
     font-weight: 700;
+}
+.login-right p{
+    margin-top: 8px;
+    font-family: "Poppins";
+    font-size: 12px;
+    font-weight: 500;
+    color: #989898;
 }
 .login-form{
     margin-top: 78px;

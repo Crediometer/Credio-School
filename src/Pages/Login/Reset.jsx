@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import './Login.css'
-const Login = () => {
+import { Link } from "react-router-dom";
+
+const Reset = () => {
     return ( 
         <div className="login">
             <div className="circle-1"></div>
@@ -10,19 +10,14 @@ const Login = () => {
                     <h4>Knowledge Unleashed, Virtually Limitless</h4>
                 </div>
                 <div className="login-right">
-                    <h4>Hello! Welcome back</h4>
+                    <h4>Reset Your Password</h4>
+                    <p>Securing Your Account with a New Password</p>
                     <form action="" className="login-form">
                         <div className="form-3">
                             <label>School email address</label><br></br>
                             <input type='email' placeholder='Enter Email'></input>
                         </div>
-                        <div className="form-3">
-                            <label>Password</label><br></br>
-                            <input type='password' placeholder='Enter Password'></input>
-                        </div>
-                        <Link to="/reset"><p className='forget'>Forgot Password</p></Link>
-                        <Link to="/home"><button className='start-button'>Start now!</button></Link>
-                        <p className='already'>Don’t have an account? <Link to="/signup"><span>Sign Up</span></Link></p>
+                        <Link to="/newpassword"><button className='start-button'>Reset Password</button></Link>
                     </form>
                 </div>
             </div>
@@ -30,4 +25,4 @@ const Login = () => {
     );
 }
  
-export default Login;
+export default Reset;

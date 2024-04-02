@@ -27,14 +27,20 @@
     border-bottom: 3px solid #FCBA2D;
 }
 .invoice-body{
-    padding: 1rem;
     margin-top: 44px;
     display: flex;
     align-items: center;
     gap: 36px;
 }
+.mastercard{
+    width: 8%;
+}
 .invoice-payment{
     width: 60%;
+}
+.card-info{
+    margin-top: 16px;
+    width: 100%;
 }
 .invoice-period{
     width: 40%;
@@ -74,19 +80,29 @@
 }
 .input-search-name input{
     width: 100%;
+    background-color:  transparent;
     border: none;
     font-size: 14px;
     font-family: "Inter";
     font-weight: 400;
     color: #474747;
 }
-
+.input-search-name textarea{
+    width: 100%;
+    height: 120px;
+    background-color:  transparent;
+    border: none;
+    font-size: 14px;
+    font-family: "Inter";
+    font-weight: 400;
+    color: #474747;
+}
 .input-search-name svg{
     color: #8A8A8A;
 }
 .form-2{
     display: flex;
-    align-items: center;
+    align-items: last baseline;
     gap: 22px;
 }
 .form-2 div{
@@ -111,6 +127,7 @@
     margin-top: 20px;
     width: 100%;
     display: flex;
+    gap: 15px;
     justify-content: center;
 }
 
@@ -122,4 +139,76 @@
     padding: 8px 250px;
     border-radius: 14px;
     border: none;
+}
+.share{
+    background-color: white !important;
+    color: #298097 !important;
+    border: 1px solid #298097 !important;
+}
+.student-invoice-top{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.student-invoice-top h4{
+    font-size: 24px;
+    font-family: "Poppins";
+    font-weight: 700;
+    color: #298097;
+}
+.student-invoice-top button{
+    font-size: 20px;
+    font-family: "Poppins";
+    padding: 7px 22px;
+    font-weight: 700;
+    color: #298097;
+    background-color: transparent;
+    border: 1px solid #298097;
+    border-radius: 14px;
+}
+.invoice-progressbar{
+    margin-top: 28px;
+    width: 100%;
+    padding: 8px 26px;
+    border-radius:15px;
+    border:1px solid #C4C4C4;
+}
+.ngn-progressbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ngn-progressbar p{
+    font-size: 15px;
+    font-family: "Poppins";
+    font-weight: 800;
+    color: #298097;
+}
+.invoice-form .input-search-name{
+    background-color: #F5F7FB;
+    border: 1.29px solid #C4C4C4;
+}
+.progress-bar{
+    width: 100%;
+    height: 35px;
+    border-radius: 8px;
+    margin-top: 13px;
+    background-color: #F5F7FB;
+}
+.progress-bar-fill{
+    height: 100%;
+    border-radius: 8px;
+    background-color: #E3F5FF;
+    transition: width 0.5s ease-out;
+}
+.progress-label{
+    text-align: right;
+    margin-top: 12px;
+    font-size: 15px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #298097;
+    transition: width 0.5s ease-out;
 }
