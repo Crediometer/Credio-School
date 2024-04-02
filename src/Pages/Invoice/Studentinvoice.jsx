@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Studentinvoice = () => {
     const [progress, setProgress] = useState(50);
@@ -8,7 +9,9 @@ const Studentinvoice = () => {
         <div className="student-invoice">
             <div className="student-invoice-top">
                 <h4>Progress bar</h4>
-                <button>View all transactions</button>
+                <Link to="/home/transaction">
+                    <button>View all transactions</button>
+                </Link>
             </div>
             <div className="invoice-progressbar">
                 <div className="ngn-progressbar">

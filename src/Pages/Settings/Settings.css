@@ -1,0 +1,38 @@
+.settings-nav{
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    right: 0px;
+    /* width: cc(100% - 2px); */
+    padding: 0.62rem 3rem;
+    background-color: white;
+}
+.settings-nav nav{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.nav-set{
+    cursor: pointer;
+    padding: 0.62rem 1.3rem;
+    color: #ABAFB1;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.nav-active{
+    color: #2B2F32;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-bottom: 4px solid var(--primary-primary-500, #1570EF);
+}
+.settings-body{
+    margin-top: 69px;
+}
