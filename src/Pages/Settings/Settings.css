@@ -1,7 +1,7 @@
 .settings-nav{
     position: absolute;
-    top: 4px;
-    left: 2px;
+    top: 0px;
+    left: 0px;
     right: 0px;
     /* width: cc(100% - 2px); */
     padding: 0.62rem 3rem;
@@ -31,7 +31,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    border-bottom: 4px solid var(--primary-primary-500, #1570EF);
+    border-bottom: 4px solid var(--primary-primary-500, #298097);
 }
 .settings-body{
     margin-top: 69px;

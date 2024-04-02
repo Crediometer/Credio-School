@@ -1,0 +1,62 @@
+.sms{
+    display: flex;
+
+    justify-content: space-between;
+    gap: 33px;
+}
+.sms-left{
+    width: 68%;
+    padding: 16px 34px;
+    border: 1px solid #E5ECF6;
+    border-radius: 24px;
+}
+.sms-preview{
+    width: 32%;
+}
+.preview-phone{
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid #E5ECF6
+}
+.preview-top{
+    width: 100%;
+    height: 140px;
+    border-radius: 14px 14px 0px 0px;
+    background-color: #F9F9F9;
+}
+.preview-info{
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+.preview-info svg{
+    font-size: 1.5rem;
+}
+.profile-message p{
+    font-family: "Poppins";
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 500;
+}
+.preview-body{
+    padding: 0.5rem;
+}
+.timeStamp{
+    margin-top: 15px;
+    text-align: center;
+    color: #5e5e5e;
+    font-family: "Poppins";
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 500;
+}
+.message-box{
+    margin-top: 15px;
+    width: 264px;
+    padding: 1rem;
+    background-color: #E9E9EB;
+    border-radius: 9px;
+}
+.preview-image{
+    margin-top: 450px;
+}

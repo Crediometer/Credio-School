@@ -20,7 +20,10 @@ const Sidebar = () => {
                     <Link to="/home/transaction">
                         <li>Transaction</li>
                     </Link>
-                    <li>Settings</li>
+                    <Link to="/home/settings">
+                        <li>Settings</li>
+                    </Link>
+                    
                 </ul>
             </nav>
             <Link to="/">

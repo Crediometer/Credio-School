@@ -15,11 +15,11 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('First term', "Grade 4", "NGN 400,000", "12 Jan 2022", "01/41"),
-  createData('First term', "Grade 4", "NGN 400,000", "12 Jan 2022", "02/41"),
-  createData('First term', "Grade 4", "NGN 400,000", "12 Jan 2022", "03/41"),
-  createData('First term', "Grade 4", "NGN 400,000", "12 Jan 2022", "04/41"),
-  createData('First term', "Grade 4", "NGN 400,000", "12 Jan 2022", "05/41"),
+  createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022"),
+  createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022"),
+  createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022"),
+  createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022"),
+  createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022"),
 ];
 
 export default function StudentTable() {
@@ -28,11 +28,11 @@ export default function StudentTable() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow className='tableHeader'>
-            <TableCell>Term</TableCell>
+            <TableCell>Student Name</TableCell>
             <TableCell align="center">Class</TableCell>
             <TableCell align="center">Fee</TableCell>
-            <TableCell align="center">Date</TableCell>
-            <TableCell align="center">Paid in</TableCell>
+            <TableCell align="center">Start Date</TableCell>
+            <TableCell align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,7 +49,10 @@ export default function StudentTable() {
                 <TableCell component="th" align="center" className='table-text'><p>{row.fat}</p></TableCell>
                 <TableCell component="th" align="center" className='table-text'>{row.carbs}</TableCell>
                 <TableCell component="th" align="center" className='actions'>
-                  {row.protein}
+                  <Link to='/home/invoice'>
+                    <button className='view-more'>View more info</button>
+                  </Link>
+                    
                 </TableCell>
             </TableRow>
           ))}

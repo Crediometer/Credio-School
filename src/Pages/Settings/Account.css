@@ -1,7 +1,37 @@
 .account{
+    position: relative;
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 38px;
+}
+.settings-button{
+    margin-top: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.Reset{
+    border-radius: 14px;
+    width: 50%;
+    padding: 7px;
+    font-size: 20px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #298097;
+    background-color: transparent;
+    border: 1px solid #298097;
+}
+.Save{
+    border-radius: 14px;
+    width: 50%;
+    padding: 7px;
+    font-size: 20px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    background-color: #298097;
 }
 .account-left{
     border-radius: 10px;
@@ -9,23 +39,40 @@
     padding: 0.62rem;
 }
 .account-left{
-    width: 45%;
+    width: 40%;
 }
 .account-right{
-    width: 55%;
+    width: 60%;
+    border: 1px solid #E5ECF6;
     border-radius: 10px;
     background: #FFF;  
     padding: 1.4rem;
+}
+.account-left-top, .account-left-bottom{
+    padding: 1.4rem;
+    border: 1px solid #E5ECF6;
+    border-radius: 10px;
+}
+.account-left-bottom{
+    margin-top: 16px;
 }
 .password-top{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.password-head{
-    color: var(--black-60, #45464E);
+.password-content{
+    color: var(--black-60, #5E6366);
     font-family: "Poppins";
-    font-size: 1rem;
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.password-head{
+    color: var(--black-60, #298097);
+    font-family: "Poppins";
+    font-size: 1.3rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -119,8 +166,9 @@
 }
 .password-save button{
     border: none;
+    width: 80%;
     border-radius: 10px;
-    background: #1570EF;
+    background: #298097;
     padding: 1.06rem 5rem;
     color: #FFF;
     text-align: center;
@@ -147,7 +195,7 @@
     border: none;
     padding: 1.0625rem 3rem;
     border-radius: 10px;
-    background: #1570EF;
+    background: #298097;
     color: #FFF;
     text-align: center;
     font-family: "Inter";
@@ -170,6 +218,9 @@
 } */
 .director-form{
     margin-bottom: 16px;
+}
+.new-form{
+    margin-top: 33px;
 }
 .director-form label, .form-label{
     color: var(--black-4, #5E6366);
@@ -230,6 +281,9 @@
     border-radius: 8px;
     border: 1px solid #F2F2F2;
     background: rgba(255, 255, 255, 0.60);
+}
+.new-select{
+    width: 100%;
 }
 .director-form-select p, .director-form-select svg{
     color: var(--black-4, #5E6366);

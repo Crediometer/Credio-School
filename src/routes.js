@@ -9,6 +9,7 @@ import Reset from "./Pages/Login/Reset";
 import Newpassword from "./Pages/Login/NewPassword";
 import Students from "./Pages/Students/Students";
 import Transaction from "./Pages/Transactions/Transaction";
+import Settings from "./Pages/Settings/Settings";
 
 export default function Router() {
   const routes = useRoutes([
@@ -36,7 +37,7 @@ export default function Router() {
         { path: "invoice", element: <Invoice/> },
         { path: "students", element: <Students/> },
         { path: "transaction", element: <Transaction/> },
-        // { path: "create", element: <Create /> },
+        { path: "settings", element: <Settings /> },
         // { path: "create/upload", element: <Uplaod /> },
         // { path: "create-content", element: <Content /> },
         // { path: "create-library", element: <ContentLibrary /> },
