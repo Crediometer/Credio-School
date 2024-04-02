@@ -32,7 +32,7 @@ export default function BasicTable() {
             <TableCell align="left">Fee</TableCell>
             <TableCell align="left">Due Date</TableCell>
             <TableCell align="left">Status</TableCell>
-            <TableCell align="left">Action</TableCell>
+            <TableCell align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -65,7 +65,7 @@ export default function BasicTable() {
                     </div>
                 )}
                 </TableCell>
-                <TableCell component="th" align="left" className='actions'>
+                <TableCell component="th" align="center" className='actions'>
                     <div className="actions">
                         <div className="action-icons">
                             <FiEdit/>

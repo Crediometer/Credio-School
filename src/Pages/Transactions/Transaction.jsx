@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import StudentTable from "../../Components/Tables/StuentTable2";
+import TransactionTable from "../../Components/Tables/TransactionTable";
 
 const Transaction = () => {
     return ( 
@@ -25,7 +26,7 @@ const Transaction = () => {
                     </div>
                 </div>
                 <div className="student-table-body">
-                    <StudentTable/>
+                    <TransactionTable/>
                 </div>
         </div>
     );
