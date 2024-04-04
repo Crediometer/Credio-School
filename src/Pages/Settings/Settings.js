@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Account from './Account';
 import './Settings.css';
 import Sms from './Sms';
+import Topup from './Topup';
 // import Business from './Business';
 // import Receipt from './Receipt';
 const Settings = () => {
@@ -30,7 +31,7 @@ const Settings = () => {
             <div className="settings-body">
             { (show === 1) && <Account/>}
             { (show === 2) && <Sms/>} 
-            {/* { (show === 3) && <Receipt/>}  */}
+            { (show === 3) && <Topup/>} 
             </div>
         </div>
     );

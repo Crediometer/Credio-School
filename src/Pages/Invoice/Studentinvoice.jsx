@@ -146,7 +146,6 @@ const Studentinvoice = () => {
                 </div>
             </div>
             <div className="save-con">
-                <button className="share">Share</button>
                 <button>Download PDF</button>
             </div> 
         </div>

@@ -7,7 +7,7 @@
     gap: 177px;
     padding: 1.5rem;
     background-color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+    border-bottom: 1px solid rgba(197, 22, 22, 0.18);
     z-index: 4;
 }
 .navbar-left{
@@ -18,8 +18,9 @@
 .navbar-right{
     display: flex;
     align-items: center;
+    justify-content: right;
     gap: 15px;
-    width: 30%;
+    width: 15%;
 }
 .page-title{
     font-size: 14px;

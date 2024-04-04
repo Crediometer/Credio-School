@@ -1,0 +1,69 @@
+.topup-top{
+    background-color: #F8FCFF;
+    padding: 10px 48px;
+}
+.available{
+    color: #292D32;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.available span{
+    margin-right: 5px;
+}
+.available-amount{
+    color: #059647;
+    font-family: "Poppins";
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 500;
+}
+.topup-card{
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 38%;
+    padding: 22px;
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+}
+.topup-card p{
+    color: #474747;
+    font-family: "Poppins";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+.topup-card h4{
+    color: #000000;
+    font-family: "Poppins";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+}
+.card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-bottom p{
+    color: #919499;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.card-bottom svg{
+    color: #058B42;
+    font-size: 42px;
+}
+.wallet-text{
+    margin-top: 10px;
+    color: #928E8E;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}

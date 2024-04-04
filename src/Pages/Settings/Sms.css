@@ -7,8 +7,15 @@
 .sms-left{
     width: 68%;
     padding: 16px 34px;
-    border: 1px solid #E5ECF6;
     border-radius: 24px;
+}
+.sms-left p{
+    color: #292D32;
+    font-family: "Poppins";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 65px;
 }
 .sms-preview{
     width: 32%;
@@ -58,5 +65,5 @@
     border-radius: 9px;
 }
 .preview-image{
-    margin-top: 450px;
+    margin-top: 350px;
 }

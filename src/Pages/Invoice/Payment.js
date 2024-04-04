@@ -99,40 +99,6 @@ const Payment = () => {
                     </form>
                 </div>
             </div>
-            <div className="invoice-payment card-info">
-                <h4 className="form-head">Card Info</h4>
-                <form action="" className="payment-form">
-                    <div className="form-2">
-                        <div className="form-1">
-                            <label>Pan Number<span>*</span></label>
-                            <div className="input-search-name">
-                                <img src={master} className="mastercard"></img>
-                                <input type="text"></input>
-                            </div>
-                        </div>
-                        <div className="form-1">
-                            <label>Card name<span>*</span></label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="form-2">
-                        <div className="form-1">
-                            <label>cvv<span>*</span></label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                            </div>
-                        </div>
-                        <div className="form-1">
-                            <label>Expire Date<span>*</span></label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <div className="save-con">
                 <button>Continue</button>
             </div>

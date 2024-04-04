@@ -12,6 +12,12 @@
 input:focus{
   outline: none;
 }
+textarea:focus{
+  outline: none;
+}
+select:focus{
+  outline: none;
+}
 a{
   text-decoration: none;
   color: black;

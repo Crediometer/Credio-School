@@ -7,7 +7,9 @@ const Signup = () => {
             <div className="circle-2"></div>
             <div className="login-inner signup-inner">
                 <div className="login-left">
-                    <h4>Knowledge Unleashed, Virtually Limitless</h4>
+                    <div className="login-left-bottom">
+                        <h4>Knowledge Unleashed, Virtually Limitless</h4>
+                    </div>
                 </div>
                 <div className="login-right signup-right">
                     <h4>Hello! Welcome back</h4>

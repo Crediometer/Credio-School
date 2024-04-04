@@ -4,51 +4,30 @@ import photo from "../../Assets/Image/Photo.png"
 import bottom from "../../Assets/Image/bottom.png"
 import "./Sms.css"
 import { HiChevronLeft } from "react-icons/hi";
+import { useState } from "react";
 const Sms = () => {
+    const [message,setMessage] = useState("");
+    const handleSms = (e)=>{
+        setMessage(e.target.value)
+    }
     return ( 
         <>
             <div className="sms">
                 <div className="sms-left">
-                    <div className="form-1">
-                        <label>Name<span>*</span></label>
-                        <div className="input-search-name">
-                            <input type="text"></input>
-                            <FaSearch/>
-                        </div>
-                    </div>
-                    <div className="form-1">
-                        <label>Callers description<span>*</span></label>
-                        <div className="input-search-name">
-                            <input type="text"></input>
-                            <FaSearch/>
-                        </div>
-                    </div>
-                    <div className="form-1">
-                        <label>Send to<span>*</span></label>
-                        <div className="input-search-name">
-                            <input type="text"></input>
-                            <FaSearch/>
-                        </div>
-                    </div>
+                    <p>
+                        The messaging system is an easy to use reminder tool, that help remind Parent/Guardian to pay up the outstanding
+                    </p>
                     <div className="form-1">
                         <label>Message Content<span>*</span></label>
                         <div className="input-search-name">
-                            <textarea type="text"></textarea>
+                            <textarea type="text" onChange={handleSms} onBlur={handleSms}></textarea>
                         </div>
                     </div>
-                    <div className="form-2">
-                        <div className="form-1">
-                            <label>Date to be sent </label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                                <FaSearch/>
-                            </div>
-                        </div>
-                        <div className="form-1">
-                            <label>Time to be sent</label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                            </div>
+
+                    <div className="form-1">
+                        <label>Time to be sent</label>
+                        <div className="input-search-name">
+                            <input type="time"></input>
                         </div>
                     </div>
                 </div>
@@ -68,7 +47,7 @@ const Sms = () => {
                         <div className="preview-body">
                             <p className="timeStamp">Yesterdy 9:44pm</p>
                             <div className="message-box">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur corporis provident officiis?</p>
+                                <p>{message}</p>
                             </div>
                             <img src={bottom} className="preview-image"></img>
                         </div>

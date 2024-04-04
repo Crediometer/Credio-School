@@ -7,7 +7,9 @@ const Newpassword = () => {
             <div className="circle-2"></div>
             <div className="login-inner">
                 <div className="login-left">
-                    <h4>Knowledge Unleashed, Virtually Limitless</h4>
+                    <div className="login-left-bottom">
+                        <h4>Knowledge Unleashed, Virtually Limitless</h4>
+                    </div>
                 </div>
                 <div className="login-right">
                     <h4>Password Recovery</h4>
