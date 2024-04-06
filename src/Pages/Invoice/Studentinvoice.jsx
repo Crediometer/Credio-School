@@ -1,12 +1,50 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { Link } from "react-router-dom";
+import logo from '../../Assets/Image/logo.png'
 
 const Studentinvoice = () => {
     const [progress, setProgress] = useState(50);
+    const [logoImage, setLogoImage] = useState(null);
+    const [downloading, setDownloading] = useState(false); 
+    const pdfRef = useRef()
+    useEffect(() => {
+        // Preload the logo image
+        const img = new Image();
+        img.src = logo;
+        img.onload = () => {
+            setLogoImage(img);
+        };
+    }, []);
+    const downloadPdf = ()=>{
+        setDownloading(true)
+        const input = pdfRef.current;
+        html2canvas(input).then((canvas)=>{
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF('p', 'mm', 'a4', true);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+            const imgX = (pdfWidth - imgWidth * ratio)/2;
+            const imgY = 30;
+            pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
 
+            if (logoImage) {
+                const logoWidth = 10; // Adjust the size of the logo as needed
+                const logoHeight = (logoWidth * logoImage.height) / logoImage.width;
+                pdf.addImage(logoImage, "PNG", (pdfWidth - logoWidth) / 2, imgY, logoWidth, logoHeight);
+            }
+
+            pdf.save('Invoice.pdf')
+            setDownloading(false)
+        })
+    }
     return ( 
-        <div className="student-invoice">
+        <div className="student-invoice" ref={pdfRef}>
             <div className="student-invoice-top">
                 <h4>Progress bar</h4>
                 <Link to="/home/transaction">
@@ -27,6 +65,7 @@ const Studentinvoice = () => {
             </div>
             <div className="invoice-body">
                 <div className="invoice-payment">
+
                     <h4 className="form-head">Payment</h4>
                     <form action="" className="payment-form invoice-form">
                         <div className="form-1 invoice-form">
@@ -133,20 +172,13 @@ const Studentinvoice = () => {
                                 ></input>
                             </div>
                         </div>
-                        <div className="form-1 invoice-form">
-                            <label>Repeated</label>
-                            <div className="input-search-name">
-                                <input 
-                                    type="text"
-                                    value="12"
-                                ></input>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
             <div className="save-con">
-                <button>Download PDF</button>
+                <button onClick={downloadPdf} disabled={downloading}>
+                    {downloading ? "Downloading..." : "Download PDF"}
+                </button>
             </div> 
         </div>
     );

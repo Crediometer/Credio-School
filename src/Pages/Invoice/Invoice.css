@@ -9,6 +9,10 @@
     font-weight: 600;
     color: black;
 }
+.student-invoice{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
 .invoice-list{
     display: flex;
     align-items: center;
@@ -29,7 +33,7 @@
 .invoice-body{
     margin-top: 44px;
     display: flex;
-    align-items: center;
+    align-items: normal;
     gap: 36px;
 }
 .mastercard{

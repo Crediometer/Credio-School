@@ -90,12 +90,6 @@ const Payment = () => {
                                 <input type="date"></input>
                             </div>
                         </div>
-                        <div className="form-1">
-                            <label>Repeated</label>
-                            <div className="input-search-name">
-                                <input type="text"></input>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
