@@ -1,0 +1,16 @@
+.pagintions{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.page-rigth p{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 500;
+    color: #B5B7C0;
+}
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+    background-color: #298097 !important;
+    color: white !important;
+}
