@@ -12,6 +12,8 @@ import {
   RECIEVE_RESPONSE,
   RECIEVE_RESPONSE_DONE,
   SEND_TLV_DATA,
+  RECIEVE_DISPLAY,
+  REQUEST_DISPLAY,
 } from "./CardType";
 import {
   SOCKET_INIT,
@@ -106,10 +108,17 @@ QPOSServiceListenerImpl.prototype.onRequestSelectEmvApp = function (hashtable) {
 QPOSServiceListenerImpl.prototype.onRequestDisplay = function (msg) {
   console.log("onRequestDisplay" + msg);
   // trasactionData.innerText = "onRequestDisplay:" + msg;
+  store.dispatch({
+    type: REQUEST_DISPLAY,
+    payload: msg
+  });
 };
 QPOSServiceListenerImpl.prototype.onRequestWaitingUser = function (msg) {
   console.log("onRequestWaitingUser" + msg);
-
+  store.dispatch({
+    type: REQUEST_DISPLAY,
+    payload: msg
+  });
   // // trasactionData.innerText = "Please insert/swipe/tap card now.";
 };
 

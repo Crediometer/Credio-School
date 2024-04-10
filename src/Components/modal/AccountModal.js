@@ -1,13 +1,29 @@
 import { FaTimes } from 'react-icons/fa';
 import LottieAnimation from '../../Lotties';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
 import PinModal from './PinModal';
 import { useState } from 'react';
-const AccountModal = ({error, togglemodal, link}) => {
+import { startTrade } from '../../Redux/Card/CardScript';
+const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading}) => {
+    const [accountType, setAccounttype] = useState()
     const [show2, setShow2] = useState(false)
     const togglemodal2 = (e)=>{
         e.preventDefault();
         setShow2(!show2)
+    }
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        try{
+            doTrade(100)
+            // if(!cardData.connected){
+
+            // }else{
+
+            // }
+        }catch{
+
+        }
     }
     return ( 
         <div className="modal-background">
@@ -19,7 +35,7 @@ const AccountModal = ({error, togglemodal, link}) => {
                         <div className="form-1 modal-form">
                             <label>Account Type<span>*</span></label>
                             <div className="select-field">
-                                <select type="text">
+                                <select type="text" required>
                                     <optgroup>
                                         <option>Universal Account</option>
                                         <option>Savings Account</option>
@@ -29,13 +45,29 @@ const AccountModal = ({error, togglemodal, link}) => {
                             </div>
                         </div>
                         <div className="save-con">
-                            <button onClick={togglemodal2}>Continue</button>
+                            <button onClick={handleSubmit}>{cardData?.requestDisplay ? "Scanning your Card......." : "Continue"}</button>
                         </div>
                     </form>
-                {show2 && (<PinModal togglemodal2={togglemodal2}/>)}
+                {cardData?.pinRequest  && (<PinModal togglemodal2={togglemodal2} postState={postState}/>)}
             </div>
         </div>
     );
 }
- 
-export default AccountModal;
+const mapStoreToProps = (state) => {
+    console.log(state)
+    return {
+      cardData: state.card,
+      loading: state.deposit.loading,
+    };
+  };
+  
+const mapDispatchToProps = (dispatch) => {
+    return {
+        doTrade: (postState) => {
+            console.log("got here ....... . ... ");
+            dispatch(startTrade(postState));
+        },
+      
+    };
+}; 
+export default connect(mapStoreToProps, mapDispatchToProps)(AccountModal);

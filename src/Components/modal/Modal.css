@@ -12,6 +12,12 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.5);
 }
+.alert-box{
+    position: absolute;
+    top: -60px;
+    /* top: 1rem;
+    right: 1rem ; */
+}
 .modalClose{
     position: absolute;
     right: 0;

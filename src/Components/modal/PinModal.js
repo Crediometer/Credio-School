@@ -1,11 +1,18 @@
 import "./Modal.css"
 import { FaTimes } from 'react-icons/fa';
+import {connect} from 'react-redux'
 import LottieAnimation from '../../Lotties';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-const PinModal = ({togglemodal2}) => {
+import { sendPIN } from "../../Redux/Card/CardScript";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import { depositData } from "../../Redux/Deposit/DepositAction";
+const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit}) => {
     const [pin, setPin] = useState("");
+    const [showPin, setShowPin] = useState(true);
     const atmpin = useRef(null);
+    console.log(postState)
     useEffect(()=>{
     if(pin.length === 1){
         atmpin1.current.focus();
@@ -39,12 +46,36 @@ const PinModal = ({togglemodal2}) => {
     const onChangepin4 = (e) => {
         setPin3(e.target.value)
     }
+    const handlePin = () => {
+        // e.preventDefault();
+        if (pin && pin1 && pin2 && pin3) {
+          // send pin to redux
+          sendPIN(`${pin}${pin1}${pin2}${pin3}`);
+          Deposit(
+            postState, ()=>{ 
+            // history(`/otp`);
+            // dispatch(addFormData(formData));
+            // setPending(true);
+        },  ()=>{ 
+            // setshowerror(true)
+            // setPending(false);
+        })
+        }
+    };
     return ( 
         <div className="modal-background">
+                
             <div className="modalss modalssss">
                 <div className='modalClose' onClick={togglemodal2}>
                     <FaTimes/>
                 </div>
+                {cardData?.requestDisplay && (
+                    <div className="alert-box">
+                        <Alert variant="filled" severity="info">
+                            {cardData?.requestDisplayMessage}
+                        </Alert>
+                    </div>
+                )}
                 {/* <div className="onetime-modal"> */}
                     <div className="cardpin-body">
                         <div className="cardpin-body-inner">
@@ -97,7 +128,7 @@ const PinModal = ({togglemodal2}) => {
                                 </div>
                             </div>
                             <div className="save-con">
-                                <button onClick={togglemodal2}>Continue</button>
+                                <button onClick={() => handlePin()}>Continue</button>
                             </div>
                         </div>
                     </div>
@@ -106,5 +137,28 @@ const PinModal = ({togglemodal2}) => {
         </div>
     );
 }
- 
-export default PinModal;
+
+const mapStoreToProps = (state) => {
+    console.log(state)
+    return {
+        cardData: state.card,
+        loading: state.deposit.loading,
+        data: state.deposit.data,
+        error: state.deposit.error
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+return {
+    sendPin: (pin) => {
+        console.log("got here ....... . ... ");
+        dispatch(sendPIN(pin));
+    },
+    Deposit: (postdata, history, error) => {
+        dispatch(depositData(postdata, history, error));
+    },
+};
+};
+
+  
+export default connect(mapStoreToProps, mapDispatchToProps)(PinModal);
