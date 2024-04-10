@@ -72,7 +72,13 @@ const Payment = () => {
                             </div>
                         </div>
                         <div className="form-1">
-                            <label>Enter Amount<span>*</span></label>
+                            <label>Enter Total Amount<span>*</span></label>
+                            <div className="input-search-name">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                        <div className="form-1">
+                            <label>Enter Amount per unit<span>*</span></label>
                             <div className="input-search-name">
                                 <input type="text"></input>
                             </div>

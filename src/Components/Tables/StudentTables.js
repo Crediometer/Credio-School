@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { StudentData } from './studentsData';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 function createData(name, calories, fat, carbs, protein) {
@@ -36,7 +37,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {StudentData.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -45,21 +46,21 @@ export default function BasicTable() {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell component="th" align="left">{row.calories}</TableCell>
-              <TableCell component="th" align="left" className='table-text'><p>{row.fat}</p></TableCell>
-              <TableCell component="th" align="left" className='table-text'>{row.carbs}</TableCell>
+              <TableCell component="th" align="left">{row.class}</TableCell>
+              <TableCell component="th" align="left" className='table-text'><p>{row.fee}</p></TableCell>
+              <TableCell component="th" align="left" className='table-text'>{row.startDate}</TableCell>
               <TableCell component="th" align="left">
-                {(row.protein === 0) && (
+                {(row.status === 0) && (
                     <div className='paid'>
                         <p>Paid</p>
                     </div>
                 )}
-                 {(row.protein === 1) && (
+                 {(row.status === 1) && (
                     <div className='due'>
                         <p>Due</p>
                     </div>
                 )}
-                 {(row.protein === 2) && (
+                 {(row.status === 2) && (
                     <div className='pending'>
                         <p>Pending</p>
                     </div>

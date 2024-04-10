@@ -93,6 +93,18 @@
     font-weight: 500;
     color: #989898;
 }
+.error-box{
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(233, 144, 144);
+    border-radius: 8px;
+}
+.error-box p {
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color: #101010;
+}
 .login-form{
     margin-top: 78px;
     width: 100%;
@@ -129,6 +141,9 @@
 }
 .start-button{
     margin-top: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     font-size: 17px;
     background-color: #298097;

@@ -47,7 +47,7 @@ const Studentinvoice = () => {
         <div className="student-invoice" ref={pdfRef}>
             <div className="student-invoice-top">
                 <h4>Progress bar</h4>
-                <Link to="/home/transaction">
+                <Link to="/home/students/transaction">
                     <button>View all transactions</button>
                 </Link>
             </div>

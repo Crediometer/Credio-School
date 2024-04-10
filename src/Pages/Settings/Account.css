@@ -1,7 +1,6 @@
 .account{
     position: relative;
     display: flex;
-    align-items: center;
     gap: 38px;
 }
 .settings-button{
@@ -355,6 +354,19 @@
 }
 .edit-icons svg{
     font-size: 1.25rem;
+}
+.notification-switch{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.notification-switch p{
+    font-family: "Inter";
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
 }
 @media (max-width:1310px) {
     .password-head{

@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { transactionData } from './transactionData';
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -36,20 +37,20 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {transactionData.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.term}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               className='table-text'
             >
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    {row.term}
                 </TableCell>
-                <TableCell component="th" align="center">{row.calories}</TableCell>
-                <TableCell component="th" align="center" className='table-text'><p>{row.fat}</p></TableCell>
-                <TableCell component="th" align="center" className='table-text'>{row.carbs}</TableCell>
+                <TableCell component="th" align="center">{row.class}</TableCell>
+                <TableCell component="th" align="center" className='table-text'><p>{row.fees}</p></TableCell>
+                <TableCell component="th" align="center" className='table-text'>{row.date}</TableCell>
                 <TableCell component="th" align="center" className='actions'>
-                  {row.protein}
+                  {row.paid}
                 </TableCell>
             </TableRow>
           ))}

@@ -1,6 +1,102 @@
 import { Link } from "react-router-dom";
+import { addFormData, registerData } from "../../Redux/Registration/RegisterAction";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import consts from './keys/const';
+import JSEncrypt from 'jsencrypt';
+import LottieAnimation from "../../Lotties"
+import loader from "../../Assets/animations/loading.json"
+import {connect} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const Signup = () => {
+const Signup = ({
+    loading,
+    error,
+    data,
+    registerData
+}) => {
+    const history = useNavigate();
+    const dispatch = useDispatch();
+    const [name, setName]= useState("")
+    const [address, setAddress]= useState("")
+    const [phoneNumber, setphoneNumber]= useState("")
+    const [email, setEmail]= useState("")
+    const [password, setPassword]= useState("")
+    const [city, setCity]= useState("")
+    const [state, setState]= useState("")
+    const [country, setCountry]= useState("")
+    const [showerror, setshowerror] = useState(false)
+    const [formData, setFormData] = useState({});
+    const [postState, setPostState] = useState({})
+
+    const handleName = (e)=>{
+        const value = e.target.value
+        setName(value)
+        setFormData({ ...formData, ...{schoolName: name} }); 
+    }
+    const handleEmail = (e)=>{
+        const value = e.target.value
+        setEmail(value)
+        setFormData({ ...formData, ...{email: email} }); 
+    }
+    const handleAddress = (e)=>{
+        const value = e.target.value
+        setAddress(value)
+        setFormData({ ...formData, ...{address: address} }); 
+    }
+    const handleCity = (e)=>{
+        const value = e.target.value
+        setCity(value)
+        setFormData({ ...formData, ...{city: city} });
+    }
+    const handleState = (e)=>{
+        const value = e.target.value
+        setState(value)
+        setFormData({ ...formData, ...{state: state} });
+        // setPostState({ ...postState, ...{state: state} }); 
+    }
+    const handlePhoneNumber = (e)=>{
+        const value = e.target.value
+        let formattedNumber = value.trim().replace(/\D/g, ''); // Remove non-numeric characters
+
+        // Check if the first digit is '0' and remove it, then prepend '+234'
+        if (formattedNumber.charAt(0) === '0') {
+            formattedNumber = '+234' + formattedNumber.slice(1);
+        }
+
+        setphoneNumber(formattedNumber);
+        setFormData({ ...formData, ...{phoneNumber: phoneNumber} });
+        setPostState({ ...postState, ...{phoneNumber: phoneNumber} }); 
+    }
+    const handlePassword = (e)=>{
+        const value = e.target.value
+        setPassword(value)
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(`${consts.pub_key}`);
+        var encrypted = encrypt.encrypt(value);
+        // setPassword(encrypted);
+        setFormData({ ...formData, ...{password: password} });
+        setPostState({ ...postState, ...{password: password} }); 
+    }
+    const handleCountry = (e)=>{
+        const value = e.target.value
+        setCountry(value)
+        setFormData({ ...formData, ...{country: country} });
+        // setPostState({ ...postState, ...{country: country} }); 
+    }
+    const handlesubmit = (e)=>{
+        e.preventDefault();
+
+        registerData(
+            postState, ()=>{ 
+            history(`/otp`);
+            dispatch(addFormData(formData));
+            // setPending(true);
+        },  ()=>{ 
+            setshowerror(true)
+            // setPending(false);
+        })
+    }
     return ( 
         <div className="login signup">
             <div className="circle-1"></div>
@@ -13,30 +109,102 @@ const Signup = () => {
                 </div>
                 <div className="login-right signup-right">
                     <h4>Hello! Welcome back</h4>
-                    <form action="" className="login-form">
+                    <form onSubmit={handlesubmit} className="login-form">
+                        {showerror && (
+                            <div className="error-box">
+                                <p>{error}</p>
+                            </div>
+                        )}
                         <div className="form-2">
                             <div className="form-3">
                                 <label>Name of school</label><br></br>
-                                <input type='text' placeholder='School Name'></input>
+                                <input
+                                    required
+                                    type='text' 
+                                    placeholder='School Name'
+                                    onChange={handleName}
+                                    onBlur={handleName}
+                                ></input>
                             </div>
                             <div className="form-3">
                                 <label>Address/location</label><br></br>
-                                <input type='text' placeholder='Address'></input>
+                                <input 
+                                    required
+                                    type='text' 
+                                    placeholder='Address'
+                                    onChange={handleAddress}
+                                    onBlur={handleAddress}
+                                ></input>
+                            </div>
+                        </div>
+                        <div className="form-2">
+                            <div className="form-3">
+                                <label>City</label><br></br>
+                                <input
+                                    required
+                                    type='text' 
+                                    placeholder='School Name'
+                                    onChange={handleCity}
+                                    onBlur={handleCity}
+                                ></input>
+                            </div>
+                            <div className="form-3">
+                                <label>State</label><br></br>
+                                <input 
+                                    required
+                                    type='text' 
+                                    placeholder='Address'
+                                    onChange={handleState}
+                                    onBlur={handleState}
+                                ></input>
                             </div>
                         </div>
                         <div className="form-3">
+                            <label>Country</label><br></br>
+                            <input 
+                                required
+                                type='text' 
+                                placeholder='Address'
+                                onChange={handleCountry}
+                                onBlur={handleCountry}
+                            ></input>
+                        </div>
+                        <div className="form-3">
                             <label>Phone number</label><br></br>
-                            <input type='text' placeholder='Enter phone number'></input>
+                            <input 
+                                required
+                                type='text' 
+                                placeholder='Enter phone number'
+                                onChange={handlePhoneNumber}
+                                onBlur={handlePhoneNumber}
+                                maxLength={11}
+                            ></input>
                         </div>
                         <div className="form-3">
                             <label>School email address</label><br></br>
-                            <input type='email' placeholder='Enter email'></input>
+                            <input
+                                required 
+                                type='email' 
+                                placeholder='Enter email'
+                                onChange={handleEmail}
+                                onBlur={handleEmail}
+                            ></input>
                         </div>
                         <div className="form-3">
                             <label>Password</label><br></br>
-                            <input type='text' placeholder='Enter password'></input>
+                            <input
+                            required 
+                                type='password' 
+                                placeholder='Enter password'
+                                onChange={handlePassword}
+                                onBlur={handlePassword}    
+                            ></input>
                         </div>
-                        <Link to="/"><button className='start-button'>Start now!</button></Link>
+                        <button className='start-button' disabled={loading}>
+                            {loading ? (
+                                <LottieAnimation data={loader}/>
+                            ):"Sign Up"}
+                        </button>
                         <p className='already'>Already have an account?<Link to="/"><span>Login</span></Link></p>
                     </form>
                 </div>
@@ -44,5 +212,20 @@ const Signup = () => {
         </div>
     );
 }
- 
-export default Signup;
+const mapStateToProps = state => {
+    return{
+        loading:state.register.loading,
+        error:state?.register?.error,
+        data: state.register.data,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        registerData: (postdata, history, error) => {
+            dispatch(registerData(postdata, history, error));
+        },
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

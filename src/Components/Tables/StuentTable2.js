@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { StudentData } from './studentsData';
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -36,7 +37,7 @@ export default function StudentTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {StudentData.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -45,14 +46,13 @@ export default function StudentTable() {
                 <TableCell component="th" scope="row">
                     {row.name}
                 </TableCell>
-                <TableCell component="th" align="center">{row.calories}</TableCell>
-                <TableCell component="th" align="center" className='table-text'><p>{row.fat}</p></TableCell>
-                <TableCell component="th" align="center" className='table-text'>{row.carbs}</TableCell>
+                <TableCell component="th" align="center">{row.class}</TableCell>
+                <TableCell component="th" align="center" className='table-text'><p>{row.fee}</p></TableCell>
+                <TableCell component="th" align="center" className='table-text'>{row.startDate}</TableCell>
                 <TableCell component="th" align="center" className='actions'>
                   <Link to='/home/invoice'>
                     <button className='view-more'>View more info</button>
                   </Link>
-                    
                 </TableCell>
             </TableRow>
           ))}
