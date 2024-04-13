@@ -14,6 +14,7 @@ import {
   SEND_TLV_DATA,
   RECIEVE_DISPLAY,
   REQUEST_DISPLAY,
+  POS_INFO,
 } from "./CardType";
 import {
   SOCKET_INIT,
@@ -579,8 +580,13 @@ function selectEmvFile() {
   }
 }
 
-function getQPosInfo() {
-  mService.getQPosInfo();
+export function getQPosInfo() {
+  const info = mService.getQPosInfo();
+  console.log(info)
+  // store.dispatch({
+  //   type: POS_INFO,
+  //   payload: mService.getQPosInfo()
+  // })
   // mService.resetPosStatus();
   // mService.powerOffNFC(10);
   // mService.doSetBuzzerOperation(2);
@@ -592,14 +598,14 @@ function getQPosInfo() {
 export function buttonScan() {
   return async (dispatch) => {
     DiscoverDevice(dispatch);
-
-    // UpdateUI(dispatch);
+    getQPosInfo()
+    // UpdateUI(dispatcx  h);
   };
 }
 
 export function DisConnect() {
   return async (dispatch) => {
-    Connected_Device.gatt.disconnect();
+    Connected_Device?.gatt?.disconnect();
     console.log("===>用户断开了连接<===");
     store.dispatch({
       type: DISCONNECT_DEVICE,
@@ -737,6 +743,10 @@ function DiscoverDevice(dispatch) {
       console.log("> 设备名称: " + device.name);
       console.log("> 设备Id: " + device.id);
       console.log("> 是否已连接到其它设备: " + device.gatt.connected);
+        store.dispatch({
+          type: POS_INFO,
+          payload: device
+        })
       //连接到该设备
       Connected_Device = device;
       ConnectDevice(dispatch);
@@ -835,6 +845,7 @@ function DiscoverService(dispatch) {
               console.log("Can do start now");
               store. dispatch({
                 type: CONNECT_DEVICE,
+                payload: service.uuid
               });
             } else {
               console.log("Please check your device now");

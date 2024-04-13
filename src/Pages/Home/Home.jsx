@@ -62,7 +62,7 @@ const Home = ({
                             <>
                                
                                 <div className="tables">
-                                    <BasicTable/>
+                                    <BasicTable data={getprofile?.lastTenTransactions}/>
                                 </div>
                             </>
                         )}

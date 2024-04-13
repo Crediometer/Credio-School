@@ -1,6 +1,6 @@
 import { FaTimes } from 'react-icons/fa';
 import LottieAnimation from '../../Lotties';
-import wrong from '../../assets/Errorr.json'
+import wrong from '../../Assets/animations/Errorr.json'
 import { Link } from 'react-router-dom';
 const Errormodal = ({error, togglemodal, link}) => {
     return ( 
@@ -13,9 +13,9 @@ const Errormodal = ({error, togglemodal, link}) => {
                     <div className="animation">
                         <LottieAnimation data={wrong}/>
                     </div>
-                    <p className="create-payment">{error}</p>
+                    <p className="create-payment">ERROR MESSAGE</p>
                     <div className="signup-button">
-                        <Link to={link}><button class="btn btn-primary shadow-2 mb-4 submit-button" onClick={togglemodal}>Ok</button></Link>
+                        <button class="btn btn-primary shadow-2 mb-4 start-button" onClick={togglemodal}>Ok</button>
                     </div>
                 </div>
             </div>

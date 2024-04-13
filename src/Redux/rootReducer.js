@@ -7,7 +7,7 @@ import { transactionReducer, transactionStudentReducer } from './Transactions/Tr
 import { studentsReducer } from './Students/StudentsReducer';
 import { profiledataReducer, settingReducer, smsdataReducer, uploadimageReducer } from './Settings/SettingsReducer';
 import cardReducer from './Card/CardReducer';
-import depositReducer from './Deposit/DepositReducer';
+import {depositReducer, keyReducer} from './Deposit/DepositReducer'
 const rootReducer = combineReducers({
     login: authReducer,
     register: registerReducer,
@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
     sms: smsdataReducer,
     notification: settingReducer,
     card: cardReducer,
-    deposit: depositReducer
+    deposit: depositReducer,
+    key: keyReducer
 })
 
 export default rootReducer;

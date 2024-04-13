@@ -3,9 +3,13 @@ import master  from '../../Assets/Image/master.png'
 import {connect} from 'react-redux'
 import { useEffect, useState } from "react";
 import AccountModal from "../../Components/modal/AccountModal";
-import { buttonScan, init } from "../../Redux/Card/CardScript";
-const NewStudent = ({buttonScan, cardData}) => {
+import { DisConnect, buttonScan, getQPosInfo, init } from "../../Redux/Card/CardScript";
+import Errormodal from "../../Components/modal/Errormodal";
+import { keyData } from "../../Redux/Deposit/DepositAction";
+import LoadingModal from "../../Components/modal/LoadingModal";
+const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading}) => {
     const [show1, setShow1] = useState(false)
+    const [showerror,  setShowError] = useState(false)
     const [startDate, setStartDate] = useState(getCurrentDate());
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -18,29 +22,34 @@ const NewStudent = ({buttonScan, cardData}) => {
     const [amountPerUnit, setAmountPerUnit] = useState('');
     const [repeatEvery, setRepeatEvery] = useState('');
     const [postState, setpostState] = useState({});
+    const [keyState, setKeyState] = useState({})
     const handlerepeat =(e)=>{
         const value = e.target.value
         setRepeatEvery(value)
-
+        const newvalue = parseInt(value)
+        console.log(newvalue)
+        setpostState({ ...postState, ...{repitationDays: newvalue} });
     }
     const handletotal =(e)=>{
         const value = e.target.value
         setTotalAmount(value)
+        const newvalue = parseFloat(value)
+        setpostState({ ...postState, ...{totalAmount: newvalue} });
     }
     const handleunit =(e)=>{
         const value = e.target.value
         setAmountPerUnit(value)
-        setpostState({ ...postState, ...{unit: amountPerUnit} }); 
+        // setpostState({ ...postState, ...{unit: amountPerUnit} }); 
     }
     const handleSchoolName = (e)=>{
         const value = e.target.value
         setName(value)
-        setpostState({ ...postState, ...{name: name} }); 
+        setpostState({ ...postState, ...{studentName: name} }); 
     }
     const handleEmail = (e)=>{
         const value = e.target.value
         setEmail(value)
-        setpostState({ ...postState, ...{email: email} }); 
+        setpostState({ ...postState, ...{parentEmail: email} }); 
     }
     const handleStudentGrade = (e)=>{
         const value = e.target.value
@@ -49,8 +58,14 @@ const NewStudent = ({buttonScan, cardData}) => {
     }
     const handlePhoneNumber = (e)=>{
         const value = e.target.value
-        setPhoneNumber(value)
-        setpostState({ ...postState, ...{phoneNumber: phoneNumber} }); 
+        let formattedNumber = value.trim().replace(/\D/g, ''); // Remove non-numeric characters
+
+        // Check if the first digit is '0' and remove it, then prepend '+234'
+        if (formattedNumber.charAt(0) === '0') {
+            formattedNumber = '+234' + formattedNumber.slice(1);
+        }
+        setPhoneNumber(formattedNumber)
+        setpostState({ ...postState, ...{parentPhoneNumber: phoneNumber} }); 
     }
     const handleTerm = (e)=>{
         const value = e.target.value
@@ -65,10 +80,10 @@ const NewStudent = ({buttonScan, cardData}) => {
     useEffect(() => {
         if (totalAmount && amountPerUnit && repeatEvery) {
             const days = {
-                '3 Days': 3,
-                '7 Days': 7,
-                'BiWeekly': 15,
-                'Monthly': 30
+                3: 3,
+                7: 7,
+                15: 15,
+                30: 30
             };
 
             const repeatDays = days[repeatEvery];
@@ -76,8 +91,8 @@ const NewStudent = ({buttonScan, cardData}) => {
             const endDateValue = new Date(startDate);
             endDateValue.setDate(endDateValue.getDate() + (units * repeatDays));
             setEndDate(formatDate(endDateValue));
-            setpostState({ ...postState, ...{startdate: startDate} });
-            setpostState({ ...postState, ...{endDate: endDate} });  
+            // setpostState({ ...postState, ...{startdate: startDate} });
+            // setpostState({ ...postState, ...{endDate: endDate} });  
         }
     }, [totalAmount, amountPerUnit, repeatEvery, startDate]);
     function getCurrentDate() {
@@ -94,19 +109,63 @@ const NewStudent = ({buttonScan, cardData}) => {
     const togglemodal = ()=>{
         setShow1(!show1)
     }
-    const connectreader = async (e)=>{
+    const togglemodal2 = ()=>{
+        setShowError(!showerror)
+    }
+
+    
+    const connectreader =  (e)=>{
         e.preventDefault();
         if (!cardData.connected) {
             init();
-            await buttonScan();
-            // setShow1(true)
+            buttonScan();
         } else {
             togglemodal()
         }
     }
-    // useEffect(()=>{
-    //     buttonScan()
-    // },[])
+  
+    useEffect(() => {
+        // Check if cardData exists and has the required properties
+        if (cardData && cardData.posinfo && cardData.posinfo.name && getprofile && getprofile.schoolReaders) {
+            // setpostState({ ...postState, ...{
+            //     tlv:cardData?.tlv,
+            // } }); 
+            // Compare the last 10 characters of name properties
+            for (let i = 0; i < getprofile.schoolReaders.length; i++) {
+                // Check if the valueToSearch is in the current array
+                if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
+                    // If found, save the content of the array in state and exit the loop
+                   
+                    console.log("it does match");
+                    console.log(keyState);
+                    keydata(
+                        {serialNo: getprofile.schoolReaders[i].uuid, 
+                            terminalId: getprofile.schoolReaders[i].terminalId}
+                        ,
+                        () => {
+                            setShow1(true);
+                        },
+                        () => {}
+                    );
+                    return;
+                }else{
+                    console.log("it does not match");
+                    disconnect();
+                    setShowError(true);
+                }
+            }
+        }
+    }, [cardData.posinfo]);
+    useEffect(()=>{
+        setpostState({ ...postState,
+            tlv:cardData?.tlv,
+            key: keyinfo?.pin_key,
+            merchantId: keyinfo?.merchantId,
+            merchantCategoryCode: keyinfo?.merchantCategoryCode,
+            terminalId:keyinfo?.terminalid,
+            merchantName: keyinfo?.merchantName
+        }); 
+    },[keyinfo, cardData])
     return ( 
         <div className="payment">
             <form onSubmit={connectreader}>
@@ -171,9 +230,9 @@ const NewStudent = ({buttonScan, cardData}) => {
                                         onBlur={handleTerm}
                                     >
                                         <optgroup>
-                                            <option>First Term</option>
-                                            <option>Second Term</option>
-                                            <option>Third Term</option>
+                                            <option value={1}>First Term</option>
+                                            <option value={2}>Second Term</option>
+                                            <option value={3}>Third Term</option>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -197,10 +256,10 @@ const NewStudent = ({buttonScan, cardData}) => {
                                 <div className="select-field">
                                     <select type="text" required onChange={handlerepeat} onBlur={handlerepeat}>
                                         <optgroup>
-                                            <option value="3 Days">3 Days</option>
-                                            <option value="7 Days">7 Days</option>
-                                            <option value="BiWeekly">BiWeekly</option>
-                                            <option value="Monthly">Monthly</option>
+                                            <option value={3}>3 Days</option>
+                                            <option value={7}>7 Days</option>
+                                            <option value={15}>BiWeekly</option>
+                                            <option value={30}>Monthly</option>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -238,13 +297,18 @@ const NewStudent = ({buttonScan, cardData}) => {
                     <button>Connect to credio Reader</button>
                 </div>
             </form>
-            {(cardData.connected) && (<AccountModal togglemodal={togglemodal} postState={postState}/>)}
+            {showerror && (<Errormodal togglemodal={togglemodal2}/>)}
+            {keyloading && (<LoadingModal/>)}
+            {(show1) && (<AccountModal togglemodal={togglemodal} unitamount={amountPerUnit} postState={postState} setpostState={setpostState}/>)}
         </div>
     );
 }
 const mapStoreToProps = (state) => {
     return {
       cardData: state.card,
+      getprofile: state.profile.data,
+      keyloading: state.key.loading,
+      keyinfo: state.key.deposit.data
     };
   };
   
@@ -253,6 +317,15 @@ const mapStoreToProps = (state) => {
       buttonScan: () => {
         dispatch(buttonScan());
       },
+      disconnect: () => {
+        dispatch(DisConnect());
+      },
+      info: () => {
+        dispatch(getQPosInfo())
+      },
+      keydata: (poststate, loading, error)=>{
+        dispatch(keyData(poststate, loading, error))
+      }
     };
   };
   

@@ -2,6 +2,9 @@ import {
   DEPOSIT_FALIURE,
   DEPOSIT_REQUEST,
   DEPOSIT_SUCCESS,
+  KEY_FALIURE,
+  KEY_REQUEST,
+  KEY_SUCCESS,
 
 } from "./DepositType";
 
@@ -11,7 +14,7 @@ const initialState = {
   error: "",
 };
 
-const depositReducer = (state = initialState, action) => {
+export const depositReducer = (state = initialState, action) => {
   switch (action.type) {
     case DEPOSIT_REQUEST:
       return {
@@ -39,4 +42,31 @@ const depositReducer = (state = initialState, action) => {
   }
 };
 
-export default depositReducer;
+
+export const keyReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case KEY_REQUEST:
+      return {
+        loading: true,
+        requestData: {},
+        deposit: [],
+        error: "",
+      };
+  
+    case KEY_SUCCESS:
+      return {
+        loading: false,
+        deposit: action.payload,
+        error: "",
+      };
+    case KEY_FALIURE:
+      return {
+        loading: false,
+        requestData: {},
+        deposit: [],
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

@@ -8,14 +8,22 @@ const Topup = () => {
                 <p className="available"><span><FaWallet/></span>Available  balance:</p>
                 <p className="available-amount">NGN 13552.64</p>
             </div>
-            <div className="topup-card">
-                <p>Account Number</p>
-                <h4>9888837274322</h4>
-                <div className="card-bottom">
-                    <p>Credio</p>
-                    <BsCopy/>
+            <div className="top-up-body">
+                <div className="topup-card">
+                    <p>Account Number</p>
+                    <h4>9888837274322</h4>
+                    <div className="card-bottom">
+                        <p>Credio</p>
+                        <BsCopy/>
+                    </div>
+                </div>
+                <div className="top-form">
+                    <form>
+                         
+                    </form>
                 </div>
             </div>
+            
             <div className="topup-top">
                 <p className="available"><span><FaWallet/></span>Wallet Guide</p>
                 <p className="wallet-text">

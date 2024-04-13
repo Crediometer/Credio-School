@@ -8,6 +8,7 @@ import {
   RECIEVE_RESPONSE_DONE,
   DISCONNECT_DEVICE,
   SEND_TLV_DATA,
+  POS_INFO,
 } from "./CardType";
 
 const initialState = {
@@ -20,6 +21,8 @@ const initialState = {
   pinRequest: false,
   connected: false,
   requestDisplayMessage: "",
+  uuid: "",
+  posinfo: "",
 };
 
 const cardReducer = (state = initialState, action) => {
@@ -51,6 +54,7 @@ const cardReducer = (state = initialState, action) => {
         ...state,
         scanning: false,
         connected: true,
+        uuid: action.payload,
       };
 
     case RECIEVE_RESPONSE:
@@ -84,6 +88,12 @@ const cardReducer = (state = initialState, action) => {
         scanning: false,
         connected: false,
       };
+
+    case POS_INFO:
+      return {
+        ...state,
+        posinfo: action.payload,
+      }
 
     default:
       return state;

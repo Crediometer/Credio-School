@@ -53,7 +53,7 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                                 <>
                                 
                                     <div className="student-table-body">
-                                        <TransactionTable/>
+                                        <TransactionTable data={data}/>
                                     </div>
                                 </>
                             )}

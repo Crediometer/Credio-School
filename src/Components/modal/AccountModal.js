@@ -5,17 +5,24 @@ import {connect} from 'react-redux'
 import PinModal from './PinModal';
 import { useState } from 'react';
 import { startTrade } from '../../Redux/Card/CardScript';
-const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading}) => {
+const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading, setpostState, unitamount}) => {
     const [accountType, setAccounttype] = useState()
+    const [newstate, setNewState] = useState({})
     const [show2, setShow2] = useState(false)
     const togglemodal2 = (e)=>{
         e.preventDefault();
         setShow2(!show2)
     }
+    const handleAccount=(e)=>{
+        const value = e.target.value
+        setAccounttype(value);
+        const newvalue = parseInt(value, 10)
+        setpostState({ ...postState, ...{accountType: newvalue} }); 
+    }
     const handleSubmit=(e)=>{
         e.preventDefault();
         try{
-            doTrade(100)
+            doTrade(unitamount)
             // if(!cardData.connected){
 
             // }else{
@@ -35,11 +42,11 @@ const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loa
                         <div className="form-1 modal-form">
                             <label>Account Type<span>*</span></label>
                             <div className="select-field">
-                                <select type="text" required>
+                                <select type="text" required onChange={handleAccount} onBlur={handleAccount}>
                                     <optgroup>
-                                        <option>Universal Account</option>
-                                        <option>Savings Account</option>
-                                        <option>Current Acount</option>
+                                        <option value={0}>Universal Account</option>
+                                        <option value={1}>Savings Account</option>
+                                        <option value={2}>Current Account</option>
                                     </optgroup>
                                 </select>
                             </div>

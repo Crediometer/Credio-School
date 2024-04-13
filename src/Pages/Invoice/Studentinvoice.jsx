@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import logo from '../../Assets/Image/logo.png'
+import axios from "axios";
 
 const Studentinvoice = () => {
     const [progress, setProgress] = useState(50);
@@ -43,6 +44,24 @@ const Studentinvoice = () => {
             setDownloading(false)
         })
     }
+    const { id } = useParams();
+    const [student, setStudent] = useState(null);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      async function fetchStudent() {
+        try {
+          const response = await axios.get(`https://fe-sandbox-quick-pay.onrender.com/api/v1/school/students/all?page=1&&pageSize=10/${id}`);
+          setStudent(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error('Error fetching student:', error);
+        }
+      }
+  
+      fetchStudent();
+    }, [id]);
+    console.log(student)
     return ( 
         <div className="student-invoice" ref={pdfRef}>
             <div className="student-invoice-top">

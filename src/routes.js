@@ -40,7 +40,7 @@ export default function Router() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "invoice", element: <Invoice/> },
+        { path: "invoice/:id", element: <Invoice/> },
         { path: "students", element: <Students/> },
         { path: "students/transaction", element: <StudentTransaction/> },
         { path: "newstudent", element: <NewStudent/> },

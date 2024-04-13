@@ -60,7 +60,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                             </div>
                         ):(
                             <div className="student-table-body">
-                                <StudentTable/>
+                                <StudentTable data={data}/>
                             </div>
                         )}
                         

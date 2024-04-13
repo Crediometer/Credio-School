@@ -22,7 +22,7 @@ const rows = [
   createData('Abiodun Kola', "Grade 4", "NGN 400,000", "12 Jan 2022", 2),
 ];
 
-export default function BasicTable() {
+export default function BasicTable({data}) {
   return (
     <TableContainer component={Paper} className='table-con'>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -30,25 +30,25 @@ export default function BasicTable() {
           <TableRow className='tableHeader'>
             <TableCell>Student Name</TableCell>
             <TableCell align="left">Class</TableCell>
-            <TableCell align="left">Fee</TableCell>
-            <TableCell align="left">Due Date</TableCell>
+            <TableCell align="left">Amount</TableCell>
+            <TableCell align="left">Date</TableCell>
             <TableCell align="left">Status</TableCell>
             <TableCell align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {StudentData.map((row) => (
+          {data?.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               className='table-text'
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.metaData.studentName}
               </TableCell>
-              <TableCell component="th" align="left">{row.class}</TableCell>
-              <TableCell component="th" align="left" className='table-text'><p>{row.fee}</p></TableCell>
-              <TableCell component="th" align="left" className='table-text'>{row.startDate}</TableCell>
+              <TableCell component="th" align="left">{row.metaData.term}</TableCell>
+              <TableCell component="th" align="left" className='table-text'><p>{row.amount}</p></TableCell>
+              <TableCell component="th" align="left" className='table-text'>{row.createdAt.slice(0,10)}</TableCell>
               <TableCell component="th" align="left">
                 {(row.status === 0) && (
                     <div className='paid'>
