@@ -1,0 +1,3 @@
+# .eslintignore
+
+src/Redux/Card/card_engine.js
