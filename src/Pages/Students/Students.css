@@ -45,8 +45,8 @@
 .students-filter{
     width: 50%;
     display: flex;
-    align-items: center;
-    gap: 21px;
+    align-items: right;
+    /* gap: 21px; */
 }
 .students-filter:first-child{
     width: 65%;
@@ -55,7 +55,7 @@
     width: 40% !important;
 }
 .students-search{
-    width: 60%;
+    width: 100%;
     padding: 10px 12px;
     background-color: #F9FBFF;
     border: 1px solid #E7E7E7;
@@ -99,4 +99,61 @@
     font-size: 12px;
     font-weight: 800;
     color: #3D3C42;
+}
+@media (max-width: 800px){
+    .students-table-top div{
+        
+    }
+    .students-info{
+        width: 48%;
+    }
+    .students-info h4{
+        font-family: "Poppins";
+        font-size: 14px;
+        font-weight: 700;
+        color: #298097;
+    }
+    .students-info p{
+        font-family: "Poppins";
+        font-size: 12px;
+        font-weight: 500;
+        color: #16C098;
+    }
+    .students-filter{
+        width: 48%;;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+    .students-body{
+        margin-top: 14px;
+        background-color: #E5ECF6;
+        height: 500px;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+    .students-select{
+        width: 40% !important;
+    }
+    .students-search{
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .students-search svg{
+        font-size: 12px;
+        font-weight: 500;
+        color: #7E7E7E;
+    }
+    .students-search input{
+        font-size: 10px;
+    }
+    .students-search input::placeholder{
+        font-size: 10px;
+    }
+    .students-search p{
+        font-size: 8px;
+    }
+    .students-search select{
+        font-size: 8px;
+    }
 }

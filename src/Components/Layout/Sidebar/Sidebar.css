@@ -11,6 +11,9 @@
     align-items: center;
     gap: 8px;
 }
+.sidebar-close{
+    display: none;
+}
 .logo-text{
     font-family: "Inter";
     font-size: 14px;
@@ -37,4 +40,22 @@
     display: flex;
     align-items: center;
     gap: 8px;
+}
+@media (max-width: 800px){
+    .sidebar{
+        transform: translateY(-110%);
+        transition: all 0.4s;
+        z-index: 100;
+    }
+    .sidebaropen{
+        transform: translateX(0%);
+    }
+    .sidebar-top-logo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    } 
+    .sidebar-close{
+        display: block;
+    }
 }

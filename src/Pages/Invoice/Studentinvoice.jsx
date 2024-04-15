@@ -119,7 +119,7 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata}) => {
                                     ></input>
                                 </div>
                             </div>
-                            <div className="form-2">
+                            <div className="form-2 form-2-mobile">
                                 <div className="form-1 invoice-form">
                                     <label>Student Grade<span>*</span></label>
                                     <div className="input-search-name">

@@ -168,3 +168,31 @@
     font-family: "Poppins";
     font-size: 800;
 }
+@media (max-width: 800px){
+    .login-inner{
+        width: 90%;
+        height: 70%;
+        /* display: flex;
+        border-radius: 30px;
+        background-color: white;
+        z-index: 4;
+        box-shadow: 0px 9.83px 9.83px rgba(0, 0, 0, 0.132); */
+    }
+    .signup-inner{
+        height: 90% !important;
+    }
+    .login-left{
+        display: none;
+    }
+    .login-right{
+        width: 100%;
+        padding: 0px 18px;
+    }
+    .login-form{
+        margin-top: 40px;
+        width: 100%;
+    }
+    .start-button{
+        margin-top: 40px;
+    }
+}

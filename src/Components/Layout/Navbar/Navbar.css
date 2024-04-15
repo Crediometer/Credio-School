@@ -54,3 +54,19 @@
     font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.176);
 }
+@media (max-width: 800px){
+    .navbar{
+        width:100%;
+        gap: 10px;
+    }
+    .navbar-left{
+        width: 70%;
+    }
+    .navbar-right{
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        gap: 15px;
+        width: 25%;
+    }
+}

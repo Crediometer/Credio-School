@@ -173,7 +173,7 @@ const Account = ({
                         </button>
                     </div>
                     {require && (
-                         <div className="error-box">
+                        <div className="error-box">
                             <p>please Fill necessary field before clicking update</p>
                         </div>
                     )}

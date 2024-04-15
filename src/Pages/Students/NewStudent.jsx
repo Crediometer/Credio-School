@@ -197,7 +197,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                     ></input>
                                 </div>
                             </div>
-                            <div className="form-2">
+                            <div className="form-2 form-2-mobile">
                                 <div className="form-1">
                                     <label>Student Grade<span>*</span></label>
                                     <div className="input-search-name">
@@ -207,7 +207,6 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                             onChange={handleStudentGrade}
                                             onBlur={handleStudentGrade}
                                         ></input>
-                                        <FaSearch/>
                                     </div>
                                 </div>
                                 <div className="form-1">
@@ -295,7 +294,6 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                             </div>
                         </div>
                     </div>
-                
                 </div>
                 <div className="save-con">
                     <button>Connect to Credio Reader</button>

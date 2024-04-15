@@ -227,3 +227,34 @@
     color: #298097;
     transition: width 0.5s ease-out;
 }
+@media (max-width: 800px){
+    .student-invoice-top h4{
+        font-size: 18px;
+    }
+    .student-invoice-top button{
+        font-size: 14px;
+        font-family: "Poppins";
+        padding: 7px 10px;
+        font-weight: 600;
+        color: #298097;
+        background-color: transparent;
+        border: 1px solid #298097;
+        border-radius: 14px;
+    }
+    .invoice-body{
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+        gap: 36px;
+    }
+    .invoice-payment{
+        width: 100%;
+    }
+    .invoice-period{
+        width: 100%;
+    }
+    .form-2-mobile{
+        flex-direction: column !important;
+    }
+}

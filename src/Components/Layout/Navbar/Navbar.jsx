@@ -4,11 +4,13 @@ import { FaPowerOff, FaRegStar, FaSearch } from "react-icons/fa";
 import { CiBrightnessUp } from "react-icons/ci";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoPowerOutline } from "react-icons/io5";
-const Navbar = () => {
+const Navbar = ({toggleopen}) => {
     return ( 
         <div className="navbar">
             <div className="navbar-left">
-                <TfiViewListAlt/>
+                <div onClick={toggleopen}>
+                    <TfiViewListAlt/>
+                </div>
                 <FaRegStar/>
                 <p className="page-title"><span>Dashboard    /</span>    Default</p>
             </div>

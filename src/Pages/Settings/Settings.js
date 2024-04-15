@@ -37,8 +37,8 @@ const Settings = ({loading, error, getprofile, fetchprofile}) => {
                     <div className="settings-nav">
                         <nav>
                             <li onClick={handleAccount} className={show === 1 ? `nav-active nav-set`: 'nav-set'}>Profile</li>
-                            <li onClick={handleBusiness} className={show === 2 ? `nav-active nav-set`: 'nav-set'}>SMS</li>
-                            <li onClick={handleReceipt} className={show === 3 ? `nav-active nav-set`: 'nav-set'}>Top up</li>
+                            {/* <li onClick={handleBusiness} className={show === 2 ? `nav-active nav-set`: 'nav-set'}>SMS</li>
+                            <li onClick={handleReceipt} className={show === 3 ? `nav-active nav-set`: 'nav-set'}>Top up</li> */}
                         </nav>
                     </div>
                     <div className="settings-body">

@@ -13,3 +13,14 @@
     margin-top: 85px;
     padding: 2rem 2.1rem;
 }
+@media (max-width: 800px){
+    .layout-right{
+        width: 100%;
+        margin-left:0px;
+    }  
+    .layout-body{
+        position: relative;
+        margin-top: 85px;
+        padding: 1rem 0.8rem;
+    }
+}

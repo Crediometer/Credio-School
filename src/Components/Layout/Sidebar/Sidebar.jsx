@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 import { fetchprofile } from "../../../Redux/Profile/ProfileAction";
 import { LogOutAuthAction } from "../../../Redux/Login/LoginAction";
 import { useEffect } from "react";
-const Sidebar = ({getprofile,logout,fetchprofile}) => {
+import { FaTimes } from "react-icons/fa";
+const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
     const location = useLocation();
     const history = useNavigate();
     const handlelogout =()=>{
@@ -18,25 +19,31 @@ const Sidebar = ({getprofile,logout,fetchprofile}) => {
         fetchprofile();
     }, [])
     return ( 
-        <div className="sidebar">
-            <div className="sidebar-logo">
-                <img src={logo}></img>
-                <p className="logo-text">{getprofile?.schoolProfile?.schoolName}</p>
+        <div className={open?"sidebaropen sidebar":"sidebar"}>
+            <div className="sidebar-top-logo">
+                <div className="sidebar-logo">
+                    <img src={logo}></img>
+                    <p className="logo-text">{getprofile?.schoolProfile?.schoolName}</p>
+                </div>
+                <div className="sidebar-close" onClick={toggleopen}>
+                    <FaTimes/>
+                </div>
             </div>
+           
             <nav className="sidebar-nav">
                 <ul>
                     
-                    <Link to='/home'>
+                    <Link to='/home' onClick={toggleopen}>
                         <li className={(location.pathname === "/home")?"active":""}>Dashboard</li>
                     </Link>
-                    <Link to="/home/students">
+                    <Link to="/home/students" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/students")?"active":""}>Student</li>
                     </Link>
                     {/* <li>Payments</li> */}
-                    <Link to="/home/transaction">
+                    <Link to="/home/transaction" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/transaction")?"active":""}>Transaction</li>
                     </Link>
-                    <Link to="/home/settings">
+                    <Link to="/home/settings" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/settings")?"active":""}>Settings</li>
                     </Link>    
                 </ul>

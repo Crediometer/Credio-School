@@ -385,3 +385,29 @@
         width: 40%;
     }
 }
+
+@media (max-width:800px) {
+    .account{
+        display: block;
+    }
+    .account-right{
+        width: 100%;
+    }
+    .account-left{
+        margin-top: 10px;
+        padding: 0rem;
+        width: 100%;
+    }
+    .director-body{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+        margin-top: 42px;
+    }
+    .director-forms{
+        width: 100%;   
+    } 
+    .director-image{
+        width: 100%;
+    }
+}

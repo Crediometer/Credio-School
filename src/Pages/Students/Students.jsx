@@ -51,7 +51,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                                     <FaSearch/>
                                     <input type="text" placeholder="search" onChange={handleQuery} onBlur={handleQuery}></input>
                                 </div>
-                                <div className="students-search students-select">
+                                {/* <div className="students-search students-select">
                                     <p>Sort by:</p>
                                     <select>
                                         <optgroup>
@@ -59,7 +59,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                                             <option>Oldest</option>
                                         </optgroup>
                                     </select>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         {(data?.students?.length === 0)?(
