@@ -6,7 +6,7 @@ import PinModal from './PinModal';
 import { useState } from 'react';
 import { startTrade } from '../../Redux/Card/CardScript';
 import loader from "../../Assets/animations/loading.json"
-const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading, setpostState, unitamount}) => {
+const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading, setpostState, unitamount, setShow1}) => {
     const [accountType, setAccounttype] = useState()
     const [newstate, setNewState] = useState({})
     const [show2, setShow2] = useState(false)
@@ -63,7 +63,7 @@ const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loa
                              : "Continue"}</button>
                         </div>
                     </form>
-                {cardData?.pinRequest  && (<PinModal togglemodal2={togglemodal2} postState={postState}  setpostState={setpostState}/>)}
+                {cardData?.pinRequest  && (<PinModal togglemodal2={togglemodal2} postState={postState}  setpostState={setpostState} setShow1={setShow1}/> )}
             </div>
         </div>
     );

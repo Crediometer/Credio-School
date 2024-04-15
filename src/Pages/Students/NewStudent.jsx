@@ -304,7 +304,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
             {/* <ReceiptModal/> */}
             {showerror && (<Errormodal togglemodal={togglemodal2}/>)}
             {keyloading && (<LoadingModal/>)}
-            {(show1) && (<AccountModal togglemodal={togglemodal} unitamount={amountPerUnit} postState={postState} setpostState={setpostState}/>)}
+            {(show1) && (<AccountModal togglemodal={togglemodal} unitamount={amountPerUnit} postState={postState} setpostState={setpostState} setShow1={setShow1}/>)}
         </div>
     );
 }

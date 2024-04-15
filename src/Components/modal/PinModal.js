@@ -12,15 +12,17 @@ import ReceiptModal from "./ReceiptModal";
 import LoadingModal from "./LoadingModal";
 import store from "../../Redux/Store";
 import { SUCCESS_TRANS } from "../../Redux/Card/CardType";
-const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostState, loading, data}) => {
+const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostState, loading, data, setShow1}) => {
     const [pin, setPin] = useState("");
     const [showPin, setShowPin] = useState(true);
     const [success,  setSuccess] = useState(false)
     const togglemodal = ()=>{
         setSuccess(!success)
+        setShow1(false)
         store.dispatch({
             type: SUCCESS_TRANS
         })
+        window.location.href = "https://credio-school.netlify.app/home/newstudent";
     }
     const atmpin = useRef(null);
     console.log(postState)
@@ -71,6 +73,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                 () => {
                     setSuccess(true)
                     setpostState({})
+                    
                     // On Success
                 },
                 () => {

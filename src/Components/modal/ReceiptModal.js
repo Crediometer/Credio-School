@@ -104,9 +104,11 @@ const ReceiptModal = ({data, togglemodal}) => {
                         </div>
                     </div>
                     <div className="save-con">
-                        <button  onClick={togglemodal}>
+                        {/* <Link to="/home/newstudent"> */}
+                        <button onClick={togglemodal}>
                             Exit
                         </button>
+                        {/* </Link> */}
                         <button onClick={downloadPdf} disabled={downloading}>
                             {downloading ? "Downloading..." : "Download"}
                         </button>
