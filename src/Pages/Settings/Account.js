@@ -14,6 +14,7 @@ import { profiledatasetting, putsetting, uplodimagesetting } from '../../Redux/S
 import LoadingModal from '../../Components/modal/LoadingModal';
 import LottieAnimation from '../../Lotties';
 import loader from "../../Assets/animations/loading.json"
+import SuccessModal from '../../Components/modal/SuccessModal';
 const Account = ({
     uploadloading, 
     uploaderror, 
@@ -44,6 +45,7 @@ const Account = ({
     const dropdownRef = useRef(null);
     const [require, setRequire] = useState(false)
     const [postState, setPostState] = useState({});
+    const [updatesuccess, setUpdateSuccess] = useState(false)
     const handleshowcountry = ()=>{
         setshowcountry(!showcountry)
     }
@@ -98,7 +100,8 @@ const Account = ({
             setRequire(true)
         } else{
             try{
-                await profiledatasetting(postState, ()=>{ 
+                await profiledatasetting(postState, ()=>{
+                    setUpdateSuccess(true) 
                     // setSuccess(`/home`)
                 // setPending(true);
                 }, ()=>{ 
@@ -108,6 +111,9 @@ const Account = ({
             }catch(error){
             }
         }
+    }
+    const togglemodal = ()=>{
+        setUpdateSuccess(false)
     }
     const appStyle = {
         backgroundImage: `url(${backgroundImage})`,
@@ -379,6 +385,7 @@ const Account = ({
                 <button className='Reset'>Reset all</button>
                 <button className='Save'>Save</button>
             </div> */}
+            {updatesuccess && (<SuccessModal message={profiledata.message} togglemodal={togglemodal}/>)}
             {uploadloading && (<LoadingModal/>)}
             {error && (<p>{uploaderror}</p>)}
      </>

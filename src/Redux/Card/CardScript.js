@@ -15,6 +15,7 @@ import {
   RECIEVE_DISPLAY,
   REQUEST_DISPLAY,
   POS_INFO,
+  SUCCESS_CARD_SCAN,
 } from "./CardType";
 import {
   SOCKET_INIT,
@@ -291,13 +292,19 @@ QPOSServiceListenerImpl.prototype.onRequestOnlineProcess = function (msg) {
     },
   });
 
-  store.dispatch(
-    sendCard({
-      tlv: msg,
-      accountType: store.getState().card.accountType,
-    })
-  );
-
+  // store.dispatch(  
+  //   sendCard({
+  //     tlv: msg,
+  //     accountType: store.getState().card.accountType,
+  //   })
+  // );
+  store.dispatch({
+    type: REQUEST_PIN_DONE,
+    // payload: {
+    //   tlv: store.getState().card.tlv,
+    //   accountType: store.getState().card.accountType,
+    // },
+  });
   // dispatch(transactionRequest);
   // axios
   //   .post("http://localhost:8080/ups/pos/cards", {
@@ -425,16 +432,21 @@ QPOSServiceListenerImpl.prototype.onReturnGetPinResult = function (value) {
 QPOSServiceListenerImpl.prototype.onRequestSetPin = function () {
   console.log("onRequestSetPin: ");
   // dialog();
-
   store.dispatch({
     type: REQUEST_PIN,
   });
+
+  store.dispatch({
+    type: SUCCESS_CARD_SCAN
+  })
 };
 
 export const sendPIN = (pin) => {
   console.log("Pin sent,,,, ", pin);
 
-  return mService.sendPin(pin);
+  return async(dispatch) =>{
+    mService.sendPin(pin);
+  } 
 };
 
 QPOSServiceListenerImpl.prototype.onReturnUpdateIPEKResult = function (flag) {

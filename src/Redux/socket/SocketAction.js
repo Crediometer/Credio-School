@@ -67,7 +67,6 @@ export const sendCard = (data) => {
     // dispatch({ type: SOCKET_SEND_CARD });
     
     console.log("cards .... ", data);
-    socket.emit("cards", data);
   };
 };
 

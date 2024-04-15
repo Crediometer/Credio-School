@@ -42,7 +42,7 @@ export default function Router() {
         { index: true, element: <Home /> },
         { path: "invoice/:id", element: <Invoice/> },
         { path: "students", element: <Students/> },
-        { path: "students/transaction", element: <StudentTransaction/> },
+        { path: "students/transaction/:id", element: <StudentTransaction/> },
         { path: "newstudent", element: <NewStudent/> },
         { path: "transaction", element: <Transaction/> },
         { path: "settings", element: <Settings /> },

@@ -7,6 +7,7 @@ import { DisConnect, buttonScan, getQPosInfo, init } from "../../Redux/Card/Card
 import Errormodal from "../../Components/modal/Errormodal";
 import { keyData } from "../../Redux/Deposit/DepositAction";
 import LoadingModal from "../../Components/modal/LoadingModal";
+import ReceiptModal from "../../Components/modal/ReceiptModal";
 const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading}) => {
     const [show1, setShow1] = useState(false)
     const [showerror,  setShowError] = useState(false)
@@ -80,7 +81,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
     useEffect(() => {
         if (totalAmount && amountPerUnit && repeatEvery) {
             const days = {
-                3: 3,
+                3: 5,
                 7: 7,
                 15: 15,
                 30: 30
@@ -217,6 +218,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                             required
                                             onChange={handlePhoneNumber}
                                             onBlur={handlePhoneNumber}
+                                            maxLength={11}
                                         ></input>
                                     </div>
                                 </div>
@@ -230,6 +232,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                         onBlur={handleTerm}
                                     >
                                         <optgroup>
+                                            <option value={1}>Select Term</option>
                                             <option value={1}>First Term</option>
                                             <option value={2}>Second Term</option>
                                             <option value={3}>Third Term</option>
@@ -256,6 +259,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                 <div className="select-field">
                                     <select type="text" required onChange={handlerepeat} onBlur={handlerepeat}>
                                         <optgroup>
+                                            <option>--Select Option--</option>
                                             <option value={3}>3 Days</option>
                                             <option value={7}>7 Days</option>
                                             <option value={15}>BiWeekly</option>
@@ -294,9 +298,10 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                 
                 </div>
                 <div className="save-con">
-                    <button>Connect to credio Reader</button>
+                    <button>Connect to Credio Reader</button>
                 </div>
             </form>
+            {/* <ReceiptModal/> */}
             {showerror && (<Errormodal togglemodal={togglemodal2}/>)}
             {keyloading && (<LoadingModal/>)}
             {(show1) && (<AccountModal togglemodal={togglemodal} unitamount={amountPerUnit} postState={postState} setpostState={setpostState}/>)}
@@ -309,7 +314,7 @@ const mapStoreToProps = (state) => {
       getprofile: state.profile.data,
       keyloading: state.key.loading,
       keyinfo: state.key.deposit.data
-    };
+    };  
   };
   
   const mapDispatchToProps = (dispatch) => {

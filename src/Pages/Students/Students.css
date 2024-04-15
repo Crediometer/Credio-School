@@ -15,6 +15,8 @@
 .students-body{
     margin-top: 14px;
     background-color: #E5ECF6;
+    height: 500px;
+  
     padding: 24px 48px;
     border-radius: 5px;
 }
@@ -23,8 +25,10 @@
     align-items: center;
     justify-content: space-between;
 }
-.students-table-body{
-    margin-top: 38px;
+.student-table-body{
+    height:400px;
+    overflow-y: scroll;
+    margin-top: 10px;
 }
 .students-info h4{
     font-family: "Poppins";

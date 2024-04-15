@@ -36,6 +36,8 @@
 }
 .home-tables{
     padding: 1.5rem;
+    height: 400px;
+    overflow-y: scroll;
     margin-top: 24px;
     background-color: #E5ECF6;
     border-radius: 16px;
@@ -49,7 +51,7 @@
     justify-content: center;
 }
 .button-con{
-    margin-top: 80px;
+    margin-top: 40px;
     width: 100%;
     display: flex;
     justify-content: center;

@@ -6,15 +6,20 @@ import {connect} from 'react-redux'
 import StudentTable from "../../Components/Tables/StuentTable2";
 import TransactionTable from "../../Components/Tables/TransactionTable";
 import { fetchtransaction } from "../../Redux/Transactions/TransactionAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LottieAnimation from "../../Lotties"
 import empty from '../../Assets/animations/Empty.json'
 import preloader from "../../Assets/animations/preloader.json"
 
 const Transaction = ({loading, error, data, fetchtransaction}) => {
+    const [pages, setPages] = useState(1)
+    const [pagesize, setpagesize] = useState(10)
+    const handleChange = (event, value) => {
+        setPages(value);
+    };
     useEffect(()=>{
-        fetchtransaction()
-    }, [])
+        fetchtransaction(pages, pagesize)
+    }, [pages])
     return ( 
         <>
         {loading ? (
@@ -63,11 +68,11 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                     </div>
                     <div className="pagintions">
                         <div className="page-right">
-                            <p>Showing data 1 0f 5 entries</p>
+                            <p>Showing data 1 0f 10 entries</p>
                         </div>
                         <div className="page-left">
                             <Stack spacing={2}>
-                                <Pagination count={10} variant="outlined" shape="rounded" />
+                                <Pagination count={data?.paginationInfo?.totalPages} page={pages} onChange={handleChange} variant="outlined" shape="rounded" />
                             </Stack>
                         </div>
                     </div>
@@ -88,7 +93,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        fetchtransaction: () => dispatch(fetchtransaction()),
+        fetchtransaction: (page, size) => dispatch(fetchtransaction(page, size)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Transaction);

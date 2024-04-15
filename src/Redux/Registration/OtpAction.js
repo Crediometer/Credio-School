@@ -38,7 +38,7 @@ export const otpData = (otpState, history, setErrorHandler) => {
         }
       } catch (error) {
         if (error.response) {
-          dispatch(otpFaliure(error));
+          dispatch(otpFaliure(error?.response?.data?.error));
         }
         setErrorHandler({ hasError: true, message: error?.response?.data});
       }

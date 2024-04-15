@@ -37,14 +37,14 @@ export default function TransactionTable({data}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.transactions.map((row) => (
+          {data?.transactions?.map((row) => (
             <TableRow
               key={row.term}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               className='table-text'
             >
                 <TableCell component="th" scope="row">
-                    {row.metaData.term}
+                {row.metaData.term === "1" && <>"First Term"</>} {row.metaData.term === "2" && "Second Term"} {row.metaData.term === "3" && "Third Term"}
                 </TableCell>
                 <TableCell component="th" align="center">{row.metaData.studentName}</TableCell>
                 <TableCell component="th" align="center" className='table-text'><p>{row.amount}</p></TableCell>

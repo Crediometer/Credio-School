@@ -8,9 +8,20 @@ import { sendPIN } from "../../Redux/Card/CardScript";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { depositData } from "../../Redux/Deposit/DepositAction";
-const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit}) => {
+import ReceiptModal from "./ReceiptModal";
+import LoadingModal from "./LoadingModal";
+import store from "../../Redux/Store";
+import { SUCCESS_TRANS } from "../../Redux/Card/CardType";
+const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostState, loading, data}) => {
     const [pin, setPin] = useState("");
     const [showPin, setShowPin] = useState(true);
+    const [success,  setSuccess] = useState(false)
+    const togglemodal = ()=>{
+        setSuccess(!success)
+        store.dispatch({
+            type: SUCCESS_TRANS
+        })
+    }
     const atmpin = useRef(null);
     console.log(postState)
     useEffect(()=>{
@@ -50,18 +61,43 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit}) => {
         // e.preventDefault();
         if (pin && pin1 && pin2 && pin3) {
           // send pin to redux
-          sendPIN(`${pin}${pin1}${pin2}${pin3}`);
-          Deposit(
-            postState, ()=>{ 
-            // history(`/otp`);
-            // dispatch(addFormData(formData));
-            // setPending(true);
-        },  ()=>{ 
-            // setshowerror(true)
-            // setPending(false);
-        })
+          sendPin(`${pin}${pin1}${pin2}${pin3}`);
         }
     };
+    useEffect(() => {
+        if (cardData && cardData.tlv) {
+            Deposit(
+                { ...postState, ...{tlv: cardData.tlv} },
+                () => {
+                    setSuccess(true)
+                    setpostState({})
+                    // On Success
+                },
+                () => {
+                    // On Error
+                }
+            );
+        }
+    }, [cardData.tlv]);
+
+    // useEffect(()=>{
+    //     if(cardData.tlv){
+    //         setpostState({ ...postState, ...{tlv:cardData?.tlv}}); 
+    //         Deposit(
+    //             {postState}, ()=>{ 
+    //                 setSuccess(true)
+    //             // history(`/otp`);
+    //             // dispatch(addFormData(formData));
+    //             // setPending(true);
+    //         },  ()=>{ 
+    //             // setshowerror(true)
+    //             // setPending(false);
+    //         })
+    //     }else{
+
+    //     }
+
+    // }, [cardData?.tlv])
     return ( 
         <div className="modal-background">
                 
@@ -131,6 +167,8 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit}) => {
                                 <button onClick={() => handlePin()}>Continue</button>
                             </div>
                         </div>
+                        {loading && (<LoadingModal/>)}
+                        {success && (<ReceiptModal data={data} togglemodal={togglemodal}/>)}
                     </div>
                 {/* </div> */}
             </div>
@@ -143,7 +181,7 @@ const mapStoreToProps = (state) => {
     return {
         cardData: state.card,
         loading: state.deposit.loading,
-        data: state.deposit.data,
+        data: state.deposit.deposit,
         error: state.deposit.error
     };
 };

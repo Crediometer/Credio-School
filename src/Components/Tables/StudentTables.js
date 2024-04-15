@@ -32,8 +32,7 @@ export default function BasicTable({data}) {
             <TableCell align="left">Class</TableCell>
             <TableCell align="left">Amount</TableCell>
             <TableCell align="left">Date</TableCell>
-            <TableCell align="left">Status</TableCell>
-            <TableCell align="center">Action</TableCell>
+            <TableCell align="center">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,10 +45,10 @@ export default function BasicTable({data}) {
               <TableCell component="th" scope="row">
                 {row.metaData.studentName}
               </TableCell>
-              <TableCell component="th" align="left">{row.metaData.term}</TableCell>
+              <TableCell component="th" align="left">{row.metaData.term === "1" && "First Term"} {row.metaData.term === "2" && "Second Term"} {row.metaData.term === "3" && "Third Term"}</TableCell>
               <TableCell component="th" align="left" className='table-text'><p>{row.amount}</p></TableCell>
               <TableCell component="th" align="left" className='table-text'>{row.createdAt.slice(0,10)}</TableCell>
-              <TableCell component="th" align="left">
+              <TableCell component="th" align="center ">
                 {(row.status === 0) && (
                     <div className='paid'>
                         <p>Paid</p>
@@ -66,17 +65,7 @@ export default function BasicTable({data}) {
                     </div>
                 )}
                 </TableCell>
-                <TableCell component="th" align="center" className='actions'>
-                    <div className="actions">
-                        <div className="action-icons">
-                            <FiEdit/>
-                        </div>
-                        <div className="action-icons">
-                            <RiDeleteBinLine/>
-                        </div>
-                    </div>
-                    
-                </TableCell>
+               
             </TableRow>
           ))}
         </TableBody>

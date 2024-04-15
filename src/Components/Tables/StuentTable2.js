@@ -37,7 +37,7 @@ export default function StudentTable({data}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.students.map((row) => (
+          {data?.students?.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

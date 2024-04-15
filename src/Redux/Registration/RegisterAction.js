@@ -57,7 +57,7 @@ export const registerData = (registerState, history, setErrorHandler) => {
         }
       } catch (error) {
         if (error.response){
-          dispatch(registerFaliure(error.response));
+          dispatch(registerFaliure(error?.response?.data?.error));
         }
         setErrorHandler({ hasError: true, message: error?.response?.data?.message });
       }

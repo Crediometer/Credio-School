@@ -44,6 +44,19 @@
     background-color: white;
     border-radius: 8px;
 }
+.receipt-modal{
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    position: relative;
+    padding: 1rem;
+    /* padding-bottom: 103px; */
+    height: 700px;
+    overflow-y: scroll;
+    width: 50% !important;
+    background-color: white;
+    border-radius: 8px;
+}
 .modalssss{
     display: flex;
     flex-direction: column;
@@ -61,7 +74,7 @@
     flex-direction: column;
     align-items: center;
 }
-.onetime-modal form{
+.onetime-modal form, .modalssss form{
     width: 100%;
 }
 .modal-form{
@@ -173,6 +186,61 @@
 }
 .pinfield input:focus{
     background-color: #F1C37E;
+}
+.receipt-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.credio{
+    font-size: 26px;
+    font-family: "Poppins";
+    font-weight: 800;
+    color: #B11226;
+}
+.receipt-modal h3{
+    font-size: 29px;
+    font-family: "Poppins";
+    font-weight: 800;
+    color: #333333;
+}
+.success-text{
+    font-size: 14px;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #058B42;
+}
+.receipt-date-time{
+    font-size: 13px;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #33333381;
+}
+.receipt-body{
+    margin-top: 20px;
+}
+.receipt-con{
+    padding-top: 12px;
+    padding-bottom: 20px;
+    border-top: 1px dashed #DCDEE0;
+}
+.con-head{
+    font-size: 19px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: #333333;
+}
+.receipt-content{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.receipt-content p{
+    font-size: 14px;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #33333381;
 }
 @media (Max-width: 500px){
     .cardpin-body{

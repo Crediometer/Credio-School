@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import PinModal from './PinModal';
 import { useState } from 'react';
 import { startTrade } from '../../Redux/Card/CardScript';
+import loader from "../../Assets/animations/loading.json"
 const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loading, setpostState, unitamount}) => {
     const [accountType, setAccounttype] = useState()
     const [newstate, setNewState] = useState({})
@@ -51,11 +52,18 @@ const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loa
                                 </select>
                             </div>
                         </div>
-                        <div className="save-con">
-                            <button onClick={handleSubmit}>{cardData?.requestDisplay ? "Scanning your Card......." : "Continue"}</button>
+                        <div className="save-con save-con-2">
+                            <button onClick={handleSubmit}>{cardData?.requestDisplay
+                             ? (
+                                <>
+                                    <LottieAnimation data={loader}/>
+                                    "Scanning your Card.."
+                                </>
+                            ) 
+                             : "Continue"}</button>
                         </div>
                     </form>
-                {cardData?.pinRequest  && (<PinModal togglemodal2={togglemodal2} postState={postState}/>)}
+                {cardData?.pinRequest  && (<PinModal togglemodal2={togglemodal2} postState={postState}  setpostState={setpostState}/>)}
             </div>
         </div>
     );

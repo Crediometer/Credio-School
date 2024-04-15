@@ -65,7 +65,7 @@ const Otp = ({loading, error, data, otpData, register}) => {
                     <form onSubmit={handlesubmit} action="" className="login-form">
                         {showerror && (
                             <div className="error-box">
-                                <p>{error.message}</p>
+                                <p>{error}</p>
                             </div>
                         )}
                         <div className="form-3">

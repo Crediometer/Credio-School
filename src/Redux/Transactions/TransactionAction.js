@@ -54,7 +54,7 @@ export const fetchtransaction = (pageNumber, select) => {
             authorization: `Bearer ${datas?.token?.data?.token?.token}`,
         };
         // let datas = JSON.parse(localStorage.getItem("auth"))
-        axios.get(`${baseUrl}/transactions/getAllTransaction`, { headers: headers })
+        axios.get(`${baseUrl}/transactions/getAllTransaction?page=${pageNumber}&&pageSize=${select}`, { headers: headers })
             .then( response => {
                 const data = response.data
                 dispatch(transactionSuccess(data))
@@ -75,7 +75,7 @@ export const fetchstudenttransaction = (userId) => {
             authorization: `Bearer ${datas?.token?.data?.token?.token}`,
         };
         // let datas = JSON.parse(localStorage.getItem("auth"))
-        axios.get(`${baseUrl}/transactions/getTransactionByStudent`, { headers: headers })
+        axios.get(`${baseUrl}/transactions/getTransactionByStudent?userId=${userId}`, { headers: headers })
             .then( response => {
                 const data = response.data
                 dispatch(transactionstudentSuccess(data))

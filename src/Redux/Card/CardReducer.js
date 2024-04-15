@@ -9,6 +9,8 @@ import {
   DISCONNECT_DEVICE,
   SEND_TLV_DATA,
   POS_INFO,
+  SUCCESS_CARD_SCAN,
+  SUCCESS_TRANS,
 } from "./CardType";
 
 const initialState = {
@@ -34,11 +36,17 @@ const cardReducer = (state = initialState, action) => {
         requestDisplayMessage: action.payload,
       };
 
+    case SUCCESS_CARD_SCAN:
+      return {
+        ...state,
+        requestDisplay: false,
+      };
+
     case SEND_TLV_DATA:
       return {
         ...state,
         loading: true,
-        pinRequest: false,
+        // pinRequest: false,
         responseData: null,
         tlv: action.payload,
       };
@@ -79,7 +87,7 @@ const cardReducer = (state = initialState, action) => {
     case REQUEST_PIN_DONE:
       return {
         ...state,
-        pinRequest: false,
+        pinRequest: true,
       };
 
     case DISCONNECT_DEVICE:
@@ -94,7 +102,12 @@ const cardReducer = (state = initialState, action) => {
         ...state,
         posinfo: action.payload,
       }
-
+    case SUCCESS_TRANS:
+      return {
+        ...state,
+        pinRequest: false,
+        requestDisplay: false,
+      }
     default:
       return state;
   }
