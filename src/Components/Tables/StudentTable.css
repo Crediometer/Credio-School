@@ -4,6 +4,7 @@
 .table-con{
     background-color: transparent !important;
     box-shadow: none !important;
+    padding: 0px  !important;
 }
 .tableHeader th{
     font-family: "Inter";

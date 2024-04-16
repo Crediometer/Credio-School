@@ -25,10 +25,10 @@ const rows = [
 export default function BasicTable({data}) {
   return (
     <TableContainer component={Paper} className='table-con'>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650,'& .table-cell': { padding: '0px' }  }} aria-label="simple table">
         <TableHead>
           <TableRow className='tableHeader'>
-            <TableCell>Student Name</TableCell>
+            <TableCell align="left">Student Name</TableCell>
             <TableCell align="left">Class</TableCell>
             <TableCell align="left">Amount</TableCell>
             <TableCell align="left">Date</TableCell>

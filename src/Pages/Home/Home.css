@@ -42,6 +42,9 @@
     background-color: #E5ECF6;
     border-radius: 16px;
 }
+.home-tables p{
+    margin-left: 14px;
+}
 .empty-animate{
     width: 100%;
     height: 400px;
