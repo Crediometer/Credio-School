@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { LoginAuthAction } from '../../Redux/Login/LoginAction';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LottieAnimation from "../../Lotties"
 import loader from "../../Assets/animations/loading.json"
 const Login = ({
@@ -41,10 +41,11 @@ const Login = ({
             if (formattedNumber.charAt(0) === '0') {
                 formattedNumber = '+234' + formattedNumber.slice(1);
             }
-            setLoginState({ ...loginState, ...{identifier: formattedNumber} });
+            setContactInfo(formattedNumber);
+            setLoginState({ ...loginState, ...{identifier: contactInfo} });
         } 
       };
-    
+      console.log("hereee", password)
     const handlePassword = (e) => {
         const value = e.target.value;
         // var encrypt = new JSEncrypt();
@@ -55,7 +56,9 @@ const Login = ({
     };
     const handleSignUp = async (e) => {
         e.preventDefault();
+        console.log("hereee", password)
         try{
+            console.log("hereee", password)
             await login(loginState, ()=>{ 
                 history(`/home`)
             // setPending(true);
@@ -67,6 +70,10 @@ const Login = ({
         }catch(error){
         }
     };
+    useEffect(() => {
+        setLoginState({ ...loginState, identifier:contactInfo, password });
+    }, [contactInfo, password]);
+
     return ( 
         <div className="login">
             <div className="circle-1"></div>
@@ -89,6 +96,7 @@ const Login = ({
                             <label>School email address/Phone Number</label><br></br>
                             <input 
                                 type='text' 
+                                value={contactInfo}
                                 placeholder='Enter Email or Phone Number'
                                 onChange={handleChange}
                                 onBlur={handleChange}
@@ -100,9 +108,9 @@ const Login = ({
                             <label>Password</label><br></br>
                             <input 
                                 type='password' 
+                                value={password}
                                 placeholder='Enter Password'
-                                onChange={handlePassword}
-                                onBlur={handlePassword}
+                                onInput={handlePassword}
                             ></input>
                         </div>
                         <Link to="/reset"><p className='forget'>Forgot Password</p></Link>

@@ -11,12 +11,16 @@
 } */
 input:focus{
   outline: none;
+  /* background-color: #F5F7FB;
+  border: 1.29px solid #C4C4C4; */
 }
 textarea:focus{
-  outline: none;
+  background-color: #F5F7FB;
+  border: 1.29px solid #C4C4C4;
 }
 select:focus{
-  outline: none;
+  background-color: #F5F7FB;
+  border: 1.29px solid #C4C4C4;
 }
 a{
   text-decoration: none;

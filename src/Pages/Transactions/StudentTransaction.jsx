@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import StudentTable from "../../Components/Tables/StuentTable2";
 import TransactionTable from "../../Components/Tables/TransactionTable";
 import { fetchstudenttransaction, fetchtransaction } from "../../Redux/Transactions/TransactionAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LottieAnimation from "../../Lotties"
 import empty from '../../Assets/animations/Empty.json'
@@ -14,9 +14,21 @@ import preloader from "../../Assets/animations/preloader.json"
 
 const StudentTransaction = ({loading, error, data, fetchtransaction}) => {
     const { id } = useParams();
+    const [pages, setPages] = useState(1)
+    const [size, setSize] = useState(10)
+
+    const handleChange = (event, value) => {
+        setPages(value);
+    };
+
+    const handleSizeChange = (e)=>{
+        const value = e.target.value
+        setSize(value)
+    }
+    
     useEffect(()=>{
-        fetchstudenttransaction(id);
-    }, [id])
+        fetchstudenttransaction(id,pages, size);
+    }, [id,pages, size])
     return ( 
         <>
             {loading ? (
@@ -51,12 +63,23 @@ const StudentTransaction = ({loading, error, data, fetchtransaction}) => {
                             </div>
                     </div>
                     <div className="pagintions">
-                        <div className="page-right">
-                            <p>Showing data 1 0f 5 entries</p>
+                    <div className="page-right">
+                            <p>Showing data 1 0f</p>
+                            <select onChange={handleSizeChange}>
+                                <optgroup>
+                                    <option value={10}>10</option>
+                                    <option value={15}>15</option>
+                                    <option value={20}>20</option>
+                                    <option value={25}>25</option>
+                                    <option value={50}>50</option>
+                                    <option value={100}>100</option>
+                                </optgroup>
+                            </select>
+                            <p>entries</p>
                         </div>
                         <div className="page-left">
                             <Stack spacing={2}>
-                                <Pagination count={10} variant="outlined" shape="rounded" />
+                                <Pagination count={data?.paginationInfo?.totalPages} page={pages} variant="outlined" shape="rounded" />
                             </Stack>
                         </div>
                     </div>

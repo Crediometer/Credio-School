@@ -14,12 +14,16 @@ import preloader from "../../Assets/animations/preloader.json"
 const Transaction = ({loading, error, data, fetchtransaction}) => {
     const [pages, setPages] = useState(1)
     const [pagesize, setpagesize] = useState(10)
+    const handleSizeChange = (e)=>{
+        const value = e.target.value
+        setpagesize(value)
+    }
     const handleChange = (event, value) => {
         setPages(value);
     };
     useEffect(()=>{
         fetchtransaction(pages, pagesize)
-    }, [pages])
+    }, [pages, pagesize])
     return ( 
         <>
         {loading ? (
@@ -68,7 +72,18 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                     </div>
                     <div className="pagintions">
                         <div className="page-right">
-                            <p>Showing data 1 0f 10 entries</p>
+                            <p>Showing data 1 0f</p>
+                            <select onChange={handleSizeChange}>
+                                <optgroup>
+                                    <option value={10}>10</option>
+                                    <option value={15}>15</option>
+                                    <option value={20}>20</option>
+                                    <option value={25}>25</option>
+                                    <option value={50}>50</option>
+                                    <option value={100}>100</option>
+                                </optgroup>
+                            </select>
+                            <p>entries</p>
                         </div>
                         <div className="page-left">
                             <Stack spacing={2}>

@@ -133,6 +133,10 @@
     font-size: 500;
     color: #C4C4C4;
 }
+.form-3 input:focus{
+    background-color: #F5F7FB;
+    border: 1px solid #C4C4C4;
+}
 .forget{
     color: #298097;
     font-size: 15px;

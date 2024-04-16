@@ -154,11 +154,11 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata}) => {
                             <div className="form-1 invoice-form">
                                 <label>Message</label>
                                 <div className="input-search-name">
-                                    <textarea 
+                                    <input
                                         type="text"
                                         value={student?.message}
                                         disabled
-                                    ></textarea>
+                                    ></input>
                                 </div>
                             </div>
                         </form>

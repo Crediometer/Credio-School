@@ -72,7 +72,7 @@
     color: #D70000;
     margin-left: 4px;
 }
-.input-search-name{
+/* .input-search-name{
     width: 100%;
     margin-top: 14px;
     margin-bottom: 15px;
@@ -81,15 +81,23 @@
     border: 1px solid #C4C4C4;
     display: flex;
     justify-content: space-between;
-}
+} */
 .input-search-name input{
     width: 100%;
-    background-color:  transparent;
-    border: none;
+    margin-top: 14px;
+    margin-bottom: 15px;
+    padding: 20px 21px;
+    border-radius: 14px;
+    border: 1px solid #C4C4C4;
+    background-color: transparent;
     font-size: 14px;
     font-family: "Inter";
     font-weight: 400;
     color: #474747;
+}
+.input-search-name input:focus{
+    background-color: #F5F7FB;
+    border: 1px solid #C4C4C4;
 }
 .input-search-name textarea{
     width: 100%;
@@ -201,7 +209,11 @@
     font-weight: 800;
     color: #298097;
 }
-.invoice-form .input-search-name{
+.invoice-form .input-search-name input{
+    background-color: #F5F7FB;
+    border: 1.29px solid #C4C4C4;
+}
+.invoice-form .input-search-name input{
     background-color: #F5F7FB;
     border: 1.29px solid #C4C4C4;
 }
