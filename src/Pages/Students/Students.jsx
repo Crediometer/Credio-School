@@ -17,6 +17,10 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     const handleChange = (event, value) => {
         setPages(value);
     };
+    const handleSizeChange = (e)=>{
+        const value = e.target.value
+        setSize(value)
+    }
     const handleQuery = (e) => {
         const value = e.target.value
         setQuery(value);
@@ -24,7 +28,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     useEffect(()=>{
         fetchstudents(pages, size);
         fetchsearchstudents(pages,size,query)
-    }, [pages])
+    }, [pages, size])
     return ( 
         <>
             {loading ? (
@@ -75,7 +79,18 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                     </div>
                     <div className="pagintions">
                         <div className="page-right">
-                            <p>Showing data 1 0f 10 entries</p>
+                            <p>Showing data 1 0f</p>
+                            <select onChange={handleSizeChange}>
+                                <optgroup>
+                                    <option value={10}>10</option>
+                                    <option value={15}>15</option>
+                                    <option value={20}>20</option>
+                                    <option value={25}>25</option>
+                                    <option value={50}>50</option>
+                                    <option value={100}>100</option>
+                                </optgroup>
+                            </select>
+                            <p>entries</p>
                         </div>
                         <div className="page-left">
                             <Stack spacing={2}>

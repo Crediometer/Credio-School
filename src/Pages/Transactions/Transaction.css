@@ -4,11 +4,20 @@
     align-items: center;
     justify-content: space-between;
 }
-.page-rigth p{
+.page-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.page-right p{
     font-family: "Poppins";
     font-size: 14px;
     font-weight: 500;
     color: #B5B7C0;
+}
+.page-right select{
+    width: 50px;
+    background-color: transparent;
 }
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
     background-color: #298097 !important;
