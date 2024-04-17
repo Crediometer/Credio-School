@@ -58,6 +58,7 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
         fetchstudenttransaction(id);
         const selectedStudent = studentdata?.find(student => student._id === id);
         setStudent(selectedStudent);
+        
     }, [id]);
     useEffect(()=>{
         if (data && data.length > 0) {
@@ -89,8 +90,8 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                 </div>
                 <div className="invoice-progressbar">
                     <div className="ngn-progressbar">
-                        <p>NGN 0.00</p>
-                        <p>{`NGN ${student?.period?.totalAmountToBePaid}`}</p>
+                        <p>{`NGN ${(student?.period?.singlePaymentAmount).toFixed(2)}`}</p>
+                        <p>{`NGN ${(student?.period?.totalAmountToBePaid).toFixed(2)}`}</p>
                     </div>
                     <div className="progress-bar">
                         <div className="progress-bar-fill" style={{width: `${progress}%`}}>

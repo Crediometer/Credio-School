@@ -14,6 +14,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     const [pages, setPages] = useState(1)
     const [size, setSize] = useState(10)
     const [query, setQuery] = useState("all")
+    const [searchPerformed, setSearchPerformed] = useState(false);
     const handleChange = (event, value) => {
         setPages(value);
     };
@@ -24,11 +25,22 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     const handleQuery = (e) => {
         const value = e.target.value
         setQuery(value);
+        // setSearchPerformed(true);
     };
+    const handleSearch = () => {
+        setSearchPerformed(true);
+      };
     useEffect(()=>{
         fetchstudents(pages, size);
         fetchsearchstudents(pages,size,query)
     }, [pages, size])
+    useEffect(() => {
+       
+        if (searchPerformed) {
+            console.log("HELPPPPPPP")
+          fetchsearchstudents(pages, size, query);
+        }
+      }, [query, searchPerformed]);
     return ( 
         <>
             {loading ? (
@@ -52,7 +64,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                             </div>
                             <div className="students-filter">
                                 <div className="students-search">
-                                    <FaSearch/>
+                                    <div onClick={handleSearch}><FaSearch/></div>
                                     <input type="text" placeholder="search" onChange={handleQuery} onBlur={handleQuery}></input>
                                 </div>
                                 {/* <div className="students-search students-select">

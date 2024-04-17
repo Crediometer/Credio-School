@@ -329,10 +329,10 @@ const Account = ({
                                     <label>Retype your new password</label><br></br>
                                     <input type='password' placeholder='Retype password'></input>
                                 </div>
-                                <div className="password-form-check">
+                                {/* <div className="password-form-check">
                                     <input type='checkbox'></input>
                                     <label>Require all devices to sign in with new password</label>
-                                </div>
+                                </div> */}
                                 <div className="password-save">
                                     <button>Save</button>
                                 </div>

@@ -48,7 +48,7 @@ const Home = ({
                             <Card title="Students" numbers={getprofile.studentsCount} icons={<PiStudent/>} color="#E3F5FF"/>
                         </div>
                         <div className="card-div">
-                            <Card title="Payments" numbers={`${getprofile.transactionsCount} NGN`} icons={<LuCreditCard/>} color="#E5ECF6"/>
+                            <Card title="Payments" numbers={`${getprofile.transactionsCount}`} icons={<LuCreditCard/>} color="#E5ECF6"/>
                         </div>
                     </div>
                     <div className="home-tables">
