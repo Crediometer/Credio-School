@@ -24,7 +24,7 @@ const Login = ({
         setLoginState({ ...loginState, ...{email} });
     };
     const handleChange = (e) => {
-        const inputValue = e.target.value.trim();
+        const inputValue = e.target.value.trim().toLowerCase();
         setContactInfo(inputValue);
         // Regular expressions to validate phone number and email address
         const phoneRegex = /^\d{11}$/; // Change this regex according to your phone number format
@@ -96,7 +96,7 @@ const Login = ({
                             <label>School Email Address/Phone Number</label><br></br>
                             <input 
                                 type='text' 
-                                value={contactInfo}
+                                    
                                 placeholder='Enter Email or Phone Number'
                                 onChange={handleChange}
                                 onBlur={handleChange}

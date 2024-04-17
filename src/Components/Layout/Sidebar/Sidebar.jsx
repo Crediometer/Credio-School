@@ -1,5 +1,5 @@
 import "./Sidebar.css"
-import logo from "../../../Assets/Image/logo2.png" 
+import logo from "../../../Assets/Image/nopro.jpg" 
 import { FaPowerOff } from "react-icons/fa6";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {connect} from 'react-redux'
@@ -32,7 +32,7 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
         <div className={open?"sidebaropen sidebar":"sidebar"}>
             <div className="sidebar-top-logo">
                 <div className="sidebar-logo">
-                    <img src={getprofile?.schoolProfile?.schoolAvatar}></img>
+                    <img src={(getprofile?.schoolProfile?.schoolAvatar) ? getprofile?.schoolProfile?.schoolAvatar : logo }></img>
                     <p className="logo-text">{getprofile?.schoolProfile?.schoolName}</p>
                 </div>
                 <div className="sidebar-close" onClick={toggleopen}>
