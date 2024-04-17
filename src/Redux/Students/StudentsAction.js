@@ -67,7 +67,7 @@ export const fetchstudents = (pageNumber, select) => {
 
 export const fetchsearchstudents = (pageNumber, select, query) => {
     return(dispatch) => {
-        dispatch(studentsearchRequest())
+        dispatch(studentsRequest())
         let datas = JSON.parse(localStorage.getItem("auth"))
         const headers = {
             "Content-Type": "application/json",
@@ -77,11 +77,11 @@ export const fetchsearchstudents = (pageNumber, select, query) => {
         axios.get(`${baseUrl}/search?page=${pageNumber}&&pageSize=${select}&&query=${query}`, { headers: headers })
             .then( response => {
                 const data = response.data
-                dispatch(studentsearchSuccess(data))
+                dispatch(studentsSuccess(data))
             })
             .catch(error =>{
                 const errorMsg = error.message
-                dispatch(studentsearchFaliure(errorMsg))
+                dispatch(studentsFaliure(errorMsg))
             })
     }
 }

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const Students = ({loading, error, data, searchdata, searcherror, searchloading, fetchstudents, fetchsearchstudents}) => {
     const [pages, setPages] = useState(1)
     const [size, setSize] = useState(10)
-    const [query, setQuery] = useState("all")
+    const [query, setQuery] = useState("")
     const [searchPerformed, setSearchPerformed] = useState(false);
     const handleChange = (event, value) => {
         setPages(value);
@@ -25,11 +25,15 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     const handleQuery = (e) => {
         const value = e.target.value
         setQuery(value);
-        // setSearchPerformed(true);
+        if (e.target.value.length > 3) {
+            setSearchPerformed(true);
+        }
     };
-    const handleSearch = () => {
-        setSearchPerformed(true);
-      };
+    const handleSearch = (e) => {
+        if (e.key === "Enter" && query.length > 3) {
+            setSearchPerformed(true);
+          }
+    };
     useEffect(()=>{
         fetchstudents(pages, size);
         fetchsearchstudents(pages,size,query)
@@ -40,7 +44,7 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
             console.log("HELPPPPPPP")
           fetchsearchstudents(pages, size, query);
         }
-      }, [query, searchPerformed]);
+      }, [query]);
     return ( 
         <>
             {loading ? (
@@ -64,8 +68,8 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                             </div>
                             <div className="students-filter">
                                 <div className="students-search">
-                                    <div onClick={handleSearch}><FaSearch/></div>
-                                    <input type="text" placeholder="search" onChange={handleQuery} onBlur={handleQuery}></input>
+                                    <div><FaSearch/></div>
+                                    <input type="text" placeholder="search"  onBlur={handleQuery}  onKeyPress={handleSearch}></input>
                                 </div>
                                 {/* <div className="students-search students-select">
                                     <p>Sort by:</p>
