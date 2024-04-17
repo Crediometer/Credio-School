@@ -24,7 +24,7 @@ const Signup = ({
     const [password, setPassword]= useState("")
     const [city, setCity]= useState("")
     const [state, setState]= useState("")
-    const [country, setCountry]= useState("")
+    const [country, setCountry]= useState("Nigeria")
     const [showerror, setshowerror] = useState(false)
     const [formData, setFormData] = useState({});
     const [postState, setPostState] = useState({})
@@ -42,7 +42,7 @@ const Signup = ({
     const handleAddress = (e)=>{
         const value = e.target.value
         setAddress(value)
-        setFormData({ ...formData, ...{address: address} }); 
+        setFormData({ ...formData, ...{address: address, country: country} }); 
     }
     const handleCity = (e)=>{
         const value = e.target.value
@@ -160,16 +160,6 @@ const Signup = ({
                             </div>
                         </div>
                         <div className="form-3">
-                            <label>Country</label><br></br>
-                            <input 
-                                required
-                                type='text' 
-                                placeholder='Address'
-                                onChange={handleCountry}
-                                onBlur={handleCountry}
-                            ></input>
-                        </div>
-                        <div className="form-3">
                             <label>Phone number</label><br></br>
                             <input 
                                 required
@@ -205,7 +195,7 @@ const Signup = ({
                                 <LottieAnimation data={loader}/>
                             ):"Sign Up"}
                         </button>
-                        <p className='already'>Already have an account?<Link to="/"><span>Login</span></Link></p>
+                        <p className='already'>Already have an Account?<Link to="/"><span>Login</span></Link></p>
                     </form>
                 </div>
             </div>

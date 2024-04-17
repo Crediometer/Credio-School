@@ -11,8 +11,9 @@ import LottieAnimation from "../../Lotties"
 import empty from '../../Assets/animations/Empty.json'
 import preloader from "../../Assets/animations/preloader.json"
 
-const Studentinvoice = ({fetchstudenttransaction, loading, studentdata}) => {
-    const [progress, setProgress] = useState(50);
+const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) => {
+    const [progress, setProgress] = useState(0);
+    const [transactionMark, setTransactionMark] = useState(null)
     const [logoImage, setLogoImage] = useState(null);
     const [downloading, setDownloading] = useState(false); 
     const pdfRef = useRef()
@@ -54,20 +55,24 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata}) => {
     // const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-    //   async function fetchStudent() {
-    //     try {
-    //       const response = await axios.get(`https://fe-sandbox-quick-pay.onrender.com/api/v1/school/students/all?page=1&&pageSize=10/${id}`);
-    //       setStudent(response.data);
-    //       setLoading(false);
-    //     } catch (error) {
-    //       console.error('Error fetching student:', error);
-    //     }
-    //   }
         fetchstudenttransaction(id);
-        const selectedStudent = studentdata.find(student => student._id === id);
+        const selectedStudent = studentdata?.find(student => student._id === id);
         setStudent(selectedStudent);
     }, [id]);
-    console.log(student)
+    useEffect(()=>{
+        if (data && data.length > 0) {
+            const lastTransaction = data[data.length - 1];
+            setTransactionMark(lastTransaction);
+        }
+    },[data])
+    useEffect(()=>{
+        if (transactionMark && student?.period?.proposedRepetition) {
+            const progressbar=(transactionMark?.metaData?.transactionMark / student.period.proposedRepetition) * 100
+            setProgress(progressbar);
+        } else {
+            setProgress(0)
+        }
+    }, [transactionMark])
     return ( 
         <>
             {loading ? (
@@ -92,7 +97,7 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata}) => {
 
                         </div>
                     </div>
-                    <p className="progress-label" style={{width: `${progress}%`}}>12/24 (NGN 90,000)</p>
+                    <p className="progress-label" style={{width: `${progress}%`}}>{transactionMark?.metaData?.transactionMark}/{student?.period?.proposedRepetition}</p>
                 </div>
                 <div className="invoice-body">
                     <div className="invoice-payment">
@@ -237,7 +242,7 @@ const mapStateToProps = state => {
         error:state?.studentTransaction?.error,
         loading: state?.studentTransaction?.loading,
         studentdata: state?.student?.data?.students,
-        data: state?.studentTransaction?.data,
+        data: state?.studentTransaction?.data?.transactions,
     }
 }
 

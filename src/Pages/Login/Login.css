@@ -106,7 +106,7 @@
     color: #101010;
 }
 .login-form{
-    margin-top: 78px;
+    margin-top: 18px;
     width: 100%;
 }
 .form-3 label{
@@ -144,7 +144,7 @@
     font-size: 600;
 }
 .start-button{
-    margin-top: 63px;
+    margin-top: 23px;
     display: flex;
     align-items: center;
     justify-content: center;
