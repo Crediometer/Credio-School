@@ -90,8 +90,8 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                 </div>
                 <div className="invoice-progressbar">
                     <div className="ngn-progressbar">
-                        <p>{`NGN ${(student?.period?.singlePaymentAmount).toFixed(2)}`}</p>
-                        <p>{`NGN ${(student?.period?.totalAmountToBePaid).toFixed(2)}`}</p>
+                        <p>{`NGN ${(student?.period?.singlePaymentAmount)?.toFixed(2)}`}</p>
+                        <p>{`NGN ${(student?.period?.totalAmountToBePaid)?.toFixed(2)}`}</p>
                     </div>
                     <div className="progress-bar">
                         <div className="progress-bar-fill" style={{width: `${progress}%`}}>
@@ -206,7 +206,8 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                                 <label>Start Date<span>*</span></label>
                                 <div className="input-search-name">
                                     <input 
-                                        type="date"
+                                        type="text"
+                                        value={(student?.period?.proposedStartDate.slice(0,10))}
                                         // value="02/03/2024"
                                         disabled
                                     ></input>
@@ -217,7 +218,8 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                                 <label>End Date<span>*</span></label>
                                 <div className="input-search-name">
                                     <input 
-                                        type="date"
+                                        type="text"
+                                        value={(student?.period?.proposedEndDate)}
                                         // value="02/03/2025"
                                         disabled
                                     ></input>

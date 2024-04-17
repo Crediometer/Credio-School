@@ -93,7 +93,7 @@ const Login = ({
                             </div>
                         )}
                         <div className="form-3">
-                            <label>School email address/Phone Number</label><br></br>
+                            <label>School Email Address/Phone Number</label><br></br>
                             <input 
                                 type='text' 
                                 value={contactInfo}
@@ -117,9 +117,9 @@ const Login = ({
                         <button className='start-button' disabled={loading}>
                             {loading ? (
                                 <LottieAnimation data={loader}/>
-                            ):"Start Up"}
+                            ):"Login"}
                         </button>
-                        <p className='already'>Don’t have an account? <Link to="/signup"><span>Sign Up</span></Link></p>
+                        <p className='already'>Don’t Have an Account? <Link to="/signup"><span>Sign Up</span></Link></p>
                     </form>
                 </div>
             </div>

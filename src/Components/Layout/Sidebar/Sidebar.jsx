@@ -5,11 +5,12 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import {connect} from 'react-redux'
 import { fetchprofile } from "../../../Redux/Profile/ProfileAction";
 import { LogOutAuthAction } from "../../../Redux/Login/LoginAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
     const location = useLocation();
     const history = useNavigate();
+    const [timeoutId, setTimeoutId] = useState(null);
     const handlelogout =()=>{
         logout(
             ()=>{ history(`/`)}
@@ -17,6 +18,15 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
     }
     useEffect(()=>{
         fetchprofile();
+        const id = setTimeout(() => {
+            handlelogout();
+        }, 1800);
+
+        setTimeoutId(id);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
     }, [])
     return ( 
         <div className={open?"sidebaropen sidebar":"sidebar"}>

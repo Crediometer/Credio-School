@@ -117,7 +117,7 @@ const Signup = ({
                         )}
                         <div className="form-2">
                             <div className="form-3">
-                                <label>Name of school</label><br></br>
+                                <label>Name of School</label><br></br>
                                 <input
                                     required
                                     type='text' 
@@ -127,7 +127,7 @@ const Signup = ({
                                 ></input>
                             </div>
                             <div className="form-3">
-                                <label>Address/location</label><br></br>
+                                <label>Address/Location</label><br></br>
                                 <input 
                                     required
                                     type='text' 
@@ -197,7 +197,7 @@ const Signup = ({
                             </div>
                         </div>
                         <div className="form-3">
-                            <label>Phone number</label><br></br>
+                            <label>Phone Number</label><br></br>
                             <input 
                                 required
                                 type='text' 
@@ -208,7 +208,7 @@ const Signup = ({
                             ></input>
                         </div>
                         <div className="form-3">
-                            <label>School email address</label><br></br>
+                            <label>School Email Address</label><br></br>
                             <input
                                 required 
                                 type='email' 
@@ -232,7 +232,7 @@ const Signup = ({
                                 <LottieAnimation data={loader}/>
                             ):"Sign Up"}
                         </button>
-                        <p className='already'>Already have an Account?<Link to="/"><span>Login</span></Link></p>
+                        <p className='already'>Already Have an Account?<Link to="/"><span>Login</span></Link></p>
                     </form>
                 </div>
             </div>
