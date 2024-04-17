@@ -190,15 +190,33 @@
     font-weight: 500;
     line-height: normal;
 }
+.account-buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .director-update{
     border: none;
-    padding: 1.0625rem 3rem;
+    padding: 1.0625rem 2rem;
     border-radius: 10px;
     background: #298097;
     color: #FFF;
     text-align: center;
     font-family: "Inter";
-    font-size: 20px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.director-cancle{
+    border: 1px solid #298097;
+    padding: 1.0625rem 2rem;
+    border-radius: 10px;
+    background: #fff;
+    color: #298097;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -270,9 +288,9 @@
     font-weight: 400;
     line-height: normal;
 }
-.director-form-input input:focus{
-    background-color: #F5F7FB;
-    border: 1px solid #C4C4C4;
+.input-2:focus, .input-edit{
+    background-color: #F5F7FB !important;
+    border: 1px solid #C4C4C4 !important;
 }
 .director-form-2{
     margin-top: 8px;

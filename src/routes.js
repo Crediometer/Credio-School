@@ -1,5 +1,5 @@
-import React from "react";
-import { useRoutes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useRoutes} from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home/Home";
 import Invoice from "./Pages/Invoice/Invoice";
@@ -13,31 +13,44 @@ import Settings from "./Pages/Settings/Settings";
 import Otp from "./Pages/Login/Otp";
 import StudentTransaction from './Pages/Transactions/StudentTransaction'
 import NewStudent from "./Pages/Students/NewStudent";
+import { useSelector } from "react-redux";
 export default function Router() {
+  let datas = JSON.parse(localStorage.getItem("auth"))
+  const isauthenticated = datas?.token?.data?.token?.token;
+  const [authenticated, setAuthenticated] = useState(false);
+
+  // useEffect(() => {
+  //   // Check if the user is authenticated (e.g., by checking if a token exists)
+  //   const token = localStorage.getItem("auth"); // Assuming token is stored in localStorage
+  //   console.log(token)
+  //   setAuthenticated(!!token); // Set authenticated state based on token existence
+  //   console.log(authenticated)
+  // }, [localStorage, authenticated]);
+
   const routes = useRoutes([
     {
       path: '/',
-      element: <Login/>, // Renders LoginPage component when the root path is accessed
+      element: <Login />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/signup',
-      element: <Signup/>, // Renders LoginPage component when the root path is accessed
+      element: isauthenticated ? <Navigate to="/home" /> : <Signup />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/reset',
-      element: <Reset/>, // Renders LoginPage component when the root path is accessed
+      element: isauthenticated ? <Navigate to="/home" /> : <Reset />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/otp',
-      element: <Otp/>, // Renders LoginPage component when the root path is accessed
+      element: isauthenticated ? <Navigate to="/home" /> : <Otp />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/newpassword',
-      element: <Newpassword/>, // Renders LoginPage component when the root path is accessed
+      element: isauthenticated ? <Navigate to="/home" /> : <Newpassword />,// Renders LoginPage component when the root path is accessed
     },
     {
       path: "/home",
-      element: <Layout />,
+      element: isauthenticated ? <Layout /> : <Navigate to="/" />,
       children: [
         { index: true, element: <Home /> },
         { path: "invoice/:id", element: <Invoice/> },

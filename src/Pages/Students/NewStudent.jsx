@@ -295,7 +295,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                         </div>
                     </div>
                 </div>
-                <div className="save-con">
+                <div className="save-con save-con-4">
                     <button>Connect to Credio Reader</button>
                 </div>
             </form>

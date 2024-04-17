@@ -153,6 +153,24 @@
     border-radius: 14px;
     border: none;
 }
+/* .save-con-4{
+    margin-top: 20px;
+    width: 70%;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+} */
+
+.save-con-4 button{
+    width: 60%;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    background-color: #298097;
+    padding: 8px;
+    border-radius: 14px;
+    border: none;
+}
 .save-con-2 button{
     width: 100%;
     font-size: 20px;

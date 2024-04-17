@@ -33,7 +33,7 @@ const Account = ({
     const [backgroundImage, setBackgroundImage] = useState(null);
     const [showcountry, setshowcountry] = useState(false)
     const [showstate, setshowstate] = useState(false)
-    const [country, setcountry] = useState(getprofile?.schoolProfile?.address?.country)
+    const [country, setcountry] = useState("Nigeria")
     const [State, setState]= useState(getprofile?.schoolProfile?.address?.state)
     const [address, setAddress] = useState("")
     const [emailnotification, setemailNotification] = useState(getprofile?.schoolProfile?.notificationSettings?.receiveEmailAlert)
@@ -46,8 +46,12 @@ const Account = ({
     const [require, setRequire] = useState(false)
     const [postState, setPostState] = useState({});
     const [updatesuccess, setUpdateSuccess] = useState(false)
+    const [edit, setEdit] = useState(false) 
     const handleshowcountry = ()=>{
         setshowcountry(!showcountry)
+    }
+    const handleEdit = ()=>{
+        setEdit(!edit)
     }
     const handleshowstate = ()=>{
         setshowstate(!showstate)
@@ -56,8 +60,9 @@ const Account = ({
         setcountry(country)
         setPostState({ ...postState, ...{country: country} })
     }
-    const handlestate =(state)=>{
-        setState(state)
+    const handlestate =(e)=>{
+        const value = e.target.value
+        setState(value)
         setPostState({ ...postState, ...{state: State} })
     }
     const handleAddress = (e) =>{
@@ -101,7 +106,8 @@ const Account = ({
         } else{
             try{
                 await profiledatasetting(postState, ()=>{
-                    setUpdateSuccess(true) 
+                    setUpdateSuccess(true)
+                    setEdit(false)
                     // setSuccess(`/home`)
                 // setPending(true);
                 }, ()=>{ 
@@ -166,11 +172,20 @@ const Account = ({
                 <div className="account-right">
                     <div className="director-info-top">
                         <p className='director-head'>School Profile</p>
-                        <button className='director-update' onClick={handleSubmit} disabled={profileloading}>
-                            {profileloading ? (
-                                <LottieAnimation data={loader}/>
-                            ):"Update"}
-                        </button>
+                        
+                        {(!edit) && (<button className='director-update' onClick={handleEdit}>Edit</button>)}
+                        { (edit) && (
+                            <div className="account-buttons">
+                                <button className='director-update' onClick={handleSubmit} disabled={profileloading}>
+                                    {profileloading ? (
+                                        <LottieAnimation data={loader}/>
+                                    ):"Update"}
+                                </button>
+                                <button className='director-update director-cancle' onClick={handleEdit}>
+                                    Cancle
+                                </button>
+                            </div>
+                        )}
                     </div>
                     {require && (
                         <div className="error-box">
@@ -207,7 +222,7 @@ const Account = ({
                                             <path d="M17.4014 7.35156L12.9581 10.9646C12.1186 11.6306 10.9375 11.6306 10.098 10.9646L5.61719 7.35156" stroke="#5E6366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4089 19.5C19.4502 19.5084 21.5 17.0095 21.5 13.9384V7.07001C21.5 3.99883 19.4502 1.5 16.4089 1.5H6.59114C3.54979 1.5 1.5 3.99883 1.5 7.07001V13.9384C1.5 17.0095 3.54979 19.5084 6.59114 19.5H16.4089Z" stroke="#5E6366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
-                                        <input type='text' value='TestVenture@gmail.com' disabled></input>
+                                        <input type='text' value={getprofile?.schoolProfile?.email} disabled></input>
                                     </div>
                                 </div>
                                 <div className="director-form ">
@@ -230,10 +245,11 @@ const Account = ({
                                     {/* <div className="director-form-input"> */}
                                         {/* <IoLocationOutline/> */}
                                         <input 
-                                            className='input-2'
+                                            className={edit ? "input-2 input-edit": "input-2"}
                                             type='text' 
                                             defaultValue={getprofile?.schoolProfile?.address?.address}
                                             onChange={handleAddress}
+                                            disabled={!edit}
                                             onBlur={handleAddress}
                                         ></input>
                                     {/* </div> */}
@@ -244,15 +260,16 @@ const Account = ({
                                         {/* <IoLocationOutline/> */}
                                         <input 
                                             type='text' 
-                                            className='input-2'
+                                            className={edit ? "input-2 input-edit": "input-2"}
                                             defaultValue={getprofile?.schoolProfile?.address?.city}
                                             onChange={handleCity}
+                                            disabled={!edit}
                                             onBlur={handleCity}
                                         ></input>
                                     {/* </div> */}
                                 </div>
-                                <div className="director-form director-form-2">
-                                    <div className="director-form-inner director-form">
+                                {/* <div className="director-form director-form-2"> */}
+                                    {/* <div className="director-form-inner director-form">
                                         <label>Country</label><br></br>
                                         <div className="director-form-select" onClick={handleshowcountry}>
                                             <p>{country}</p>
@@ -267,10 +284,57 @@ const Account = ({
                                             </div>
                                         )}
                                         
-                                    </div>
-                                    <div className="director-form-inner">
+                                    </div> */}
+                                    <div className="director-form">
                                         <label>State</label><br></br>
-                                        <div className="director-form-select" onClick={handleshowstate}>
+                                        <select 
+                                            required
+                                            className={edit ? "input-2 input-edit": "input-2"}
+                                            onChange={handlestate}
+                                            onBlur={handlestate}
+                                            disabled={!edit}
+                                            value={State}
+                                        >
+                                            <option disabled selected>--Select State--</option>
+                                            <option value="Abia">Abia</option>
+                                            <option value="Adamawa">Adamawa</option>
+                                            <option value="Akwa Ibom">Akwa Ibom</option>
+                                            <option value="Anambra">Anambra</option>
+                                            <option value="Bauchi">Bauchi</option>
+                                            <option value="Bayelsa">Bayelsa</option>
+                                            <option value="Benue">Benue</option>
+                                            <option value="Borno">Borno</option>
+                                            <option value="Cross River">Cross River</option>
+                                            <option value="Delta">Delta</option>
+                                            <option value="Ebonyi">Ebonyi</option>
+                                            <option value="Edo">Edo</option>
+                                            <option value="Ekiti">Ekiti</option>
+                                            <option value="Enugu">Enugu</option>
+                                            <option value="FCT">Federal Capital Territory</option>
+                                            <option value="Gombe">Gombe</option>
+                                            <option value="Imo">Imo</option>
+                                            <option value="Jigawa">Jigawa</option>
+                                            <option value="Kaduna">Kaduna</option>
+                                            <option value="Kano">Kano</option>
+                                            <option value="Katsina">Katsina</option>
+                                            <option value="Kebbi">Kebbi</option>
+                                            <option value="Kogi">Kogi</option>
+                                            <option value="Kwara">Kwara</option>
+                                            <option value="Lagos">Lagos</option>
+                                            <option value="Nasarawa">Nasarawa</option>
+                                            <option value="Niger">Niger</option>
+                                            <option value="Ogun">Ogun</option>
+                                            <option value="Ondo">Ondo</option>
+                                            <option value="Osun">Osun</option>
+                                            <option value="Oyo">Oyo</option>
+                                            <option value="Plateau">Plateau</option>
+                                            <option value="Rivers">Rivers</option>
+                                            <option value="Sokoto">Sokoto</option>
+                                            <option value="Taraba">Taraba</option>
+                                            <option value="Yobe">Yobe</option>
+                                            <option value="Zamfara">Zamfara</option>
+                                        </select>
+                                        {/* <div className="director-form-select" onClick={handleshowstate}>
                                             <p>{State}</p>
                                             <FiChevronDown/>
                                         </div>
@@ -281,9 +345,9 @@ const Account = ({
                                                 <p onClick={()=>{handlestate('Ogun'); handleshowstate()}}>Ogun</p>
                                                 <p onClick={()=>{handlestate('Kwara'); handleshowstate()}}>Kwara</p>
                                             </div>
-                                        )}
+                                        )} */}
                                     </div>
-                                </div>
+                                {/* </div> */}
                             </form>
                         </div>
                         <div className="director-image" style={appStyle}>
