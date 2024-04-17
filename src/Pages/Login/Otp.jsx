@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 import { useSelector } from 'react-redux';
 import LottieAnimation from "../../Lotties";
 import loader from "../../Assets/animations/loading.json"
-const Otp = ({loading, error, data, otpData, register}) => {
+import { registerData } from "../../Redux/Registration/RegisterAction";
+const Otp = ({loading, error, data, otpData, register, registerloading, registerData}) => {
     const history = useNavigate();
     const [otp, setOtp] = useState("")
     const [otpid, setOtpid] = useState("")
@@ -49,6 +50,21 @@ const Otp = ({loading, error, data, otpData, register}) => {
             // setPending(false);
         })
     }
+    const handleResend = (e)=>{
+        e.preventDefault();
+        registerData(
+            {
+                password:formData.password,
+                phoneNumber: formData.phoneNumber,
+            }, ()=>{ 
+            // history(`/otp`);
+            // dispatch(addFormData(formData));
+            // setPending(true);
+        },  ()=>{ 
+            // setshowerror(true)
+            // setPending(false);
+        })
+    }
     return ( 
         <div className="login">
             <div className="circle-1"></div>
@@ -86,6 +102,11 @@ const Otp = ({loading, error, data, otpData, register}) => {
                                 onBlur={handleOtpId}    
                             ></input>
                         </div> */}
+                        <p className='already'>Didnt Receive OTP?<button onClick={handleResend} disabled={registerloading}> 
+                            {registerloading ? (
+                                <LottieAnimation data={loader}/>
+                            ):"Resend"}
+                            </button></p>
                         <button className='start-button' disabled={loading}>
                             {loading ? (
                                 <LottieAnimation data={loader}/>
@@ -101,6 +122,7 @@ const mapStateToProps = state => {
     console.log(state)
     return{
         loading:state.otp.loading,
+        registerloading:state.register.loading,
         error:state?.otp?.error,
         data: state.otp.data,
         register: state.register.data
@@ -111,6 +133,9 @@ const mapDispatchToProps = dispatch => {
     return{
         otpData: (postdata, history, error) => {
             dispatch(otpData(postdata, history, error));
+        },
+        registerData: (postdata, history, error) => {
+            dispatch(registerData(postdata, history, error));
         },
 
     }

@@ -19,8 +19,9 @@ textarea:focus{
   border: 1.29px solid #C4C4C4;
 }
 select:focus{
-  background-color: #F5F7FB;
-  border: 1.29px solid #C4C4C4;
+  outline: none;
+  /* background-color: #F5F7FB;
+  border: 1.29px solid #C4C4C4; */
 }
 a{
   text-decoration: none;

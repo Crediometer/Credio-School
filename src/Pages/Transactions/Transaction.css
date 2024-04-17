@@ -13,16 +13,20 @@
     font-family: "Poppins";
     font-size: 14px;
     font-weight: 500;
-    color: #B5B7C0;
+    color: #888a92;
 }
 .page-right select{
-    width: 50px;
+    width: 40px;
     background-color: transparent;
     border: 1px solid  #E9EDF2;
+    border-radius: 5px;
     font-family: "Poppins";
     font-size: 14px;
     font-weight: 500;
     color: #B5B7C0;
+}
+.page-right select optgroup{
+    text-align: center;
 }
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
     background-color: #298097 !important;

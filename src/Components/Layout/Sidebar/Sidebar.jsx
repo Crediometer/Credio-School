@@ -22,7 +22,7 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
         <div className={open?"sidebaropen sidebar":"sidebar"}>
             <div className="sidebar-top-logo">
                 <div className="sidebar-logo">
-                    <img src={logo}></img>
+                    <img src={getprofile?.schoolProfile?.schoolAvatar}></img>
                     <p className="logo-text">{getprofile?.schoolProfile?.schoolName}</p>
                 </div>
                 <div className="sidebar-close" onClick={toggleopen}>

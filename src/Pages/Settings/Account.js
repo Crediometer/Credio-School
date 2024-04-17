@@ -116,7 +116,7 @@ const Account = ({
         setUpdateSuccess(false)
     }
     const appStyle = {
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${backgroundImage === null ? `${getprofile?.schoolProfile?.schoolAvatar}` : backgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: 'center'

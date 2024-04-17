@@ -72,7 +72,7 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                     </div>
                     <div className="pagintions">
                         <div className="page-right">
-                            <p>Showing data 1 0f</p>
+                            <p>Showing data 1 of</p>
                             <select onChange={handleSizeChange}>
                                 <optgroup>
                                     <option value={10}>10</option>
