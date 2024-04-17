@@ -20,7 +20,7 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
         fetchprofile();
         const id = setTimeout(() => {
             handlelogout();
-        }, 1800);
+        }, 1800 * 1000);
 
         setTimeoutId(id);
 

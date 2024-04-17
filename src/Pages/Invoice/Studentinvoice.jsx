@@ -207,7 +207,7 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                                 <div className="input-search-name">
                                     <input 
                                         type="text"
-                                        value={(student?.period?.proposedStartDate.slice(0,10))}
+                                        value={(student?.period?.proposedStartDate?.slice(0,10))}
                                         // value="02/03/2024"
                                         disabled
                                     ></input>
@@ -219,7 +219,7 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
                                 <div className="input-search-name">
                                     <input 
                                         type="text"
-                                        value={(student?.period?.proposedEndDate)}
+                                        value={(student?.period?.proposedEndDate?.slice(0,10))}
                                         // value="02/03/2025"
                                         disabled
                                     ></input>
