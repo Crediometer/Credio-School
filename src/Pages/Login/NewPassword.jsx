@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { forgetotpData } from "../../Redux/Registration/OtpAction";
 import LottieAnimation from "../../Lotties"
 import loader from "../../Assets/animations/loading.json"
-const Newpassword = () => {
+const Newpassword = ({loading,forgetotpData}) => {
+    // const[otp, setOtp] = 
     return ( 
         <div className="login">
             <div className="circle-1"></div>
@@ -40,7 +41,7 @@ const Newpassword = () => {
 const mapStateToProps = state => {
     console.log(state)
     return{
-        loading:state.otp.loading,
+        loading:state.forgetotp.loading,
         registerloading:state.register.loading,
         error:state?.otp?.error,
         data: state.forget.data,
