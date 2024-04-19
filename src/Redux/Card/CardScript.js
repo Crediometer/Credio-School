@@ -618,7 +618,7 @@ export function buttonScan() {
 export function DisConnect() {
   return async (dispatch) => {
     Connected_Device?.gatt?.disconnect();
-    console.log("===>用户断开了连接<===");
+    console.log("===>用户断开了连接<===, disconnnnnn");
     store.dispatch({
       type: DISCONNECT_DEVICE,
     });

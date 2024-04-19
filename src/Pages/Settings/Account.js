@@ -220,7 +220,7 @@ const Account = ({
                                     ):"Update"}
                                 </button>
                                 <button className='director-update director-cancle' onClick={handleEdit}>
-                                    Cancle
+                                    Cancel
                                 </button>
                             </div>
                         )}

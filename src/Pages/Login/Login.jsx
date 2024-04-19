@@ -59,6 +59,7 @@ const Login = ({
     const handleSignUp = async (e) => {
         e.preventDefault();
         console.log("hereee", password)
+        setshowerror(false)
         try{
             console.log("hereee", password)
             await login(loginState, ()=>{ 
@@ -98,7 +99,7 @@ const Login = ({
                             <label>School Email Address/Phone Number</label><br></br>
                             <input 
                                 type='text' 
-                                    
+                                required 
                                 placeholder='Enter Email or Phone Number'
                                 onChange={handleChange}
                                 onBlur={handleChange}
@@ -110,9 +111,12 @@ const Login = ({
                             <label>Password</label><br></br>
                             <input 
                                 type='password' 
+                                required
                                 // value={password}
                                 placeholder='Enter Password'
                                 onInput={handlePassword}
+                                onChange={handlePassword}
+                                onBlur={handlePassword}
                             ></input>
                         </div>
                         <Link to="/reset"><p className='forget'>Forgot Password</p></Link>

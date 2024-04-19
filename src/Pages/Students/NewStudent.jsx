@@ -81,7 +81,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
     useEffect(() => {
         if (totalAmount && amountPerUnit && repeatEvery) {
             const days = {
-                3: 5,
+                5: 5,
                 7: 7,
                 15: 15,
                 30: 30
@@ -134,7 +134,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
             // Compare the last 10 characters of name properties
             for (let i = 0; i < getprofile.schoolReaders.length; i++) {
                 // Check if the valueToSearch is in the current array
-                if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
+                if (getprofile?.schoolReaders[i]?.uuid?.slice(-10).includes("jdjdjdjd")) {
                     // If found, save the content of the array in state and exit the loop
                    
                     console.log("it does match");
@@ -187,7 +187,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                             </div>
 
                             <div className="form-1">
-                                <label>Parent/Guardian Phone Number Email Adress<span>*</span></label>
+                                <label>Parent/Guardian Email Addxress<span>*</span></label>
                                 <div className="input-search-name">
                                     <input 
                                         type="email"
@@ -259,9 +259,9 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                                     <select type="text" required onChange={handlerepeat} onBlur={handlerepeat}>
                                         <optgroup>
                                             <option>--Select Option--</option>
-                                            <option value={3}>3 Days</option>
+                                            <option value={5}>5 Days</option>
                                             <option value={7}>7 Days</option>
-                                            <option value={15}>BiWeekly</option>
+                                            <option value={15}>Biweekly</option>
                                             <option value={30}>Monthly</option>
                                         </optgroup>
                                     </select>
