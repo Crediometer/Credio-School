@@ -43,11 +43,11 @@ const StudentTransaction = ({loading, error, data, fetchtransaction}) => {
                                     <h4>Transactions</h4>
                                 </div>
                                 <div className="students-filter">
-                                    <div className="students-search">
+                                    {/* <div className="students-search">
                                         <FaSearch/>
                                         <input type="text" placeholder="search"></input>
-                                    </div>
-                                    {/* <div className="students-search students-select">
+                                    </div> */}
+                                    <div className="students-search students-select">
                                         <p>Sort by:</p>
                                         <select>
                                             <optgroup>
@@ -55,7 +55,7 @@ const StudentTransaction = ({loading, error, data, fetchtransaction}) => {
                                                 <option>Oldest</option>
                                             </optgroup>
                                         </select>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                             <div className="student-table-body">

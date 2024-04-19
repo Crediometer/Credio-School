@@ -127,6 +127,16 @@
     color: #1e1d1d;
     margin-bottom: 19px;
 }
+.form-3 select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../Assets/Image/arrow.png');
+    background-size: 10px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 2px;
+}
 .form-3 input::placeholder{
     font-size: 14px;
     font-family: "Poppins";

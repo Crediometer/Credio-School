@@ -1,4 +1,4 @@
-import { REGISTER_USER_FAILURE, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, TRANSFER_DATA } from "./RegisterType";
+import { PASSWORD_FORGET_FAILURE, PASSWORD_FORGET_REQUEST, PASSWORD_FORGET_SUCCESS, REGISTER_USER_FAILURE, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, TRANSFER_DATA } from "./RegisterType";
 import { ADD_FORM_DATA } from './RegisterAction';
 const initialState = {
     loading: false,
@@ -55,4 +55,32 @@ export const registerReducer = (state = initialState, action) => {
         return state;
     }
 };
-  
+
+
+export const forgetReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case PASSWORD_FORGET_REQUEST:
+      return {
+        loading: true,
+        requestData: {},
+        data: [],
+        error: "",
+      };
+    case PASSWORD_FORGET_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+        registerData:'',
+        error: "",
+      };
+    case PASSWORD_FORGET_FAILURE:
+      return {
+        loading: false,
+        requestData: {},
+        data: [],
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import { FiChevronDown, FiTrash } from 'react-icons/fi';
 import {FaRegUser} from 'react-icons/fa'
 import {Switch} from "antd";
+import JSEncrypt from 'jsencrypt';
+import consts from "../Login/keys/const";
 import {LuUploadCloud} from 'react-icons/lu'
 import { useEffect, useRef, useState } from 'react';
 import { profiledatasetting, putsetting, uplodimagesetting } from '../../Redux/Settings/SettingsAction';
@@ -15,6 +17,7 @@ import LoadingModal from '../../Components/modal/LoadingModal';
 import LottieAnimation from '../../Lotties';
 import loader from "../../Assets/animations/loading.json"
 import SuccessModal from '../../Components/modal/SuccessModal';
+import { resetpasswordData } from '../../Redux/Registration/ResetpasswordAction';
 const Account = ({
     uploadloading, 
     uploaderror, 
@@ -28,7 +31,9 @@ const Account = ({
     data,
     errors,
     putsetting,
-    getprofile
+    getprofile,
+    resetPassword,
+    resetloading
 }) => {
     const [backgroundImage, setBackgroundImage] = useState(null);
     const [showcountry, setshowcountry] = useState(false)
@@ -40,11 +45,14 @@ const Account = ({
     const [smsnotification, setsmsNotification] = useState(getprofile?.schoolProfile?.notificationSettings?.receivePhoneAlert)
     const [city, setCity] = useState("")
     const [image, setImage] = useState("");
+    const [oldPassword, setoldPassword] = useState("");
+    const [newPassword, setnewPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
     const dropdownRef = useRef(null);
     const [require, setRequire] = useState(false)
     const [postState, setPostState] = useState({});
+    const [resetState, setResetState] = useState({});
     const [updatesuccess, setUpdateSuccess] = useState(false)
     const [edit, setEdit] = useState(false) 
     const handleshowcountry = ()=>{
@@ -75,6 +83,23 @@ const Account = ({
         setCity(value)
         setPostState({ ...postState, ...{city} })
     }
+    const handleOldpassword = (e) =>{
+        const value = e.target.value
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(`${consts.pub_key}`);
+        var encrypted = encrypt.encrypt(value);
+        setoldPassword(encrypted)
+        setResetState({ ...resetState, ...{oldPassword} })
+    }
+    const handleNewpassword = (e) =>{
+        const value = e.target.value
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(`${consts.pub_key}`);
+        var encrypted = encrypt.encrypt(value);
+        setnewPassword(encrypted)
+        setResetState({ ...resetState, ...{newPassword} })
+    }
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         let data ={image: e.target.files[0]}
@@ -117,6 +142,19 @@ const Account = ({
             }catch(error){
             }
         }
+    }
+    const handleresetpassword = async(e) =>{
+        e.preventDefault();
+
+        await resetPassword(resetState, ()=>{
+            // setUpdateSuccess(true)
+            // setEdit(false)
+            // setSuccess(`/home`)
+        // setPending(true);
+        }, ()=>{ 
+            // setErrorHandler(error)
+            // setPending(false);
+        });
     }
     const togglemodal = ()=>{
         setUpdateSuccess(false)
@@ -380,25 +418,41 @@ const Account = ({
                         </div>
                         <div className="password-forms">
                             <p className='password-instruction'>Create a new password that is at least 8 <br></br>character long.</p>
-                            <form>
+                            <form onSubmit={handleresetpassword}>
                                 <div className="password-form">
                                     <label>Current Password</label><br></br>
-                                    <input type='password' placeholder='XXXXXXXXXX'></input>
+                                    <input 
+                                        type='password' 
+                                        placeholder='XXXXXXXXXX'
+                                        required
+                                        onChange={handleOldpassword}
+                                        onBlur={handleOldpassword}
+                                    ></input>
                                 </div>
                                 <div className="password-form">
                                     <label>Type your new password</label><br></br>
-                                    <input type='password' placeholder='New password'></input>
+                                    <input 
+                                        type='password' 
+                                        placeholder='New password'
+                                        required
+                                        onChange={handleNewpassword}
+                                        onBlur={handleNewpassword}
+                                    ></input>
                                 </div>
-                                <div className="password-form">
+                                {/* <div className="password-form">
                                     <label>Retype your new password</label><br></br>
                                     <input type='password' placeholder='Retype password'></input>
-                                </div>
+                                </div> */}
                                 {/* <div className="password-form-check">
                                     <input type='checkbox'></input>
                                     <label>Require all devices to sign in with new password</label>
                                 </div> */}
                                 <div className="password-save">
-                                    <button>Save</button>
+                                    <button disabled={resetloading}>
+                                    {resetloading ? (
+                                        <LottieAnimation data={loader}/>
+                                    ):"Save"}
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -470,6 +524,7 @@ const mapStateToProps = (state) => {
         loading:state.notification.loading,
         data: state.notification.data,
         errors: state.notification.error,
+        resetloading: state.resetpassword.loading
     };
 };
   
@@ -478,6 +533,7 @@ const mapDispatchToProps = (dispatch) => {
         uplodimagesetting: (setting, history, error) => dispatch(uplodimagesetting(setting, history, error)),
         profiledatasetting: (setting, history, error) => dispatch(profiledatasetting(setting, history, error)),
         putsetting: (setting, history, error) => dispatch(putsetting(setting, history, error)),
+        resetPassword: (setting, history, error) => dispatch(resetpasswordData(setting, history, error)),
     };
 };
  

@@ -14,6 +14,8 @@ import preloader from "../../Assets/animations/preloader.json"
 const Transaction = ({loading, error, data, fetchtransaction}) => {
     const [pages, setPages] = useState(1)
     const [pagesize, setpagesize] = useState(10)
+    const [sortBy, setSortBy] = useState('newest'); 
+    const [sortedTransactions, setSortedTransactions] = useState([]);
     const handleSizeChange = (e)=>{
         const value = e.target.value
         setpagesize(value)
@@ -21,9 +23,36 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
     const handleChange = (event, value) => {
         setPages(value);
     };
+    const handleSortChange = (e) => {
+        const value = e.target.value;
+        setSortBy(value);
+    };
     useEffect(()=>{
         fetchtransaction(pages, pagesize)
     }, [pages, pagesize])
+    useEffect(() => {
+        if (data?.transactions) {
+            let sorted = [...data.transactions];
+            if (sortBy === 'oldest') {
+                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+            } else {
+                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+            setSortedTransactions(sorted);
+            console.log("this is sorted", sortedTransactions)
+        }
+    }, [data, sortBy]);
+    // useEffect(() => {
+    //     if (data?.transactions) {
+    //         let sortedTransactions = [...data.transactions];
+    //         if (sortBy === 'oldest') {
+    //             sortedTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+    //         } else {
+    //             sortedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+    //         }
+    //         fetchtransaction(pages, pagesize);
+    //     }
+    // }, [sortBy]);
     return ( 
         <>
         {loading ? (
@@ -42,18 +71,18 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                                         <FaSearch/>
                                         <input type="text" placeholder="search"></input>
                                     </div> */}
-                                    {/* <div className="students-search students-select">
+                                    <div className="students-search students-select">
                                         <p>Sort by:</p>
-                                        <select>
+                                        <select onChange={handleSortChange}>
                                             <optgroup>
-                                                <option>Newest</option>
-                                                <option>Oldest</option>
+                                                <option value="newest">Newest</option>
+                                                <option value="oldest">Oldest</option>
                                             </optgroup>
                                         </select>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
-                            {(data?.transactions?.length === 0)?(
+                            {(sortedTransactions?.length === 0)?(
                                 <div className="empty-animate">
                                     <LottieAnimation data={empty}/>
                                     <p>No Data Found</p>
@@ -62,7 +91,7 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                                 <>
                                 
                                     <div className="student-table-body">
-                                        <TransactionTable data={data}/>
+                                        <TransactionTable data={{ transactions: sortedTransactions }}/>
                                     </div>
                                 </>
                             )}

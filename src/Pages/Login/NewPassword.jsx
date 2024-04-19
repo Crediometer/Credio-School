@@ -1,4 +1,6 @@
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { forgetotpData } from "../../Redux/Registration/OtpAction";
 
 const Newpassword = () => {
     return ( 
@@ -16,19 +18,41 @@ const Newpassword = () => {
                     <p>Regain Access to Your Account Instantly</p>
                     <form action="" className="login-form">
                         <div className="form-3">
+                            <label>OTP</label><br></br>
+                            <input type='text' placeholder='Enter OTP'></input>
+                        </div>
+                        <div className="form-3">
                             <label>New Password</label><br></br>
                             <input type='password' placeholder='Enter Password'></input>
                         </div>
-                        <div className="form-3">
-                            <label>Confirm Password</label><br></br>
-                            <input type='password' placeholder='Enter Password'></input>
-                        </div>
-                        <Link to="/"><button className='start-button'>Reset Password</button></Link>
+                        <button className='start-button' disabled={loading}>
+                            {loading ? (
+                                <LottieAnimation data={loader}/>
+                            ):"Login"}
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     );
 }
- 
-export default Newpassword;
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+        loading:state.otp.loading,
+        registerloading:state.register.loading,
+        error:state?.otp?.error,
+        data: state.forget.data,
+        register: state.register.data
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        forgetotpData: (postdata, history, error) => {
+            dispatch(forgetotpData(postdata, history, error));
+        },
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Newpassword);

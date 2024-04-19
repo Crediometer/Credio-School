@@ -6,6 +6,8 @@ import { LoginAuthAction } from '../../Redux/Login/LoginAction';
 import { useEffect, useState } from 'react';
 import LottieAnimation from "../../Lotties"
 import loader from "../../Assets/animations/loading.json"
+import JSEncrypt from 'jsencrypt';
+import consts from "./keys/const";
 const Login = ({
     login,
     loading,
@@ -48,11 +50,11 @@ const Login = ({
       console.log("hereee", password)
     const handlePassword = (e) => {
         const value = e.target.value;
-        // var encrypt = new JSEncrypt();
-        // encrypt.setPublicKey(`${consts.pub_key}`);
-        // var encrypted = encrypt.encrypt(value);
-        setPassword(value);
-        setLoginState({ ...loginState, ...{password} });
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(`${consts.pub_key}`);
+        var encrypted = encrypt.encrypt(value);
+        setPassword(encrypted);
+        setLoginState({ ...loginState, ...{password:encrypted} });
     };
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -108,7 +110,7 @@ const Login = ({
                             <label>Password</label><br></br>
                             <input 
                                 type='password' 
-                                value={password}
+                                // value={password}
                                 placeholder='Enter Password'
                                 onInput={handlePassword}
                             ></input>
