@@ -133,9 +133,8 @@
     appearance: none;
     background-image: url('../../Assets/Image/arrow.png');
     background-size: 10px;
-    background-position: right center;
+    background-position: 92% center;
     background-repeat: no-repeat;
-    padding: 2px;
 }
 .form-3 input::placeholder{
     font-size: 14px;

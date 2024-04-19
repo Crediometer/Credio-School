@@ -134,6 +134,13 @@
     font-family: "Inter";
     font-weight: 400;
     color: #474747;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../Assets/Image/arrow.png');
+    background-size: 10px;
+    background-position: 96% center;
+    background-repeat: no-repeat;
 }
 .save-con{
     margin-top: 20px;

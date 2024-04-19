@@ -288,6 +288,15 @@
     font-weight: 400;
     line-height: normal;
 }
+.director-form select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../Assets/Image/arrow.png');
+    background-size: 10px;
+    background-position: 96% center;
+    background-repeat: no-repeat;
+}
 .input-2:focus, .input-edit{
     background-color: #F5F7FB !important;
     border: 1px solid #C4C4C4 !important;

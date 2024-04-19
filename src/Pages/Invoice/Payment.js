@@ -11,12 +11,12 @@ const Payment = () => {
                             <label>Student Name<span>*</span></label>
                             <div className="input-search-name">
                                 <input type="text"></input>
-                                <FaSearch/>
+                                
                             </div>
                         </div>
 
                         <div className="form-1">
-                            <label>Parent/Guardian Phone Number Email Adress<span>*</span></label>
+                            <label>Parent/Guardian Email Adress<span>*</span></label>
                             <div className="input-search-name">
                                 <input type="text"></input>
                             </div>
@@ -26,7 +26,7 @@ const Payment = () => {
                                 <label>Student Grade<span>*</span></label>
                                 <div className="input-search-name">
                                     <input type="text"></input>
-                                    <FaSearch/>
+                                 
                                 </div>
                             </div>
                             <div className="form-1">
