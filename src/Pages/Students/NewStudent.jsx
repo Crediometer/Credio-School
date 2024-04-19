@@ -8,7 +8,7 @@ import Errormodal from "../../Components/modal/Errormodal";
 import { keyData } from "../../Redux/Deposit/DepositAction";
 import LoadingModal from "../../Components/modal/LoadingModal";
 import ReceiptModal from "../../Components/modal/ReceiptModal";
-const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading}) => {
+const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading, connected}) => {
     const [show1, setShow1] = useState(false)
     const [showerror,  setShowError] = useState(false)
     const [startDate, setStartDate] = useState(getCurrentDate());
@@ -134,7 +134,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
             // Compare the last 10 characters of name properties
             for (let i = 0; i < getprofile.schoolReaders.length; i++) {
                 // Check if the valueToSearch is in the current array
-                if (getprofile?.schoolReaders[i]?.uuid?.slice(-10).includes("jdjdjdjd")) {
+                if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
                     // If found, save the content of the array in state and exit the loop
                    
                     console.log("it does match");
@@ -309,6 +309,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
 const mapStoreToProps = (state) => {
     return {
       cardData: state.card,
+      connected: state.card.connected,
       getprofile: state.profile.data,
       keyloading: state.key.loading,
       keyinfo: state.key.deposit.data

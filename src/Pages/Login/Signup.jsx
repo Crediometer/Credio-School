@@ -86,7 +86,7 @@ const Signup = ({
     }
     const handlesubmit = (e)=>{
         e.preventDefault();
-
+        setshowerror(false)
         registerData(
             postState, ()=>{ 
             history(`/otp`);
