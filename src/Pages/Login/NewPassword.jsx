@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { forgetotpData } from "../../Redux/Registration/OtpAction";
-
+import LottieAnimation from "../../Lotties"
+import loader from "../../Assets/animations/loading.json"
 const Newpassword = () => {
     return ( 
         <div className="login">
