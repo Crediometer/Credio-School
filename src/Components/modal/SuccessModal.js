@@ -10,9 +10,7 @@ const SuccessModal = ({error, togglemodal, message}) => {
                     <FaTimes/>
                 </div>
                 <div className="onetime-modal">
-                    <div className="loadinganimation">
-                        <LottieAnimation data={wrong}/>
-                    </div>
+                    <LottieAnimation data={wrong}/>
                     <p className="create-payment">{message}</p>
                     <div className="signup-button save-con">
                         <button class="btn btn-primary shadow-2 mb-4 start-button" onClick={togglemodal}>Ok</button>

@@ -18,6 +18,8 @@ import LottieAnimation from '../../Lotties';
 import loader from "../../Assets/animations/loading.json"
 import SuccessModal from '../../Components/modal/SuccessModal';
 import { resetpasswordData } from '../../Redux/Registration/ResetpasswordAction';
+import { LogOutAuthAction } from '../../Redux/Login/LoginAction';
+import { useNavigate } from 'react-router-dom';
 const Account = ({
     uploadloading, 
     uploaderror, 
@@ -33,8 +35,11 @@ const Account = ({
     putsetting,
     getprofile,
     resetPassword,
-    resetloading
+    resetloading,
+    resetdata,
+    logout
 }) => {
+    const history = useNavigate();
     const [backgroundImage, setBackgroundImage] = useState(null);
     const [showcountry, setshowcountry] = useState(false)
     const [showstate, setshowstate] = useState(false)
@@ -53,6 +58,7 @@ const Account = ({
     const [require, setRequire] = useState(false)
     const [postState, setPostState] = useState({});
     const [resetState, setResetState] = useState({});
+    const [resetsuccess, setResetsuccess] = useState(false)
     const [updatesuccess, setUpdateSuccess] = useState(false)
     const [edit, setEdit] = useState(false) 
     const handleshowcountry = ()=>{
@@ -147,10 +153,7 @@ const Account = ({
         e.preventDefault();
 
         await resetPassword(resetState, ()=>{
-            // setUpdateSuccess(true)
-            // setEdit(false)
-            // setSuccess(`/home`)
-        // setPending(true);
+            setResetsuccess(true)
         }, ()=>{ 
             // setErrorHandler(error)
             // setPending(false);
@@ -194,6 +197,11 @@ const Account = ({
             })    
         } catch (error) {
         }
+    }
+    const handlelogout =()=>{
+        logout(
+            ()=>{ history(`/`)}
+        )
     }
     useEffect(()=>{
         setPostState({ ...postState, ...{schoolAvatar: uploaddata.secure_url} })
@@ -506,6 +514,7 @@ const Account = ({
                 <button className='Save'>Save</button>
             </div> */}
             {updatesuccess && (<SuccessModal message={profiledata.message} togglemodal={togglemodal}/>)}
+            {resetsuccess && (<SuccessModal message={resetdata.message} togglemodal={handlelogout}/>)}
             {uploadloading && (<LoadingModal/>)}
             {error && (<p>{uploaderror}</p>)}
      </>
@@ -524,7 +533,8 @@ const mapStateToProps = (state) => {
         loading:state.notification.loading,
         data: state.notification.data,
         errors: state.notification.error,
-        resetloading: state.resetpassword.loading
+        resetloading: state.resetpassword.loading,
+        resetdata: state.resetpassword.data
     };
 };
   
@@ -534,6 +544,7 @@ const mapDispatchToProps = (dispatch) => {
         profiledatasetting: (setting, history, error) => dispatch(profiledatasetting(setting, history, error)),
         putsetting: (setting, history, error) => dispatch(putsetting(setting, history, error)),
         resetPassword: (setting, history, error) => dispatch(resetpasswordData(setting, history, error)),
+        logout: (history) => dispatch(LogOutAuthAction(history)),
     };
 };
  

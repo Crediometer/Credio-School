@@ -262,6 +262,7 @@
     color: #5E6366;
 }
 .director-form-input input{ 
+    width: 100%;
     margin-left: 8px;
     border-radius: 8px;
     border: none;

@@ -10,9 +10,9 @@ const Errormodal = ({error, togglemodal, link}) => {
                     <FaTimes/>
                 </div>
                 <div className="onetime-modal">
-                    <div className="animation">
+                    
                         <LottieAnimation data={wrong}/>
-                    </div>
+                    
                     <p className="create-payment">This Card Reader is not Connected to Your Account</p>
                     <div className="signup-button">
                         <button class="btn btn-primary shadow-2 mb-4 start-button" onClick={togglemodal}>Ok</button>
