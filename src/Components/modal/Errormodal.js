@@ -14,7 +14,7 @@ const Errormodal = ({error, togglemodal, link}) => {
                         <LottieAnimation data={wrong}/>
                     
                     <p className="create-payment">This Card Reader is not Connected to Your Account</p>
-                    <div className="signup-button">
+                    <div className="signup-button save-con">
                         <button class="btn btn-primary shadow-2 mb-4 start-button" onClick={togglemodal}>Ok</button>
                     </div>
                 </div>

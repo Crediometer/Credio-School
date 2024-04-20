@@ -8,7 +8,8 @@ import Errormodal from "../../Components/modal/Errormodal";
 import { keyData } from "../../Redux/Deposit/DepositAction";
 import LoadingModal from "../../Components/modal/LoadingModal";
 import ReceiptModal from "../../Components/modal/ReceiptModal";
-const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading, connected}) => {
+import { fetchprofile } from "../../Redux/Profile/ProfileAction";
+const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading, connected, fetchprofile}) => {
     const [show1, setShow1] = useState(false)
     const [showerror,  setShowError] = useState(false)
     const [startDate, setStartDate] = useState(getCurrentDate());
@@ -132,31 +133,20 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
             //     tlv:cardData?.tlv,
             // } }); 
             // Compare the last 10 characters of name properties
-            for (let i = 0; i < getprofile.schoolReaders.length; i++) {
-                // Check if the valueToSearch is in the current array
-                if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
-                    // If found, save the content of the array in state and exit the loop
-                   
-                    console.log("it does match");
-                    console.log(keyState);
-                    keydata(
-                        {serialNo: getprofile.schoolReaders[i].uuid, 
-                            terminalId: getprofile.schoolReaders[i].terminalId}
-                        ,
-                        () => {
-                            setShow1(true);
-                        },
-                        () => {}
-                    );
-                    return;
-                }else{
-                    console.log("it does not match");
-                    disconnect();
-                    setShowError(true);
+            if (connected){
+                for (let i = 0; i < getprofile.schoolReaders.length; i++) {
+                    // Check if the valueToSearch is in the current array
+                    if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
+                        setShow1(true);
+                    }else{
+                        console.log("it does not match");
+                        disconnect();
+                        setShowError(true);
+                    }
                 }
             }
         }
-    }, [cardData.posinfo]);
+    }, [cardData.posinfo, connected]);
     useEffect(()=>{
         setpostState({ ...postState,
             tlv:cardData?.tlv,
@@ -167,6 +157,9 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
             merchantName: keyinfo?.merchantName
         }); 
     },[keyinfo, cardData])
+    useEffect(()=>{
+        fetchprofile();
+    },[]);
     return ( 
         <div className="payment">
             <form onSubmit={connectreader}>
@@ -187,7 +180,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                             </div>
 
                             <div className="form-1">
-                                <label>Parent/Guardian Email Addxress<span>*</span></label>
+                                <label>Parent/Guardian Email Address<span>*</span></label>
                                 <div className="input-search-name">
                                     <input 
                                         type="email"
@@ -318,6 +311,7 @@ const mapStoreToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
+        fetchprofile: () => dispatch(fetchprofile()),
       buttonScan: () => {
         dispatch(buttonScan());
       },

@@ -14,7 +14,7 @@ import store from "../../Redux/Store";
 import { SUCCESS_TRANS } from "../../Redux/Card/CardType";
 const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostState, loading, data, setShow1}) => {
     const [pin, setPin] = useState("");
-    const [showPin, setShowPin] = useState(true);
+    const [showPin, setShowPin] = useState(false);
     const [success,  setSuccess] = useState(false)
     const togglemodal = ()=>{
         setSuccess(!success)
@@ -27,9 +27,14 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
     const atmpin = useRef(null);
     console.log(postState)
     useEffect(()=>{
-    if(pin.length === 1){
-        atmpin1.current.focus();
-    }
+        if(pin.length === 1){
+            atmpin1.current.focus();
+        }
+        const timer = setTimeout(() => {
+            setShowPin(true); // Show PIN after 4ms
+        }, 4000);
+        return () => clearTimeout(timer);
+      
     }, [pin.length]);
     const onChangepin1 = (e) => {
         setPin(e.target.value)
@@ -40,6 +45,10 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         if(pin1.length === 1){
             atmpin2.current.focus();
         }
+        const timer = setTimeout(() => {
+            setShowPin(true); // Show PIN after 4ms
+        }, 4000);
+        return () => clearTimeout(timer);
     }, [pin1.length]);
     const onChangepin2 = (e) => {
         setPin1(e.target.value)
@@ -50,6 +59,10 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         if(pin2.length === 1){
             atmpin3.current.focus();
         }
+        const timer = setTimeout(() => {
+            setShowPin(true); // Show PIN after 4ms
+        }, 4000);
+        return () => clearTimeout(timer);
     }, [pin2.length]);
     const onChangepin3 = (e) => {
         setPin2(e.target.value)
@@ -123,7 +136,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                                 <div className="field-1">
                                     <div className="pinfield">
                                         <input
-                                            type="text"
+                                            type={showPin ? "text": "password"}
                                             maxlength= "1"
                                             value={pin}
                                             onChange={onChangepin1}

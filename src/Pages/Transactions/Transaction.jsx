@@ -71,7 +71,7 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                                         <FaSearch/>
                                         <input type="text" placeholder="search"></input>
                                     </div> */}
-                                    <div className="students-search students-select">
+                                    {/* <div className="students-search students-select">
                                         <p>Sort by:</p>
                                         <select onChange={handleSortChange}>
                                             <optgroup>
@@ -79,7 +79,7 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                                                 <option value="oldest">Oldest</option>
                                             </optgroup>
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             {(sortedTransactions?.length === 0)?(
