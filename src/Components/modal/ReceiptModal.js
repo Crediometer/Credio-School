@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useRef, useState } from "react";
+import wrong from '../../Assets/animations/Errorr.json'
 const ReceiptModal = ({data, togglemodal}) => {
     const [downloading, setDownloading] = useState(false); 
     const pdfRef = useRef()
@@ -35,17 +36,32 @@ const ReceiptModal = ({data, togglemodal}) => {
             setDownloading(false)
         })
     }
+    const isSuccessCode =
+    data.responseCode === "00" ||
+    data.responseCode === "10" ||
+    data.responseCode === "11" ||
+    data.responseCode === "16";
     return ( 
         <div className="successmodal">
             <div className="modal-background">
                 <div className="receipt-modal" ref={pdfRef}>
-                    <div className="receipt-top">
-                        <img src={success}></img>
-                        <p className="credio">Credio</p>
-                        <h3>NGN{(data.amount/ 100).toFixed(2)}</h3>
-                        <p className="success-text">Successful transaction</p>
-                        <p className="receipt-date-time">{data.responseTime.slice(0,10)}</p>
-                    </div>
+                    {isSuccessCode ? (
+                        <div className="receipt-top">
+                            <img src={success}></img>
+                            <p className="credio">Credio</p>
+                            <h3>NGN{(data.amount/ 100).toFixed(2)}</h3>
+                            <p className="success-text">Successful transaction</p>
+                            <p className="receipt-date-time">{data.responseTime.slice(0,10)}</p>
+                        </div>
+                    ): (
+                        <div className="receipt-top">
+                            <LottieAnimation data={wrong}/>
+                            <p className="credio">Credio</p>
+                            <h3>NGN{(data.amount/ 100).toFixed(2)}</h3>
+                            <p className="success-text">Successful transaction</p>
+                            <p className="receipt-date-time">{data.responseTime.slice(0,10)}</p>
+                        </div>
+                    )}
                     <div className="receipt-body">
                         <div className="receipt-con">
                             <h5 className="con-head">

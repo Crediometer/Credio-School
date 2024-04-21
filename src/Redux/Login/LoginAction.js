@@ -14,7 +14,7 @@ const AuthActionType = {
     LOGIN_FAIL: "LOGIN_FAIL",
 };
 
-const baseUrl = "https://fe-sandbox-quick-pay.onrender.com/api/v1/school"
+const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school"
 let autoLogoutTimer;
 const LoginAuthAction = (loginState, history, setErrorHandler) => {
     return async (dispatch) => {

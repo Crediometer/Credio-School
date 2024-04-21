@@ -15,6 +15,9 @@ import { SUCCESS_TRANS } from "../../Redux/Card/CardType";
 const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostState, loading, data, setShow1}) => {
     const [pin, setPin] = useState("");
     const [showPin, setShowPin] = useState(false);
+    const [showPin1, setShowPin1] = useState(false);
+    const [showPin2, setShowPin2] = useState(false);
+    const [showPin3, setShowPin3] = useState(false);
     const [success,  setSuccess] = useState(false)
     const togglemodal = ()=>{
         setSuccess(!success)
@@ -32,7 +35,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         }
         const timer = setTimeout(() => {
             setShowPin(true); // Show PIN after 4ms
-        }, 4000);
+        }, 8000);
         return () => clearTimeout(timer);
       
     }, [pin.length]);
@@ -46,8 +49,8 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
             atmpin2.current.focus();
         }
         const timer = setTimeout(() => {
-            setShowPin(true); // Show PIN after 4ms
-        }, 4000);
+            setShowPin1(true); // Show PIN after 4ms
+        }, 8000);
         return () => clearTimeout(timer);
     }, [pin1.length]);
     const onChangepin2 = (e) => {
@@ -60,8 +63,8 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
             atmpin3.current.focus();
         }
         const timer = setTimeout(() => {
-            setShowPin(true); // Show PIN after 4ms
-        }, 4000);
+            setShowPin2(true); // Show PIN after 4ms
+        }, 8000);
         return () => clearTimeout(timer);
     }, [pin2.length]);
     const onChangepin3 = (e) => {
@@ -69,6 +72,12 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
     }
     const [pin3, setPin3] = useState("");
     const atmpin3 = useRef(null);
+    useEffect(()=>{
+        const timer = setTimeout(() => {
+            setShowPin3(true); // Show PIN after 4ms
+        }, 8000);
+        return () => clearTimeout(timer);
+    }, [pin3.length]);
     const onChangepin4 = (e) => {
         setPin3(e.target.value)
     }
@@ -86,7 +95,6 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                 () => {
                     setSuccess(true)
                     setpostState({})
-                    
                     // On Success
                 },
                 () => {
@@ -118,9 +126,9 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         <div className="modal-background">
                 
             <div className="modalss modalssss">
-                <div className='modalClose' onClick={togglemodal2}>
+                {/* <div className='modalClose' onClick={togglemodal2}>
                     <FaTimes/>
-                </div>
+                </div> */}
                 {cardData?.requestDisplay && (
                     <div className="alert-box">
                         <Alert variant="filled" severity="info">
@@ -136,7 +144,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                                 <div className="field-1">
                                     <div className="pinfield">
                                         <input
-                                            type={showPin ? "text": "password"}
+                                            type={!showPin ? "text": "password"}
                                             maxlength= "1"
                                             value={pin}
                                             onChange={onChangepin1}
@@ -148,7 +156,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                                 <div className="field-1">
                                     <div className="pinfield">
                                         <input
-                                            type="text"
+                                            type={!showPin1 ? "text": "password"}
                                             maxlength= "1"
                                             value={pin1}
                                             onChange={onChangepin2}
@@ -159,7 +167,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                                 <div className="field-1">
                                     <div className="pinfield">
                                         <input
-                                            type="text"
+                                            type={!showPin2 ? "text": "password"}
                                             maxlength= "1"
                                             value={pin2}
                                             onChange={onChangepin3}
@@ -170,7 +178,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
                                 <div className="field-1">
                                     <div className="pinfield">
                                         <input
-                                            type="text"
+                                            type={!showPin3 ? "text": "password"}
                                             maxlength= "1"
                                             value={pin3}
                                             onChange={onChangepin4}

@@ -40,7 +40,7 @@ export const studentsearchFaliure = (error) =>{
         payload: error
     }
 }
-const baseUrl = "https://fe-sandbox-quick-pay.onrender.com/api/v1/school/students"
+const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school/students"
 
 
 export const fetchstudents = (pageNumber, select) => {
