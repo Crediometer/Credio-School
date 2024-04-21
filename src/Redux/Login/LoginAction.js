@@ -14,7 +14,7 @@ const AuthActionType = {
     LOGIN_FAIL: "LOGIN_FAIL",
 };
 
-const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school"
+const baseUrl = "http://www.api.crediopay.com/api/v1/school"
 let autoLogoutTimer;
 const LoginAuthAction = (loginState, history, setErrorHandler) => {
     return async (dispatch) => {
