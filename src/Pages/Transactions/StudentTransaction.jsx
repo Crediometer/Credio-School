@@ -90,7 +90,6 @@ const StudentTransaction = ({loading, error, data, fetchtransaction}) => {
 }
  
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.studentTransaction?.error,
         loading: state?.studentTransaction?.loading,

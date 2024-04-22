@@ -119,7 +119,7 @@ const Otp = ({loading, error, data, otpData, register, registerloading, register
     );
 }
 const mapStateToProps = state => {
-    console.log(state)
+
     return{
         loading:state.otp.loading,
         registerloading:state.register.loading,

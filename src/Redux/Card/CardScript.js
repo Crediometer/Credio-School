@@ -54,22 +54,22 @@ var Connected = false;
 //服务是否存在
 var MPOS_SERVICE_FLAG = false;
 
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("Startup ----");
-  let devices = await navigator.usb.getDevices();
-  devices.forEach((device) => {
-    // prettier-ignore
-    console.log(`USB Device Detected: ${device.productName}     serial: ${device.serialNumber}     vendorId: ${device.vendorId}`);
-  });
-});
+// document.addEventListener("DOMContentLoaded", async () => {
+//   console.log("Startup ----");
+//   let devices = await navigator.usb.getDevices();
+//   devices.forEach((device) => {
+//     // prettier-ignore
+//     console.log(`USB Device Detected: ${device.productName}     serial: ${device.serialNumber}     vendorId: ${device.vendorId}`);
+//   });
+// });
 
-navigator.usb.addEventListener("connect", (event) => {
-  console.warn("A USB Device was connected");
-});
+// navigator.usb.addEventListener("connect", (event) => {
+//   console.warn("A USB Device was connected");
+// });
 
-navigator.usb.addEventListener("disconnect", (event) => {
-  console.warn("A USB Device was disconnected!");
-});
+// navigator.usb.addEventListener("disconnect", (event) => {
+//   console.warn("A USB Device was disconnected!");
+// });
 
 var trasactionData = document.getElementById("displayText");
 

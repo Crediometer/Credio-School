@@ -83,7 +83,6 @@ const Newpassword = ({loading,forgetotpData, data}) => {
     );
 }
 const mapStateToProps = state => {
-    console.log(state)
     return{
         loading:state.forgetotp.loading,
         data: state.forget.data,

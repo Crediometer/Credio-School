@@ -39,7 +39,6 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
                 sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
             }
             setSortedTransactions(sorted);
-            console.log("this is sorted", sortedTransactions)
         }
     }, [data, sortBy]);
     // useEffect(() => {
@@ -127,7 +126,6 @@ const Transaction = ({loading, error, data, fetchtransaction}) => {
 }
  
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.transaction?.error,
         loading: state?.transaction?.loading,

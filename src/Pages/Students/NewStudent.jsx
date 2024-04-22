@@ -29,7 +29,6 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
         const value = e.target.value
         setRepeatEvery(value)
         const newvalue = parseInt(value)
-        console.log(newvalue)
         setpostState({ ...postState, ...{repitationDays: newvalue} });
     }
     const handletotal =(e)=>{
@@ -139,7 +138,6 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                     if (getprofile.schoolReaders[i].uuid.slice(-10).includes(cardData.posinfo.name.slice(-10))) {
                         setShow1(true);
                     }else{
-                        console.log("it does not match");
                         disconnect();
                         setShowError(true);
                     }

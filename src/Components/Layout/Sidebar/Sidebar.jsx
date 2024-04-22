@@ -68,7 +68,6 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
     );
 }
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.profile?.error,
         loading: state?.profile?.loading,

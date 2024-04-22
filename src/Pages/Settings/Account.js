@@ -109,7 +109,6 @@ const Account = ({
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         let data ={image: e.target.files[0]}
-        console.log("this is file", file, "and this data", data)
         try{
             uplodimagesetting(data, ()=>{
                 setSuccess(true)
@@ -522,7 +521,7 @@ const Account = ({
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+
     return {
         uploaderror: state.uploadimage.error,
         uploadloading: state.uploadimage.loading,

@@ -74,7 +74,6 @@ const Reset = ({loading, forget}) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.login?.error,
         loading: state?.forget?.loading,

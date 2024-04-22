@@ -240,7 +240,6 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.studentTransaction?.error,
         loading: state?.studentTransaction?.loading,

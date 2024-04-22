@@ -41,7 +41,6 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     useEffect(() => {
        
         if (searchPerformed) {
-            console.log("HELPPPPPPP")
           fetchsearchstudents(pages, size, query);
         }
       }, [query]);
@@ -120,7 +119,6 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
     );
 }
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.student?.error,
         loading: state?.student?.loading,

@@ -28,7 +28,6 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         window.location.href = "https://credio-school.netlify.app/home/newstudent";
     }
     const atmpin = useRef(null);
-    console.log(postState)
     useEffect(()=>{
         if(pin.length === 1){
             atmpin1.current.focus();
@@ -201,7 +200,6 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
 }
 
 const mapStoreToProps = (state) => {
-    console.log(state)
     return {
         cardData: state.card,
         loading: state.deposit.loading,
@@ -213,7 +211,6 @@ const mapStoreToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 return {
     sendPin: (pin) => {
-        console.log("got here ....... . ... ");
         dispatch(sendPIN(pin));
     },
     Deposit: (postdata, history, error) => {

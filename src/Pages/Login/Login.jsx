@@ -47,7 +47,6 @@ const Login = ({
             setLoginState({ ...loginState, ...{identifier: contactInfo} });
         } 
       };
-      console.log("hereee", password)
     const handlePassword = (e) => {
         const value = e.target.value;
         var encrypt = new JSEncrypt();
@@ -58,10 +57,8 @@ const Login = ({
     };
     const handleSignUp = async (e) => {
         e.preventDefault();
-        console.log("hereee", password)
         setshowerror(false)
         try{
-            console.log("hereee", password)
             await login(loginState, ()=>{ 
                 history(`/home`)
             // setPending(true);
@@ -133,7 +130,6 @@ const Login = ({
     );
 }
 const mapStateToProps = state => {
-    console.log(state)
     return{
         error:state?.login?.error,
         loading: state?.login?.dataAdded,

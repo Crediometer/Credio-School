@@ -110,7 +110,6 @@ const Sms = ({loading, error, data, smsdatasetting}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         error: state.sms.error,
         loading: state.sms.loading,

@@ -69,7 +69,6 @@ const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loa
     );
 }
 const mapStoreToProps = (state) => {
-    console.log(state)
     return {
       cardData: state.card,
       loading: state.deposit.loading,
@@ -79,7 +78,6 @@ const mapStoreToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         doTrade: (postState) => {
-            console.log("got here ....... . ... ");
             dispatch(startTrade(postState));
         },
       
