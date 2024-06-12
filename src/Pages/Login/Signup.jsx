@@ -8,7 +8,8 @@ import LottieAnimation from "../../Lotties"
 import loader from "../../Assets/animations/loading.json"
 import {connect} from 'react-redux';
 import { useDispatch } from 'react-redux';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faSpinner, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const Signup = ({
     loading,
     error,
@@ -17,6 +18,8 @@ const Signup = ({
 }) => {
     const history = useNavigate();
     const dispatch = useDispatch();
+    const [type, setType] = useState('password');
+    const [icon, setIcon] =useState(faEye);
     const [name, setName]= useState("")
     const [address, setAddress]= useState("")
     const [phoneNumber, setphoneNumber]= useState("")
@@ -96,6 +99,17 @@ const Signup = ({
             setshowerror(true)
             // setPending(false);
         })
+    }
+     // FOR PASSWORD VISIBILITY
+     const vissibleToggle=()=>{
+        if(type==='password'){
+            setIcon(faEye);
+            setType('text');
+        }
+        else{
+            setIcon(faEyeSlash);
+            setType('password');
+        }
     }
     useEffect(() => {
         setFormData({ ...formData, ...{
@@ -233,13 +247,18 @@ const Signup = ({
                         </div>
                         <div className="form-3">
                             <label>Password</label><br></br>
-                            <input
-                            required 
-                                type='password' 
-                                placeholder='Enter password'
-                                onChange={handlePassword}
-                                onBlur={handlePassword}    
-                            ></input>
+                            <div className="password-input">
+                                <input 
+                                    type={type}
+                                    required
+                                    // value={password}
+                                    placeholder='Enter Password'
+                                    onInput={handlePassword}
+                                    onChange={handlePassword}
+                                    onBlur={handlePassword}
+                                ></input>
+                                <span className="psw-visible"><FontAwesomeIcon icon={icon} onClick={vissibleToggle}/></span>
+                            </div>
                         </div>
                         <button className='start-button' disabled={loading}>
                             {loading ? (
