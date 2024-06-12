@@ -34,19 +34,19 @@ export default function Router() {
     },
     {
       path: '/signup',
-      element: isauthenticated ? <Navigate to="/home" /> : <Signup />, // Renders LoginPage component when the root path is accessed
+      element:  <Signup />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/reset',
-      element: isauthenticated ? <Navigate to="/home" /> : <Reset />, // Renders LoginPage component when the root path is accessed
+      element: <Reset />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/otp',
-      element: isauthenticated ? <Navigate to="/home" /> : <Otp />, // Renders LoginPage component when the root path is accessed
+      element: <Otp />, // Renders LoginPage component when the root path is accessed
     },
     {
       path: '/newpassword',
-      element: isauthenticated ? <Navigate to="/home" /> : <Newpassword />,// Renders LoginPage component when the root path is accessed
+      element: <Newpassword />,// Renders LoginPage component when the root path is accessed
     },
     {
       path: "/home",

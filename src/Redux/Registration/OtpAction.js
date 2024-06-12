@@ -41,7 +41,7 @@ export const forgetFaliure = (error) => {
   };
 };
 
-const baseUrl = "http://www.api.crediopay.com/api/v1/school/auth"
+const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school/auth"
 
 export const otpData = (otpState, history, setErrorHandler) => {
     return async (dispatch) => {

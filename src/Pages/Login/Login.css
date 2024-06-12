@@ -127,6 +127,29 @@
     color: #1e1d1d;
     margin-bottom: 19px;
 }
+.password-input{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #C4C4C4;
+    padding: 14px 12px;
+    border-radius: 11px;
+}
+.password-input input{
+    border: none;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+.password-input input:focus{
+    outline: none !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+.psw-visible svg{
+    color: #C4C4C4;
+}
+
 .form-3 select{
     -webkit-appearance: none;
     -moz-appearance: none;

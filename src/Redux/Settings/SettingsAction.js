@@ -82,7 +82,7 @@ export const uploadimageFaliure = (error) =>{
     }
 }
 
-const baseUrl = "http://www.api.crediopay.com/api/v1/school/auth"
+const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school/auth"
 
 
 export const putsetting = (setting, history, setErrorHandler) => {

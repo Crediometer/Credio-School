@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { addFormData, registerData } from "../../Redux/Registration/RegisterAction";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import consts from './keys/const';
 import JSEncrypt from 'jsencrypt';
@@ -70,13 +70,13 @@ const Signup = ({
     }
     const handlePassword = (e)=>{
         const value = e.target.value
-        setPassword(value)
+        // setPassword(value)
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(`${consts.pub_key}`);
         var encrypted = encrypt.encrypt(value);
-        // setPassword(encrypted);
+        setPassword(encrypted);
         setFormData({ ...formData, ...{password: password} });
-        setPostState({ ...postState, ...{password: password} }); 
+        // setPostState({ ...postState, ...{password: password} }); 
     }
     const handleCountry = (e)=>{
         const value = e.target.value
@@ -97,6 +97,20 @@ const Signup = ({
             // setPending(false);
         })
     }
+    useEffect(() => {
+        setFormData({ ...formData, ...{
+            schoolName: name, 
+            email: email,
+            address: address, 
+            country: country,
+            city: city,
+            state: state,
+            phoneNumber: phoneNumber,
+            password: password
+        } }); 
+        setPostState({ ...postState, ...{phoneNumber: phoneNumber} }); 
+    }, [phoneNumber,name,]);
+
     return ( 
         <div className="login signup">
             <div className="circle-1"></div>

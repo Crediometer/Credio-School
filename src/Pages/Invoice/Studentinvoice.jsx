@@ -69,7 +69,11 @@ const Studentinvoice = ({fetchstudenttransaction, loading, studentdata, data}) =
     useEffect(()=>{
         if (transactionMark && student?.period?.proposedRepetition) {
             const progressbar=(transactionMark?.metaData?.transactionMark / student.period.proposedRepetition) * 100
-            setProgress(progressbar);
+            if (progressbar >= 100){
+                setProgress(100);
+            }else{
+                setProgress(progressbar);
+            }
         } else {
             setProgress(0)
         }
