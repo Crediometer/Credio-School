@@ -19,14 +19,6 @@ export default function Router() {
   const isauthenticated = datas?.token?.data?.token?.token;
   const [authenticated, setAuthenticated] = useState(false);
 
-  // useEffect(() => {
-  //   // Check if the user is authenticated (e.g., by checking if a token exists)
-  //   const token = localStorage.getItem("auth"); // Assuming token is stored in localStorage
-  //   console.log(token)
-  //   setAuthenticated(!!token); // Set authenticated state based on token existence
-  //   console.log(authenticated)
-  // }, [localStorage, authenticated]);
-
   const routes = useRoutes([
     {
       path: '/',

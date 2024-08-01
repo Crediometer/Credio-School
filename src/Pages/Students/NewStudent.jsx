@@ -9,7 +9,17 @@ import { keyData } from "../../Redux/Deposit/DepositAction";
 import LoadingModal from "../../Components/modal/LoadingModal";
 import ReceiptModal from "../../Components/modal/ReceiptModal";
 import { fetchprofile } from "../../Redux/Profile/ProfileAction";
-const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata, keyinfo, keyloading, connected, fetchprofile}) => {
+const NewStudent = ({buttonScan, 
+    cardData, 
+    getprofile, 
+    disconnect, 
+    info, 
+    keydata, 
+    keyinfo, 
+    keyloading, 
+    connected, 
+    fetchprofile
+}) => {
     const [show1, setShow1] = useState(false)
     const [showerror,  setShowError] = useState(false)
     const [startDate, setStartDate] = useState(getCurrentDate());
@@ -144,7 +154,7 @@ const NewStudent = ({buttonScan, cardData, getprofile, disconnect, info, keydata
                 }
             }
         }
-    }, [cardData.posinfo, connected]);
+    }, [cardData.posinfo, connected,getprofile]);
     useEffect(()=>{
         setpostState({ ...postState,
             tlv:cardData?.tlv,

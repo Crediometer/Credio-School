@@ -82,10 +82,10 @@ const Students = ({loading, error, data, searchdata, searcherror, searchloading,
                             </div>
                         </div>
                         {(data?.students?.length === 0)?(
-                            <div className="empty-animate">
-                                <LottieAnimation data={empty}/>
-                                <p>No Data Found</p>
-                            </div>
+                                <div className="empty-animate">
+                                    <LottieAnimation data={empty}/>
+                                    <p>No Data Found</p>
+                                </div>
                         ):(
                             <div className="student-table-body">
                                 <StudentTable data={data}/>

@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import { fetchprofile } from '../../Redux/Profile/ProfileAction';
 import LottieAnimation from "../../Lotties"
 import preloader from "../../Assets/animations/preloader.json"
+import Payment from './Payment';
 // import Business from './Business';
 // import Receipt from './Receipt';
 const Settings = ({loading, error, getprofile, fetchprofile}) => {
@@ -21,6 +22,9 @@ const Settings = ({loading, error, getprofile, fetchprofile}) => {
     }
     const handleReceipt = ()=>{
         setShow(3)
+    }
+    const handleTopup = ()=>{
+        setShow(4)
     }
     useEffect(()=>{
         window.scrollTo(0, 0);
@@ -37,14 +41,16 @@ const Settings = ({loading, error, getprofile, fetchprofile}) => {
                     <div className="settings-nav">
                         <nav>
                             <li onClick={handleAccount} className={show === 1 ? `nav-active nav-set`: 'nav-set'}>Profile</li>
+                            <li onClick={handleReceipt} className={show === 3 ? `nav-active nav-set`: 'nav-set'}>Payment</li>
                             {/* <li onClick={handleBusiness} className={show === 2 ? `nav-active nav-set`: 'nav-set'}>SMS</li>
-                            <li onClick={handleReceipt} className={show === 3 ? `nav-active nav-set`: 'nav-set'}>Top up</li> */}
+                            <li onClick={handleTopup} className={show === 4 ? `nav-active nav-set`: 'nav-set'}>Top up</li> */}
                         </nav>
                     </div>
                     <div className="settings-body">
                     { (show === 1) && <Account getprofile={getprofile}/>}
-                    { (show === 2) && <Sms/>} 
-                    { (show === 3) && <Topup/>} 
+                    {/* { (show === 2) && <Sms/>}  */}
+                    { (show === 3) && <Payment/>} 
+                    {/* { (show === 4) && <Topup/>}  */}
                     </div>
                 </div>
             )}

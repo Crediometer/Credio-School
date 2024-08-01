@@ -40,7 +40,7 @@ export const studentsearchFaliure = (error) =>{
         payload: error
     }
 }
-const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school/students"
+const baseUrl = "http://www.schoolnode.crediopay.com/api/v1/students"
 
 
 export const fetchstudents = (pageNumber, select) => {

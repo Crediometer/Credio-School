@@ -510,7 +510,7 @@ const Account = ({
             </div>
             {/* <div className="settings-button">
                 <button className='Reset'>Reset all</button>
-                <button className='Save'>Save</button>
+                <button className='Save'>Save</sbutton>
             </div> */}
             {updatesuccess && (<SuccessModal message={profiledata.message} togglemodal={togglemodal}/>)}
             {resetsuccess && (<SuccessModal message={resetdata.message} togglemodal={handlelogout}/>)}

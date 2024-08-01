@@ -54,6 +54,7 @@
     font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.176);
 }
+
 @media (max-width: 800px){
     .navbar{
         width:100%;

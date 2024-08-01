@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import BasicTable from "../../Components/Tables/StudentTables";
 import { fetchprofile } from "../../Redux/Profile/ProfileAction";
 import { useEffect } from "react";
+import { FormattedNumber, IntlProvider } from "react-intl";
 import LottieAnimation from "../../Lotties"
 import empty from '../../Assets/animations/Empty.json'
 import preloader from "../../Assets/animations/preloader.json"
@@ -44,6 +45,28 @@ const Home = ({
                 </div> 
                 <div className="home-body">
                     <div className="home-card">
+                        <div className="card-div">
+                            <div className="card" style={{backgroundColor:"#E5ECF6"}}>
+                                <p className="student-text">
+                                    Account Balance
+                                </p>
+                                <div className="student-body">
+                                    <IntlProvider>
+                                        {" "}
+                                        <h3 >
+                                        <FormattedNumber
+                                            value={
+                                                getprofile?.vault?.accountBalance
+                                            }
+                                            style="currency"
+                                            currency="NGN"
+                                        />
+                                        </h3>
+                                    </IntlProvider> 
+                                    <LuCreditCard/>
+                                </div>
+                            </div>
+                        </div>
                         <div className="card-div">
                             <Card title="Students" numbers={getprofile.studentsCount} icons={<PiStudent/>} color="#E3F5FF"/>
                         </div>

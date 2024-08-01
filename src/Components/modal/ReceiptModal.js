@@ -37,10 +37,7 @@ const ReceiptModal = ({data, togglemodal}) => {
         })
     }
     const isSuccessCode =
-    data.responseCode === "00" ||
-    data.responseCode === "10" ||
-    data.responseCode === "11" ||
-    data.responseCode === "16";
+    data.responseCode === "00";
     return ( 
         <div className="successmodal">
             <div className="modal-background">

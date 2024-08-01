@@ -47,7 +47,7 @@ export const keyFaliure = (error) => {
     payload: error,
   };
 };
-const baseUrl = "https://www.b2b.crediopay.com/api/v1/school"
+const baseUrl = "http://www.schoolsp.crediopay.com/api/v1/school"
 
 export const depositData = (depositState, history, historyError) => {
   return async (dispatch) => {

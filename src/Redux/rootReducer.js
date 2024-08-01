@@ -9,6 +9,7 @@ import { profiledataReducer, settingReducer, smsdataReducer, uploadimageReducer 
 import cardReducer from './Card/CardReducer';
 import {depositReducer, keyReducer} from './Deposit/DepositReducer'
 import resetpasswordReducer from './Registration/ResetpasswordReducer';
+import { paymentReducer } from './Payment/PaymentReducer';
 const rootReducer = combineReducers({
     login: authReducer,
     register: registerReducer,
@@ -28,7 +29,7 @@ const rootReducer = combineReducers({
     key: keyReducer,
     resetpassword: resetpasswordReducer,
     forget: forgetReducer,
-
+    payment: paymentReducer,
 })
 
 export default rootReducer;

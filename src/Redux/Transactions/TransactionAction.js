@@ -42,7 +42,7 @@ export const transactionstudentFaliure = (error) =>{
 }
 
 
-const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/school"
+const baseUrl = "http://www.schoolnode.crediopay.com/api/v1"
 
 
 export const fetchtransaction = (pageNumber, select) => {

@@ -43,7 +43,7 @@ const AccountModal = ({error, togglemodal, link,doTrade, cardData,postState, loa
                         <div className="form-1 modal-form">
                             <label>Account Type<span>*</span></label>
                             <div className="select-field">
-                                <select type="text" required onChange={handleAccount} onBlur={handleAccount}>
+                                <select required onChange={handleAccount} onBlur={handleAccount}>
                                     <optgroup>
                                         <option value={0}>Universal Account</option>
                                         <option value={1}>Savings Account</option>

@@ -166,6 +166,9 @@
 .password-save button{
     border: none;
     width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     background: #298097;
     padding: 1.06rem 5rem;
