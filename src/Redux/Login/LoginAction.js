@@ -14,7 +14,7 @@ const AuthActionType = {
     LOGIN_FAIL: "LOGIN_FAIL",
 };
 
-const baseUrl = "http://www.schoolnode.crediopay.com/api/v1"
+const baseUrl = "https://school-dash-node.onrender.com/api/v1"
 let autoLogoutTimer;
 const LoginAuthAction = (loginState, history, setErrorHandler) => {
     return async (dispatch) => {

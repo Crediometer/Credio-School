@@ -25,7 +25,7 @@ const PinModal = ({togglemodal2,sendPin, cardData, postState, Deposit, setpostSt
         store.dispatch({
             type: SUCCESS_TRANS
         })
-        window.location.href = "https://credio-school.netlify.app/home/newstudent";
+        window.location.href = "https://school.crediopay.com/home/newstudent";
     }
     const atmpin = useRef(null);
     useEffect(()=>{

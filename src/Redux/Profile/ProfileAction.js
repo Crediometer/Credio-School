@@ -25,7 +25,7 @@ export const profileFaliure = (error) =>{
     }
 }
 
-const baseUrl = "http://www.schoolnode.crediopay.com/api/v1"
+const baseUrl = "https://school-dash-node.onrender.com/api/v1"
 
 
 export const fetchprofile = () => {

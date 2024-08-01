@@ -20,7 +20,7 @@ export const passwordFaliure = (error) => {
     payload: error,
   };
 };
-const baseUrl = "http://www.schoolnode.crediopay.com/api/v1/auth/"
+const baseUrl = "https://school-dash-node.onrender.com/api/v1/auth/"
 export const resetpasswordData = (passwordState, history, setErrorHandler) => {
     return async (dispatch) => {
         dispatch(passwordRequest())

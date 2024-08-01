@@ -40,7 +40,7 @@ export const studentsearchFaliure = (error) =>{
         payload: error
     }
 }
-const baseUrl = "http://www.schoolnode.crediopay.com/api/v1/students"
+const baseUrl = "https://school-dash-node.onrender.com/api/v1/students"
 
 
 export const fetchstudents = (pageNumber, select) => {

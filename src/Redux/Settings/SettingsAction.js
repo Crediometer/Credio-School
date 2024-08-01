@@ -82,7 +82,7 @@ export const uploadimageFaliure = (error) =>{
     }
 }
 
-const baseUrl = "http://www.schoolnode.crediopay.com/api/v1/auth"
+const baseUrl = "https://school-dash-node.onrender.com/api/v1/auth"
 
 
 export const putsetting = (setting, history, setErrorHandler) => {
