@@ -61,7 +61,7 @@ export const transferData = (data) => {
 //     dispatch(transferData(data));
 //   };
 // };
-const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/auth"
+const baseUrl = "https://www.schoolnode.crediopay.com/api/v1/auth"
 export const registerData = (registerState, history, setErrorHandler) => {
     return async (dispatch) => {
       dispatch(registerRequest())

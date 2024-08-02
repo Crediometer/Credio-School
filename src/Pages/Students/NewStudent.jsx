@@ -154,7 +154,7 @@ const NewStudent = ({buttonScan,
                 }
             }
         }
-    }, [cardData.posinfo, connected,getprofile]);
+    }, [cardData.posinfo,connected,getprofile]);
     useEffect(()=>{
         setpostState({ ...postState,
             tlv:cardData?.tlv,

@@ -20,7 +20,7 @@ export const passwordFaliure = (error) => {
     payload: error,
   };
 };
-const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1"
+const baseUrl = "https://www.schoolnode.crediopay.com/api/v1"
 export const passwordData = (passwordState, history, setErrorHandler) => {
     return async (dispatch) => {
         dispatch(passwordRequest())
