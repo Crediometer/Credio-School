@@ -41,7 +41,7 @@ export const forgetFaliure = (error) => {
   };
 };
 
-const baseUrl = "https://school-dash-node.onrender.com/api/v1/auth"
+const baseUrl = "https://crediopay-5894689bc7ed.herokuapp.com/api/v1/auth"
 
 export const otpData = (otpState, history, setErrorHandler) => {
     return async (dispatch) => {
