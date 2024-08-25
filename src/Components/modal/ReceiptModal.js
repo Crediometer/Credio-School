@@ -55,7 +55,7 @@ const ReceiptModal = ({data, togglemodal}) => {
                             <LottieAnimation data={wrong}/>
                             <p className="credio">Credio</p>
                             <h3>NGN{(data.amount/ 100).toFixed(2)}</h3>
-                            <p className="success-text">Successful transaction</p>
+                            <p className="success-text" style={{color:"red"}}>Unsuccessful transaction</p>
                             <p className="receipt-date-time">{data.responseTime.slice(0,10)}</p>
                         </div>
                     )}
