@@ -53,6 +53,9 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
                     <Link to="/home/transaction" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/transaction")?"active":""}>Transaction</li>
                     </Link>
+                    <Link to="/home/withdrawal" onClick={toggleopen}>
+                        <li className={(location.pathname === "/home/withdrawal")?"active":""}>Withdrawal</li>
+                    </Link>
                     <Link to="/home/settings" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/settings")?"active":""}>Settings</li>
                     </Link>    

@@ -14,6 +14,7 @@ import Otp from "./Pages/Login/Otp";
 import StudentTransaction from './Pages/Transactions/StudentTransaction'
 import NewStudent from "./Pages/Students/NewStudent";
 import { useSelector } from "react-redux";
+import Withdrawal from "./Pages/Withdrawal/Withdrawal";
 export default function Router() {
   let datas = JSON.parse(localStorage.getItem("auth"))
   const isauthenticated = datas?.token?.data?.token?.token;
@@ -50,6 +51,7 @@ export default function Router() {
         { path: "students/transaction/:id", element: <StudentTransaction/> },
         { path: "newstudent", element: <NewStudent/> },
         { path: "transaction", element: <Transaction/> },
+        { path: "withdrawal", element: <Withdrawal/> },
         { path: "settings", element: <Settings /> },
         // { path: "create/upload", element: <Uplaod /> },
         // { path: "create-content", element: <Content /> },

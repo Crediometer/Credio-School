@@ -21,7 +21,7 @@ export const paymentFaliure = (error) =>{
     }
 }
 
-const baseUrl = "https://school-dash-node.onrender.com/api/v1"
+const baseUrl = "https://www.schoolnode.crediopay.com/api/v1"
 export const postPayment = (postState, history, setErrorHandler) => {
     return async (dispatch) => {
       dispatch(paymentRequest())
@@ -41,7 +41,7 @@ export const postPayment = (postState, history, setErrorHandler) => {
         }
       } catch (error) {
         if (error.response){
-          dispatch(paymentFaliure(error?.response?.data?.error));
+          dispatch(paymentFaliure(error?.response?.data));
         }
         setErrorHandler({ hasError: true, message: error?.response?.data?.message });
       }
