@@ -52,6 +52,10 @@ const NewStudent = ({buttonScan,
         setAmountPerUnit(value)
         // setpostState({ ...postState, ...{unit: amountPerUnit} }); 
     }
+    const handleStartDate = (e)=>{
+        const value = e.target.value
+        setStartDate(value)
+    }
     const handleSchoolName = (e)=>{
         const value = e.target.value
         setName(value)
@@ -188,13 +192,13 @@ const NewStudent = ({buttonScan,
                             </div>
 
                             <div className="form-1">
-                                <label>Parent/Guardian Email Address<span>*</span></label>
+                                <label>Parent/Guardian Email Address</label>
                                 <div className="input-search-name">
                                     <input 
                                         type="email"
                                         onChange={handleEmail}
                                         onBlur={handleEmail}
-                                        required
+                                        // required
                                     ></input>
                                 </div>
                             </div>
@@ -283,7 +287,13 @@ const NewStudent = ({buttonScan,
                             <div className="form-1">
                                 <label>Start Date<span>*</span></label>
                                 <div className="input-search-name">
-                                    <input type="date" required value={startDate} disabled></input>
+                                    <input 
+                                        type="date" 
+                                        required 
+                                        value={startDate} 
+                                        onChange={handleStartDate}
+
+                                    ></input>
                     
                                 </div>
                             </div>

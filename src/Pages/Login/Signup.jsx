@@ -157,7 +157,7 @@ const Signup = ({
                                 <input
                                     required
                                     type='text' 
-                                    placeholder='School Name'
+                                    placeholder='City'
                                     onChange={handleCity}
                                     onBlur={handleCity}
                                 ></input>

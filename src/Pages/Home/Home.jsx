@@ -92,7 +92,7 @@ const Home = ({
                        
                     </div>
                     <div className="button-con">
-                        <Link to="/home/newstudent"><button className="create-button">Create a New Student Plan</button></Link>
+                        <Link to="/home/newstudent"><button className="create-button">Create New Student Plan</button></Link>
                     </div>
                     
                 </div>

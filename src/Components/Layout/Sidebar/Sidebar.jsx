@@ -47,11 +47,11 @@ const Sidebar = ({getprofile,logout,fetchprofile, open, toggleopen}) => {
                         <li className={(location.pathname === "/home")?"active":""}>Dashboard</li>
                     </Link>
                     <Link to="/home/students" onClick={toggleopen}>
-                        <li className={(location.pathname === "/home/students")?"active":""}>Student</li>
+                        <li className={(location.pathname === "/home/students")?"active":""}>Students</li>
                     </Link>
                     {/* <li>Payments</li> */}
                     <Link to="/home/transaction" onClick={toggleopen}>
-                        <li className={(location.pathname === "/home/transaction")?"active":""}>Transaction</li>
+                        <li className={(location.pathname === "/home/transaction")?"active":""}>Transactions</li>
                     </Link>
                     <Link to="/home/withdrawal" onClick={toggleopen}>
                         <li className={(location.pathname === "/home/withdrawal")?"active":""}>Withdrawal</li>
