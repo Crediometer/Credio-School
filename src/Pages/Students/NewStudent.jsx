@@ -104,7 +104,7 @@ const NewStudent = ({buttonScan,
             const repeatDays = days[repeatEvery];
             const units = parseInt(totalAmount) / parseInt(amountPerUnit);
             const endDateValue = new Date(startDate);
-            endDateValue.setDate(endDateValue.getDate() + (units * repeatDays));
+            endDateValue.setDate(endDateValue.getDate() + ((units-1) * repeatDays));
             setEndDate(formatDate(endDateValue));
             // setpostState({ ...postState, ...{startdate: startDate} });
             // setpostState({ ...postState, ...{endDate: endDate} });  
