@@ -306,6 +306,7 @@ const NewStudent = ({buttonScan,
                         </div>
                     </div>
                 </div>
+                <p className="charges-note">Please Note <strong>₦100</strong> charges will be deducted for Tokenization</p>
                 <div className="save-con save-con-4">
                     <button>Connect to Credio Reader</button>
                 </div>
