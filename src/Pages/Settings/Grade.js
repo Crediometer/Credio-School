@@ -12,6 +12,9 @@ const Grade = () => {
     }
     return ( 
         <div className="grade">
+            <div className="grade-button">
+                <button>Copy Link</button>
+            </div>
             <div className="grade-body">
                 <div className="grade-line">
                     <p>Grade 1</p>
