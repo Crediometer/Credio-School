@@ -82,7 +82,7 @@
     display: flex;
     justify-content: space-between;
 } */
-.input-search-name input{
+.input-search-name input, .input-search-name select{
     width: 100%;
     margin-top: 14px;
     margin-bottom: 15px;
@@ -95,7 +95,7 @@
     font-weight: 400;
     color: #474747;
 }
-.input-search-name input:focus{
+.input-search-name input:focus, .input-search-name select:focus{
     background-color: #F5F7FB;
     border: 1px solid #C4C4C4;
 }

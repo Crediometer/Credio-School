@@ -243,6 +243,29 @@
     font-weight: 500;
     color: #33333381;
 }
+.grade-button{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.grade-button button{
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    width: 50%;
+    padding: 1rem;
+    border-radius: 14px;
+}
+.grade-cancle{
+    background-color: white;
+    border: 1px solid #298097;
+    color: #298097 !important;
+}
+.grade-save{
+    background-color: #298097;
+    border: none;
+}
 @media (Max-width: 500px){
     .cardpin-body{
         margin-top: 30px;

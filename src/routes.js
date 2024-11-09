@@ -15,6 +15,7 @@ import StudentTransaction from './Pages/Transactions/StudentTransaction'
 import NewStudent from "./Pages/Students/NewStudent";
 import { useSelector } from "react-redux";
 import Withdrawal from "./Pages/Withdrawal/Withdrawal";
+import Parent from "./Pages/Parent/Parent";
 export default function Router() {
   let datas = JSON.parse(localStorage.getItem("auth"))
   const isauthenticated = datas?.token?.data?.token?.token;
@@ -40,6 +41,10 @@ export default function Router() {
     {
       path: '/newpassword',
       element: <Newpassword />,// Renders LoginPage component when the root path is accessed
+    },
+    {
+      path: '/parent',
+      element: <Parent/>,// Renders LoginPage component when the root path is accessed
     },
     {
       path: "/home",
