@@ -65,7 +65,7 @@ const Grade = ({getGrade, loading, error, data, deleteGrade}) => {
                         {data?.length == 0 ? (
                             <div className="empty-grade">
                                 <LottieAnimation data={empty}/>
-                                <p>No Grade Add Yet</p>
+                                <p>No Grade Add Yet...</p>
                             </div>
                         ): (
                             <>
