@@ -1,0 +1,114 @@
+.assign-sit{
+    display: flex;
+    gap: 13px;
+}
+.assign-sit-left{
+    width: 30%;
+}
+.assign-calendar{
+    padding: 0.6875rem 1rem;
+    background-color: #FAFAFA;
+}
+.assign-bottom{
+    margin-top: 30px;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+}
+.assign-bottom-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.assign-bottom-top p{
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #1B1A17;
+}
+.assign-bottom-top svg{
+    color: #1B1A17;
+}
+.assign-sit-right{
+    position: relative;
+    width: 70%;
+}
+.sit-button{
+    z-index: 60;
+    position: absolute;
+    top: 10rem;
+    right: 0rem;
+    padding: 0.5625rem;
+    background-color: #0177FD;
+    border: none;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 1rem;
+    color: #FFFFFF;
+    border-radius: 4px;
+}
+.assign-data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem;
+    margin-top: 15px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+}
+.assign-data-left{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+.assign-data-left svg{
+    color: #1B1A17;
+    font-size: 1.375rem;
+}
+.assign-data-left p{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #1B1A17;
+}
+.assign-data-right p{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #1B1A17;
+}
+.kitchen-color{
+    color: #EB5757 !important;
+}
+.desk-color{
+    color: #219653 !important;
+}
+.server-color{
+    color: #F2994A !important;
+}
+.customer-color{
+    color: #0177FD !important;
+}
+.scheduler-event {
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.scheduler-event.server {
+    background-color: #FFCDD2;
+}
+
+.scheduler-event.front-desk {
+    background-color: #F8BBD0;
+}
+
+.scheduler-event.kitchen {
+    background-color: #FFF59D;
+}
+
+.scheduler-event.customers {
+    background-color: #E1BEE7;
+}

@@ -258,8 +258,8 @@
     border-radius: 14px;
 }
 .grade-cancle{
-    background-color: white;
-    border: 1px solid #298097;
+    background-color: white !important;
+    border: 1px solid #298097 !important;
     color: #298097 !important;
 }
 .grade-save{
@@ -309,6 +309,9 @@
         width: 80%;
         padding: 35px;
         padding-bottom: 35px;
+    }
+    .modalssss{
+        width: 90% !important;
     }
     .modal-inner{
         margin-top: 48px;

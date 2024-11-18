@@ -1,0 +1,83 @@
+.delete-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.delete-head p{
+    color: #000;
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 1.09706rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.close-modal{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.43881rem;
+    background: var(--secondary-30, #FFF2E2);
+}
+.close-modal svg{
+    font-size: 1.3165rem;
+}
+.delete-body{
+    margin-top: 24px;
+    text-align: center;
+}
+.delete-body h2{
+    color: #333;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.delete-body p{
+    margin-top: 15px;
+    color: rgba(51, 51, 51, 0.60);
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.delete-buttons{
+    margin-top: 38px;
+}
+.delete-cancle{
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+.order-cancle, .order-share{
+    padding: 0.9325rem 2rem;
+    background-color: transparent;
+    border-radius: 10.532px;
+    border: 1.755px solid var(--Primary, #5570F1);
+    color: var(--Primary, #5570F1);
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.09706rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.order-ok{
+    padding: 0.9325rem 3rem;
+    border: none;
+    border-radius: 0.65825rem;
+    background: var(--Primary, #5570F1);
+    color: #FFF;
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.09706rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

@@ -45,7 +45,7 @@ const Settings = ({loading, error, getprofile, fetchprofile}) => {
                     <div className="settings-nav">
                         <nav>
                             <li onClick={handleAccount} className={show === 1 ? `nav-active nav-set`: 'nav-set'}>Profile</li>
-                            <li onClick={handleGrade} className={show === 5 ? `nav-active nav-set`: 'nav-set'}>Grade</li>
+                            <li onClick={handleGrade} className={show === 5 ? `nav-active nav-set`: 'nav-set'}>Grades</li>
                             {/* <li onClick={handleReceipt} className={show === 3 ? `nav-active nav-set`: 'nav-set'}>Payment</li> */}
                             {/* <li onClick={handleBusiness} className={show === 2 ? `nav-active nav-set`: 'nav-set'}>SMS</li>
                             <li onClick={handleTopup} className={show === 4 ? `nav-active nav-set`: 'nav-set'}>Top up</li> */}

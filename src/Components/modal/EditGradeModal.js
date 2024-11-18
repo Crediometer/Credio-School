@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { addGrade } from "../../Redux/Students/Grade/GradeAction";
 import { connect } from "react-redux";
-import loader from "../../Assets/animations/loading.json"
+import { editGrade } from "../../Redux/Students/Grade/GradeAction";
 import LottieAnimation from "../../Lotties";
-const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
-    const [grade, setGrade] = useState("");
-    const [amount, setAmount] = useState("");
-    const [date, setDate] = useState(Date.now());
+import loader from "../../Assets/animations/loading.json"
+import { useNavigate } from "react-router-dom";
+
+const EditGradeModal = ({togglemodal, data, editGrade,grade, gradedata, loading, error, setShow}) => {
+    const history = useNavigate();
+    const [amount, setAmount] = useState(gradedata.amount);
+    const [date, setDate] = useState(gradedata.maxTenor);
     const [showerror, setshowerror] = useState(false)
     const [showsuccess, setshowsuccess] = useState(false)
     const [formattedAmount, setFormattedAmount] = useState("")
@@ -19,11 +21,6 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
         }
         return input?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
-    const handleGrade = (e) =>{
-        const value = e.target.value
-        setGrade(value)
-        setPostState({ ...postState, ...{gradeName: grade} });
-    }
     const handleAmount = (e) =>{
         const value = e.target.value
         const numericValue = value.replace(/\D/g, ''); 
@@ -37,22 +34,19 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
     const handleDate = (e) =>{
         const value = e.target.value
         setDate(parseInt(value))
-        setPostState({ ...postState, ...{maxTenor: date} });
+        setPostState({ ...postState, ...{maxTenor: date, gradeName: gradedata.gradeName} });
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
         setshowerror(false)
-        setshowsuccess(false)
         try{
-            await addGrade(postState, ()=>{ 
-                getGrade()
+            await editGrade(postState, ()=>{ 
+                grade()
                 setshowsuccess(true)
-                setGrade("")
-                setAmount("")
-                setDate("")
+                setShow(false)
             }, ()=>{ 
                 setshowerror(true)
-            });
+            }, gradedata.id);
         }catch(error){
         }
     };
@@ -64,7 +58,7 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
                     <FaTimes/>
                 </div>
                 <div className="onetime-modal">
-                    <p className="create-payment">Add Grade</p>
+                    <p className="create-payment">Edit Grade</p>
                     <form onSubmit={handleSubmit}>
                         {showerror && (
                             <div className="error-box">
@@ -73,27 +67,16 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
                         )}
                         {showsuccess && (
                             <div className="success-box">
-                                <p>Grade Created Successfully</p>
+                                <p>Grade Updated Successfully</p>
                             </div>
                         )}
-                        <div className="form-1">
-                            <label>Enter Grade Name</label>
-                            <div className="input-search-name">
-                                <input 
-                                    type="text"
-                                    value={grade}
-                                    onBlur={handleGrade}
-                                    onChange={handleGrade}
-                                    required
-                                ></input>
-                            </div>
-                        </div>
                         <div className="form-1">
                             <label>Enter Amount</label>
                             <div className="input-search-name">
                                 <input 
                                     type="text"
                                     value={formattedAmount}
+                                    defaultValue={amount}
                                     onBlur={handleAmount}
                                     onChange={handleAmount}
                                     required
@@ -105,7 +88,7 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
                             <div className="input-search-name">
                                 <input 
                                     type="date"
-                                    // value={date}
+                                    defaultValue={date}
                                     onBlur={handleDate}
                                     onChange={handleDate}
                                     required
@@ -113,8 +96,7 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
                             </div>
                         </div>
                         <div className="grade-button">
-                            {/* <button className="grade-cancle">Cancle</button> */}
-                            <button className="grade-save" onClick={handleSubmit}>
+                            <button className="grade-save">
                             {loading ? (
                                 <LottieAnimation data={loader}/>
                             ):"Save"}
@@ -126,22 +108,21 @@ const GradeModal = ({togglemodal, addGrade, loading, data, error,getGrade}) => {
         </div>
     );
 }
-
+ 
 const mapStateToProps = state => {
     return{
-        error:state?.addGrade?.error,
-        loading: state?.addGrade?.loading,
-        data: state?.addGrade?.data
+        error:state?.editGrade?.error,
+        loading: state?.editGrade?.loading,
+        data: state?.editGrade?.data
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return{
-        addGrade: (postState, history, setErrorHandler) => {
-            dispatch(addGrade(postState, history, setErrorHandler));
+        editGrade: (postState, history, setErrorHandler, id) => {
+            dispatch(editGrade(postState, history, setErrorHandler, id));
         },
     }
 }
  
- 
-export default connect(mapStateToProps, mapDispatchToProps)(GradeModal);
+export default connect(mapStateToProps, mapDispatchToProps)(EditGradeModal);

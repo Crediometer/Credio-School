@@ -66,7 +66,7 @@ const Parent  = () => {
                                     </div>
                 
                                 </div>
-                                <div className="form-1">
+                                {/* <div className="form-1">
                                     <label>Terms<span>*</span></label>
                                     <div className="select-field">
                                         <select type="text" 
@@ -80,7 +80,7 @@ const Parent  = () => {
                                             </optgroup>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-1">
                                     <label>Message</label>
                                     <div className="input-search-name">

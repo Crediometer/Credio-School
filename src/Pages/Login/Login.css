@@ -105,6 +105,18 @@
     font-weight: 600;
     color: #101010;
 }
+.success-box{
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(144, 233, 189, 0.811);
+    border-radius: 8px;
+}
+.success-box p {
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 600;
+    color: #101010;
+}
 .login-form{
     margin-top: 18px;
     width: 100%;

@@ -62,3 +62,16 @@
     background-color: #298097;
     border: none;
 }
+@media (max-width: 800px){
+    .parent-form{
+        width: 95%;
+        padding: 1rem;
+    }
+    .parent-form-top h2{
+        font-size: 1.4rem;
+    }
+    .parent-form-field{
+        height: 80vh;
+        padding: 0rem 0.8rem;
+    }
+}

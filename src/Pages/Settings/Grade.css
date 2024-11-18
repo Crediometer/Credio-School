@@ -28,6 +28,14 @@
 .grade-body::-webkit-scrollbar{
     display: none;
 }
+.empty-grade{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .grade-line{
     display: flex;
     align-items: center;
@@ -47,12 +55,12 @@
     gap: 20px;
     align-items: center;
 }
-.grade-value input{
+.grade-amount{
     padding: 1rem 2rem;
     border: 1px solid #c7cbd1;
     border-radius: 10px;
     font-family: "Poppins";
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-style: normal;
     font-weight: 500;
 }
@@ -89,4 +97,10 @@
 .add-grade svg{
     font-size: 2rem;
     color: #ffffff;
+}
+@media (max-width: 800px){
+    .grade-line{
+        flex-direction: column;
+        gap: 10px;
+    }
 }
